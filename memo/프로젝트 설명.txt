@@ -1,0 +1,72 @@
+★★★★★★★★★Java★★★★★★★★★
+○ och01 : HelloWorld
+○ och02 : 데이터타입, 연산자
+○ och03 : 연산자 심화
+○ och04 : 반복문, 조건문
+○ och05 : 배열, Enum
+○ och06 : 클래스
+○ och07 : 클래스 캡슐화, 오버로딩, 오버라이딩, 싱글톤
+○ och08 : 인터페이스, 상속
+○ och09 : Date, Math, String
+○ och10 : 예외처리
+○ och11 : List, LinkedList, Stack, Queue, Vector, Set, Map
+○ och12 : 쓰레드
+○ och13 : 버퍼, 파일
+○ och15 : DB 연동
+
+★★★★★★★★★Web★★★★★★★★★
+○ webStandard01 : HTML, CSS
+- 01 : HelloWorld
+- 02 : ol, ul, table
+- 03 : anchor, image, link
+- 04 : date, input, meter, radio, select
+- 05 : CSS 적용 이해
+- 06 : CSS 활용(리스트, 색상, 글꼴, 자간, 줄간격)
+- 07 : 배경
+- 08 : border, display
+- 09 : 샘플(layout)
+- 10 : audio, video
+- 11 : 샘플(메뉴)
+
+○ oJavaScript : HTML에 코딩을 더하는 javascript
+- 01 : 알림창(alert/confirm/prompt), date, for, isNaN, switch, var/let
+- 02 : anchor, link, 배열, 객체, String
+- 03 : function, Event, EventListener
+- 04 : Event호출 순서(버블링/캡쳐링), Interval, JSON
+- 05 : CheckBox, RadioBox, Select(ComboBox), get/post
+
+○ oJQuery : javascript의 라이브러리
+- ch01 : jQuery라이브러리 사용법, addClass, each(반복문)
+- ch02 : chain(add), equal, even, filter, lt/gt, not, child
+
+★★★★★★★★★JSP★★★★★★★★★
+○ och02 : HTML - Servlet 호출
+○ och03 : HTML - JSP호출
+○ och04 : application 메소드, requset 메소드
+○ och05 : Exception, ErrorPage
+○ och06 : Init(), Destroy()
+○ och07 : EL표기법( ${ } )
+○ och08 : useBean, setProperty, getProperty, forward, 클래스 활용
+○ och09 : JSTL 활용, STL(Tag)만들기
+○ och10 : Database 활용
+○ och11 : 쿠키, 세션
+○ och12_mvc01 : MVC1
+○ och14 : 필터
+○ och15_ajax : Ajax
+○ och16_mvc02 : MVC2
+
+★★★★★★★★★Spring★★★★★★★★★
+○ oBootHello : 서버 개념, Legacy(JSP)방식, SpringBoot방식
+○ oBootDbConnect : Oracle연결
+○ oBootBoard : 게시판 예제
+○ oBootBoardWarGradle : 게시판 예제 War:Gradle 배포 연습
+○ oBootBoardWarMaven : 게시판 예제 War:Maven 배포 연습
+○ oBootJpa01 : JPA, Lombok
+○ oBootJpa02 : JPA, Lombok 심화
+
+
+
+
+
+
+

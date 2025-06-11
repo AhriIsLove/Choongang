@@ -1,0 +1,573 @@
+★★★★★★★★★컴퓨터 용어★★★★★★★★★
+○ 컴퓨터의 정의
+-CPU, RAM, HDD로 구성된 전자계산기
+-CPU:중앙처리장치
+-RAM:주기억장치
+-HDD:저장장치
+
+○ 프로세스 : RAM에 할당되어 프로그램(상태), CPU가 처리대기/처리중인 프로그램(상태), 리소스와 스레드로 구성
+○ 프로세서 : CPU
+○ 멀티프로그래밍 : TimeSharing(시분할)을 통하여 여러 프로그램을 동시에 실행하는 것
+○ 멀티프로세서 : CPU 2개이상
+○ 스케쥴링 : CPU의 실행시간을 잘게 나누어 각 프로세스들에게 CPU를 점유시키는 작업
+※타임 쉐어링 : CPU에서 일정한 시간(time slice)만큼 번갈아가며 프로세스를 처리하는 방식
+
+※ASKII-code(American Standard Code for Information Interchange) : 미국 정보 교환 표준 부호(미국에서 만든 국제 표준 코드)
+
+★★★★★★★★★자바★★★★★★★★★
+○ 자바의 장점 및 특징
+-이식성 : 자바의 JVM으로 Windows, Mac, Linux에서 호환이 가능
+-JVM : Java Virtual Machine(자바 가상 머신)
+
+※Java EE : 웹 환경
+※Java (SE) : Console 환경
+※jar : 자바 아카이브 관리 프로그램
+
+○ JDK : Java Development Kit(자바 개발 키트)
+
+○ IDE : Integrated Development Environment(통합 개발 환경)
+
+○ API : Application Programming Interface
+- 프로그램 개발에 사용되는 클래스 및 인터페이스 모음
+
+●●●●●●●●●챕터변경●●●●●●●●●
+○ 스케쥴링 알고리즘
+- RR(Round Robin) : 프로세스마다 공평하게
+- FSS
+- MFQ
+- FIFO
+
+★★★★★★★★★객체지향★★★★★★★★★
+○ 객체지향(OOP) 특징
+-다형성
+-캡슐화 : 객체의 멤버변수값을 직접 접근을 막고 지정된 메서드를 통해서만 접근시키는 것
+-상속 : 기존 클래스를 재사용/확장하여 새로운 클래스를 만드는 것
+-추상화
+
+○ 다형성
+- Overloading
+- OverRide
+
+○ 클래스 접근 제어자
+- Private : 같은 클래스 내에서만 허용
+- Protected : 상속된 클래스 내에서만 허용
+- Public : 제한 없음
+- default : 같은 패키지 내에서만 허용(JAVA)
+
+○ 상속
+- extends : 확장시 사용
+-- 클래스에서 클래스를 상속 받을때
+-- 인터페이스에서 인터페이스를 상속 받을때
+- Implement : 구현시 사용
+-- 클래스에서 인터페이스를 상속 받을때
+
+○ 추상화(인터페이스)
+- 표준화 : 양식의 역할(추상 메소드 정의 안하면 에러가 남)
+- 다중상속(Multiple Inheritance : 멀티 인해리턴스) 가능
+- 클래스와 클래스간 연결
+
+○ 추상클래스-인터페이스의 차이
+- 인터페이스는 내용물이 모두 추상화(java 8 이후 구현도 가능)
+- 추상클래스는 구현 가능
+
+○ Call By Value vs Call By Reference의 차이
+- 함수내 매개변수의 값을 쓰냐 주소를 쓰냐 차이
+
+★★★★★★★★★디자인패턴★★★★★★★★★
+○ 디자인패턴 : 반복적으로 발생하는 문제에 대한 해결책
+- '생성'에서 발생하는 문제에 대한 해결책 : singleton...
+- '구조'에서 발생하는 문제에 대한 해결책 : facade, bridge, proxy...
+- '행위'에서 발생하는 문제에 대한 해결책 : iterator, strategy, observer...
+
+○ singleton : 클래스를 한번만 생성하기 위한 클래스 생성
+
+○ facade : 시스템 간의 결합도를 줄이기 위한 방법으로 클래스들의 공통된 기능을 정의하는 상위 인터페이스 설계
+
+○ strategy : 전략(환경)에 따라 알고리즘 변경을 자유롭게 할 수 있도록 설계
+- 1. 어떤 인터페이스를 상속받는 클래스를 여러 방식으로 구현해둔다.
+- 2. 해당 인터페이스를 선언 한다.
+- 3. 전략(환경)에 따라 선언한 인터페이스에 클래스를 넣어 사용한다.
+
+○ iterator : 배열 및 리스트의 내용을 반복할 때 수정이 일어날 경우 오류가 발생 할 수 있어 방지하기 위해 사용
+
+★★★★★★★★★자료구조★★★★★★★★★
+○ Collection
+- List : 순서 O, 중복 O
+- Set : 순서 X, 중복 X
+- Map : 키 - 값 맵핑
+
+●●●●●●●●●챕터변경●●●●●●●●●
+○ 배열 vs 리스트
+- 배열 : 구조가 간단하여 접근 시간이 빠르다
+- 배열 : 크기가 정해져있으며 각 데이터가 이어져 있어 데이터의 변경이 힘들다.
+- 리스트 : 저장용량(capacity)가 자동으로 증가
+- 리스트 : 자동 인덱스 부여
+- 리스트 : 추가/삭제/검색 등 다양한 메소드 제공
+
+○ List : LinkedList
+- 'Single'LinkedList : 단방향
+- 'Double'LinkedList : 양방향
+- 'Circle'LinkedList : 순환(마지막 항목이 첫 항목을 가르킴:주소)
+
+○ List vs Vector
+- List : 각 데이터에 다음 데이터의 주소를 가지고 있어 수정에 용이
+- Vector : 배열처럼 각 데이터에 상수를 부여하여 조회에 용이
+
+○ Stack/Queue
+- Stack : LIFO(후입선출) / FILO(선입후출)
+-- 실사용 예 : 웹 브라우저 뒤로 가기(가장 나중에 열린 페이지부터 뒤로 가기를 실행합니다)
+- Queue : FIFO(선입선출)
+
+●●●●●●●●●챕터변경●●●●●●●●●
+○ Set : HashSet/TreeSet
+- HashSet : 정렬X
+- TreeSet : 자동 정렬
+
+●●●●●●●●●챕터변경●●●●●●●●●
+○ Map : HashMap/HashTable/Properties
+- HashMap : Enumeration O, Null Key O, 멀티쓰레드 최적화
+- HashTable : Enumeration X, Null Key X
+- Properties : XML, json과 비슷한 구조
+
+●●●●●●●●●챕터변경●●●●●●●●●
+○ Stream : 데이터의 연속적인 흐름이라는 뜻
+
+★★★★★★★★★스레드★★★★★★★★★
+○ 스레드 : 프로세스를 실행하는 Task(가장작은업무)단위
+
+○ 스레드 구현 방법 : 스레드 클래스/인터페이스 상속된 클래스 구현 후 실행
+- run() 오버라이딩 후 구현
+- 인터페이스(Runnable) 상속시 Thread 생성 후 생성자에 참조하여 사용
+- start()로 시작
+
+○ 동기화(synchronized) : 하나의 자원(변수)를 여러 스레드가 사용하려 할때 하나의 스레드만 사용할 수 있도록(데드락 방지)
+
+★★★★★★★★★데이터베이스★★★★★★★★★
+○ JDBC(Java DataBase Connectivity) : 자바DB 연결 인터페이스 API
+
+○ 옵티마이저 : DBMS에서 SQL진행시 최적화를 담당
+- RBO(Rule-Based Optimizer) : 규칙기반 옵티마이저(default)
+-- RULE : 규칙 기반(INDEX)
+- CBO(Cost-Based Optimizer) : 비용기반 옵티마이저
+-- CHOOSE : RBO,CBO 선택
+-- FIRST_ROWS : 결과 나올때마다 출력
+-- ALL_ROWS : 전체 결과가 나와야 출력
+
+○ 제약조건(Constraint) : 데이터의 정확성과 일관성을 보장하기 위한 약속
+- NOT NULL : null값이 들어갈 수 없음
+- 기본키 : UNIQUE + NOT NULL + 최소성
+- 참조키(외래키) : 테이블 간에 관계가 있음
+- CHECK : 해당 칼럼에 저장 가능한 데이터 범위 및 조건
+
+○ 키
+- 기본키 : PK(유일성:고유성, 무결성:NOT NULL, 최소성:PK수는 최소화, 자동인덱스)
+- 후보키 : PK가 아니지만 PK가 가능함
+- 대체키 : PK로 지정하고 남은 후보키
+- 슈퍼키 : 각 행을 유일하게 식별할 수 있음
+- 외래키 : 테이블간 관계를 정의한 키
+- 유일키 : 중복이 허용되지 않음
+- 복합키 : 2개 이상의 칼럼으로 이루어진 키
+
+○ 트랜잭션 : DB작업 단위
+- 원자성 : 하나의 트랜잭션의 작업들은 모두 성공하거나, 전부 실패해야 함. 중간에 일부만 처리된 상태는 허용되지 않음.
+- 지속성 : 트랜잭션이 성공적으로 완료되면 그 결과는 영구적으로 저장되어야 하며, 시스템 오류가 발생해도 유지됨.
+- 고립성 : 동시에 실행되는 트랜잭션들이 서로 간섭하지 않아야 함. 마치 각 트랜잭션이 독립적으로 실행된 것처럼 보여야 함.
+- 일관성 : 트랜잭션 실행 전후의 데이터 상태는 일관성을 유지해야 함. 비즈니스 규칙이나 제약 조건이 항상 만족되어야 함.
+
+○ isolation(트랜잭션 격리수준)
+- READ UNCOMMITED
+- READ COMMITED
+- REPEATABLE READ
+- SERIALIZABLE
+
+○ PK vs INDEX
+- 테이블 당 가능 개수(1 / N:7이하권장)
+- 조건(Unique,NotNull / 없음)
+- 목적(무결성 / SELECT성능향상)
+
+○ INDEX 팁
+- 외래키 위주 : 특정 SQL(JOIN)이 트래픽이 많은 경우 관련된 외래키를 묶어서 INDEX
+- 고유키 위주 : 특정 테이블 SELECT의 트래픽이 많은 경우 기본키 외 고유키를 IDNEX
+- 주기적으로 INDEX REBUILD :  INSERT, DELETE, UPDATE시 INDEX SPLIT이 발생 가능(성능저하)
+- SQL에 따라 INDEX를 사용 하지 않을 때도 있음
+-- <> 연산자
+-- LIKE '%%'
+-- 함수(col) : 함수를 적용한 칼럼은 함수기반인덱스(FBI) 부여로 해결 가능(CBO환경에서만)
+
+○ SEQUENCE(시퀀스) : Auto Increase
+
+○ 데이터 사전(시스템 카탈로그)
+- 내부 데이터
+-- 1. 데이터베이스의 물리적 구조와 객체의 논리적 구조
+-- 2. 오라클 사용자 이름과 스키마 객체 이름
+-- 3. 사용자에게 부여된 접근 권한과 롤
+-- 4. 무결성 제약조건에 대한 정보
+-- 5. 칼럼별로 지정된 기본값
+-- 6. 스키마 객체에 할당된 공간의 크기와 사용 중인 공간의 크기 정보
+-- 7. 객체 접근 및 갱신에 대한 감사 정보
+-- 8. 데이터베이스 이름, 버전, 생성날짜, 시작모드, 인스턴스 이름
+- 접근 권한
+-- USER_~ : 객체의 소유자만 접근 가능한 데이터 사전 뷰
+-- ALL_~ : 자기 소유 또는 권한을 부여 받은 객체만 접근 가능한 데이터 사전 뷰
+-- DBA_~ : 데이터베이스 관리자만 접근 가능한 데이터 사전 뷰
+
+○ View : 하나 이상의 기본 테이블이나 다른 뷰를 이용하여 생성되는 가상 테이블로 데이터딕셔너리에 뷰에 대한 정의만 저장
+- 보안 강화
+- 성능 저하
+- INSERT, UPDATE, DELETE 가능
+-- 복합뷰의 경우 뷰에 사용된 메인테이블의 데이터만 가능
+
+○ TableSpace : 데이터베이스 내 실제 데이터를 저장하는 공간
+- TableSpace를 구분하여 나누면 DB 성능 향상 가능
+- 보통 업무/팀별로 구분하며 1GB씩 부여 한다고 함
+
+○ Trigger : 이벤트 발생시 내부적으로 실행되도록 데이터베이스에 저장된 프로시저
+- Audit용도로 사용 : 기록, 감시, 추적용 테이블
+- SELECT에는 트리거가 불가능함
+- DBMS 접속/접속해제시 트리거가 비활성화 될 수 있음
+
+○ Synonym : 하나의 객체에 대해 다른 이름을 정의하는 방법
+- private synonym : 객체에 대한 접근 권한을 부여 받은 사용자가 정의한 동의어로 해당 사용자만 사용
+- public synonym : 권한을 주는 사용자(DBA권한을 가진 사용자)가 정의한 동의어로 누구나 사용
+
+○ PL/SQL : 프로시저 언어SQL(Procedural Language extensions to SQL)
+- 프로시저, 함수, 트리거에 사용하는 BEGIN - END 로직
+○ Procedure(프로시저) : DB의 함수(function)
+- 리턴값 자유
+- 쿼리문 내에서 사용 불가능
+- 서버(오라클)에서 실행되어 속도가 빠름
+○ Function(함수) : 프로시저와 비슷함
+- 무조건 리턴값 1개 필수
+- 쿼리문 내에서 사용 가능
+- 계산식으로 많이 이용
+- 클라(화면)에서 실행되어 속도가 느림
+
+○ CURSOR : SQL문을 실행하고 처리한 정보를 저장하기 위해 "Private SQL Area" 이라고 하는 작업영역을 이용
+- 사용법
+-- DECLARE : 커서 선언 및 정의
+-- OPEN : 커서 사용 시작
+-- FETCH : 커서의 값 하나씩 처리
+-- CLOSE : 커서 사용 종료
+- FOR를 사용하여 OPEN, FETCH, CLOSE를 대신할 수 있다.
+
+○ EXCEPTION
+- OTHERS : 모든 에러
+- TOO_NAMY_ROWS : SELECT 결과가 많아서 처리 할 수 없을 때
+- NO_DATA_FOUND : SELECT 결과가 없어 처리 할 수 없을 때
+- DUP_VAL_ON_INDEX : UNIQUE 제약 위반 삽입이상 오류
+- ZERO_DIVIDE : 0으로 나누기 한 경우
+- INVALID_CURSOR : 잘못된 커서 연산
+
+○ PACKAGE : 프로시저를 여러개 모을 수 있음(클래스개념)
+
+○ PK(외래키) : 데이터베이스에 있는 테이블들을 연결시키는 키
+- 삭제이상 방지
+-- CASCADE Delete(종속삭제) : 참조(부모) 테이블의 데이터를 삭제시 해당 데이터를 사용하는 모든 데이터가 함께 삭제
+-- SET NULL(널 설정) : 참조(부모) 테이블의 데이터를 삭제시 해당 데이터를 사용하는 데이터가 null로 변경
+-- RESTRICT/NO ACTION(작업없음) : 참조(부모) 테이블의 데이터를 삭제시 해당 데이터를 사용하는 데이터가 존재한다면 삭제취소
+-- SET DEFAULT : 참조(부모) 테이블의 데이터를 삭제시 해당 데이터를 사용하는 데이터가 미리 정의된 기본값으로 변경
+
+○ CRUD : 데이터 조작의 기본
+- Create
+- Read
+- Update
+- Delete
+
+○ 정규화(Normalization) : 데이터 중복과 '종속성을 제거'하여 '이상현상을 방지'하고 데이터의 '일관성'과 '무결성'을 유지하기 위한 과정
+- 함수적 종속성 제거
+-- 1차정규화 : 완전 함수 종속 제거('PK 설정'으로 해결)
+-- 2차정규화 : 부분 함수 종속 제거(PK가 복합키인 경우 PK의 일부만으로 다른 칼럼이 종속된 경우를 '테이블 분리'로 해결)
+-- 3차정규화 : 이행 함수 종속 제거(후보키인 칼럼이 다른 칼럼과 종속된 경우를 '테이블 분리'로 해결)
+-- BCNF(보이스코드) : 결정자 함수 종속 제거(후보키가 아닌 칼럼이 다른 칼럼과 종속된 경우를 '테이블 분리'로 해결)
+- 다중값 종속성 제거
+-- 4차정규화 : 다중 종속 제거(하나의 테이블에 다중값종속으로 여러 테이블이 종속된 경우를 '테이블 분리'로 해결)
+- 결합 종속성 제거
+-- 5차정규화 : 결합 종속 제거(테이블이 후보키를 통해서 조인 종속이 된 경우를 '테이블 분리'로 해결)
+
+○ FDD(Functional Dependency Diagram) : 함수종속도표
+- 1,2,3정규화를 위해 하나의 테이블의 속성간 함수종속성이 주어졌을 때 그림화 하는 것
+
+●●●●●●●●●챕터변경●●●●●●●●●
+○ DB언어(SQL) 종류
+- DML(Data Manipulation Language) : 데이터베이스의 데이터를 조작
+-- SELECT, INSERT, UPDATE, DELETE, MERGE
+- DCL(Data Control Language) : 데이터베이스 규정, 기법을 정의하고 제어
+-- GRANT, REVOKE, BEGIN, COMMIT, ROLLBACK
+- DDL(Data Definition Language) : 스키마를 정의하고 스키마에 대한 명세를 시스템카탈로그(데이터사전)에 저장
+-- CREATE, ALTER, DROP
+
+○ CHAR vs VARCHAR2
+- CHAR : 고정길이의 최대 2000바이트
+- VARCHAR2 : 가변길이의 최대 4000바이트
+
+○ DECODE vs CASE
+- DECODE와 CASE는 단순 비교하여 SELECT할 때 사용한다.
+○ IF ~ ELSIF ~ ELSE ~ END IF;
+- 변수를 다룰때 사용한다.(프로시저,트리거)
+
+○ JOIN의 종류 : JOIN을 할때 사용자가 원하는 알고리즘을 부여하여 성능을 향상시키기 위한 방법
+- HASH JOIN : 인덱스가 없는 경우
+- SORT MERGE JOIN : 두 테이블이 대용량일 경우, 데이터가 물리적으로 정렬된 경우
+- NESTED LOOP JOIN : 한 테이블이 작거나 인덱스부여가 된 경우
+
+○ JOIN : 두 개 이상의 테이블을 연결하여 관련된 데이터를 하나의 결과로 결합하는 것
+- INNER JOIN(내부 조인) : 두 테이블을 조인할 때, 공통된 열의 데이터가 있어야 한다.
+- OUTER JOIN(외부 조인) : 두 테이블을 조인할 때, 1개의 테이블에만 데이터가 있어도 결과가 나온다.
+- CROSS JOIN(상호 조인) : 한쪽 테이블의 모든 행과 다른 쪽 테이블의 모든 행을 조인하는 기능이다.
+- SELF JOIN(자체 조인) : 자신이 자신과 조인한다는 의미로, 1개의 테이블을 사용한다.
+
+○ INNER JOIN(내부 조인) : 조인 조건에 맞는 데이터만 결과로 가져온다. (조건이 '='이면 쓰면 EQUI JOIN, 조건이 '='가 아니면 NOT EQUI JOIN)
+- ANSI표준
+-- a INNER JOIN b ON a.column = b.column
+-- a NATURAL JOIN b
+-- a JOIN b USING(column)
+- ORACLE 문법
+-- WHERE a.column = b.column
+○ OUTER JOIN(외부 조인) : INNER JOIN에 조인 조건이 null인 경우도 추가 출력
+- ANSI표준
+-- a LEFT OUTER JOIN b ON a.column = b.column
+-- a RIGHT OUTER JOIN b ON a.column = b.column
+-- a FULL OUTER JOIN b ON a.column = b.column
+- ORACLE 문법
+-- LEFT : WHERE a.column = b.column(+)
+-- RIGHT : WHERE a.column(+) = b.column
+-- FULL : ORACLE 문법 없음
+○ CROSS JOIN(상호 조인) : '카티션 프로덕트'라고도 불리며 두 테이블의 모든 조합을 결과로 가져온다(행X행 만큼의 결과가 나옴)
+- ANSI표준
+-- a CROSS JOIN b
+○ SELF JOIN(자체 조인) : 조인할 두 테이블은 동일한 테이블이여야 한다.
+- FROM table a, table b WHERE a.column1 = b.column2
+
+○ UNION : 두 테이블을 결합한다(중복 제거)
+○ UNION ALL : 두 테이블을 결합한다.(중복 결과 나옴)
+
+○ SUB Query : 메인쿼리의 WHERE 절에서 SELECT를 사용하는 것
+- 단일행 SubQuery : 결과가 1행만 존재하는 서브쿼리
+- 다중행 SubQuery : 결과가 2행 이상인 서브쿼리
+-- IN : SubQuery 결과 중 하나라도 포함되면
+-- ANY,SOME : SubQuery 결과가 범위를 하나라도 만족하면
+-- ALL : SubQuery 결과가 범위를 모두 만족하면
+-- EXISTS : SubQuery 결과가 하나라도 있으면 모든 데이터 출력
+- 다중칼럼 SubQuery : 서브쿼리에서 여러 개의 칼럼 값을 검색하여 메인쿼리의 조건절과 비교하는 서브쿼리
+-- PAIRWISE : 칼럼을 쌍으로 묶어서 동시에 비교하는 방식
+- 상호연관 SubQuery : 메인쿼리절과 서브쿼리간에 검색 결과를 교환하는 서브쿼리
+
+○ MERGE : UPDATE, INSERT, DELETE 문을 각각 상황에 따라 분기시켜 처리하기 위해 사용
+- MERGE INTO tableA
+USING tableB ON 조건
+WHEN MATCHED THEN ~
+WHEN NOT MATCHED THEN ~
+
+○ 계층적 SQL
+- 계층적 구조로 나타낼 수 있는 데이터 형태일 경우 사용 가능
+-- 셀프조인
+-- 서로 FK로 연결된 두 테이블
+- SELECT level, col, col
+- FROM table
+- START WITH col = startcol
+- CONNECT BY PRIOR col = col
+
+●●●●●●●●●챕터변경●●●●●●●●●
+○ DELETE : 테이블 내 선택 데이터 삭제
+- DML
+- 트리거 반응 O
+○ TURNCATE : 테이블 내 모든 데이터 삭제
+- DDL
+- 트리거 반응 X
+○ DROP : 테이블 삭제
+- DDL
+- 트리거 반응 X
+
+●●●●●●●●●챕터변경●●●●●●●●●
+○ Role : 다수 사용자와 다양한 권한을 효과적으로 관리하기 위하여 서로 관련된 권한을 그룹화한 개념
+- Connect
+- Resource
+- DBA
+
+★★★★★★★★★Eclipse <-> DB★★★★★★★★★
+○ Statement vs PreparedStatement vs CallableStatement
+- Statement : SQL을 할당하는 시점에서 고정된 데이터를 갖는 쿼리문을 실행하는데 적합(일반적인 경우)
+- PreparedStatement : 파라미터를 나중에 입력할 수 있음
+-- ? 로 파라미터를 지정가능
+-- 파라미터로 blob나 파일을 넣는 상황
+-- 보안 강화
+- CallableStatement : PreparedStatement의 기능에 프로시저 사용 가능
+
+★★★★★★★★★해킹용어★★★★★★★★★
+○ OWASP : (오픈소스 웹 어플리케이션 시큐리티 프로젝트)보안 취약점
+
+○ 해커 기술
+- 스니핑
+- 스푸핑
+
+★★★★★★★★★알고리즘★★★★★★★★★
+○ DP vs DFS
+- DP(Dynamic Programming) : 동적 계획법
+- DFS(Depth First Search) : 깊이 우선 탐색
+
+★★★★★★★★★기업용어★★★★★★★★★
+○ ERP(Enterprise Resource Planning) : 전사적 자원 관리 시스템
+- ERP는 기업의 인적 자원, 자금, 생산, 물류, 영업 등 모든 자원을 통합적으로 관리하여 업무 효율성과 정보 공유를 극대화하는 통합 시스템
+
+★★★★★★★★★Web용어★★★★★★★★★
+○ WWW(World Wide Web)
+
+○ HTML(HyperText Markup Language) : 서로 연결된(HyperText) 문서의 구조를 태그를 사용해서(Markup) 표현하는 언어(Language)
+
+○ CSS(Cascading Style Sheets)
+
+○ 프로토콜 : 네트워크상에서의 통신 규약
+- HTTP : 웹에서 사용되는 규칙
+- FTP
+- SMTP
+- POP
+- DHCP
+
+○ MAC : 물리적 IP 주소
+
+○ Port : PC 내부(하나의 IP)의 어플리케이션 별 주소 번호
+
+○ TCP : Transmission Control Protocol
+○ UDP : User Datagram Protocol
+
+○ MVC : Model - View - Controller로 이루어진 구조
+- Model : Service, DAO
+- View : HTML, JSP
+- Controller : Servlet
+
+○ 쿠키 : 
+○ 세션 : 
+
+○ 필터 : 
+
+●●●●●●●●●챕터변경●●●●●●●●●
+○ Ajax(Asynchronous Javascript And Xml) : JavaScript와 XML 형식을 이용한 '비동기'적 정보 교환 기법
+
+○ CDN(Content Delivery Network) : 웹 콘텐츠를 사용자와 가장 가까운 곳에서 빠르게 전달하기 위해 전 세계에 분산된 서버 네트워크를 활용하는 기술
+- 웹을 통한 외부 사용자와 서버와 파일 전송 속도가 개선됨
+
+○ 웹 서버 : URL을 받아서 그에 해당하는 HTML 문서를 찾아 웹브라우저로 보내주는 일을 함
+- Apache HTTP Server
+- NGINX 
+
+○ WAS(Web Application Server) : '웹 컨테니어'라고도 하며 '웹 어플리케이션'을 동작시킨다.
+- Tomcat : 웹 서버 역할도 가능하다.
+- Resin
+- WebLogic
+- WebSpere
+- Jeus
+
+○ Web Application : 웹 브라우저 안에서 실행되는 응용 프로그램
+- Front-End : 브라우저에서 실행되는 부분
+-- HTML/CSS
+-- JavaScript
+-- React
+-- Vue
+- Back-End : 서버에서 실행되는 부분
+-- Servlet/JSP(Java Server Pages)
+-- Java
+-- Python
+-- Node.js
+-- PHP
+
+●●●●●●●●●챕터변경●●●●●●●●●
+○ 변수 선언 타입
+- var : 재할당 O, 재선언 O
+- let : 재할당 O, 재선언 X(동일 블럭내에서)
+- const : 재할당 X, 재선언 X(동일 블럭내에서)
+- notype : var와 동일
+
+●●●●●●●●●챕터변경●●●●●●●●●
+○ 버블링 이벤트 : 어떤 요소에 이벤트가 발생하면 상위 요소의 동일한 이벤트가 이어서 발생하는 현상
+○ 캡처링 이벤트 : 어떤 요소에 이벤트가 발생하면 상위 요소의 동일한 이벤트가 먼저 발생하는 현상
+
+○ Get/Post : HTML에서 action(HTTP연결)시 서버와 상호작용을 위한 방식
+- Get : 서버의 자료를 요청
+-- Header에 정보를 보냄
+-- 용량4K까지
+-- 전송 데이터가 URL에 노출됨
+- Post : 서버에게 자료 전송
+-- Body에 정보를 보냄
+-- 용량 제한 없음
+-- 전송 데이터가 노출되지 않음
+
+●●●●●●●●●챕터변경●●●●●●●●●
+○ jQuery : 자바스크립트 라이브러리(front-end:클라이언트에서 사용)
+- Ajax 개발에 주요 사용
+- CDN 방식
+- $로 HTML 요소를 불러온다.
+
+○ Servlet : BackEnd를 담당하는 소스코드
+○ JSP : Servlet에서 respone을 위해 작성하는 HTML코드가 불편하기 때문에 'HTML과 Java코딩이 모두 가능'한 파일형식
+- 톰캣에서 JSP파일을 Servlet형태로 변경시켜준다.
+
+○ JSTL(JSP Standard Tag Library) : JSP파일에서 HTML도 작성하고 Java도 작성해서 가시성이 안좋아지기 때문에 만들어 놓은 라이브러리
+ 
+○ DAO(Data Access Obejct) : DataBase와 연동하는 객체(라이브러리)
+- DB 클래스
+○ DTO(Data Transfer Object) : DAO에서 DataBase에 데이터를 적용시키는 객체 단위
+- Ex 테이블 객체
+
+○ DBCP(DataBase Connection Pool) : DB에 동시접속 제한이 있어 제한 수 만큼 DBCP에 저장한 후 Web이 사용할 경우 DBCP에서 빌려쓰고 반환하는 방법
+○ JNDI(Java Naming Directory Interface) : DBCP에 접근하기 위한 API
+
+○ 프레임워크 : 특정 운영체제를 위한 프로그램 표준구조를 구현하는 '클래스와 라이브러리 모음'
+- 디자인패턴, 아키텍처 + 소스 코드
+- Spring
+
+○ Spring : 
+- 구조
+-- Core : IoC(Inversion of Control), DI(Dependency Injection), DDD 기반의 디자인패턴
+-- Spring MVC : MVC2를 총괄하는 DispatcherServlet이 존재
+-- AOP(Aspect-Oriented Programming) : 프록시기반의 인프라
+-- ORM
+-- DAO
+
+○ SpringBoot의 프로젝트 템플릿
+- Gradle
+-- 사용 툴 : SpringBoot, Android
+-- 환경설정파일 : build.gradle
+- Maven
+-- 사용 툴 : SpringBoot, Spring
+-- 환경설정파일 : pom.xml
+
+○ ORM(Object Relational Mapping) : 객체와 RDB를 Mapping 하는 기술(JDBC 내장)
+- JPA(Java Persistence API) : 자바 ORM 기술 표준
+-- 구현체 : Hibernate 기반
+-- 접근방식 : 객체(Entity)중심
+-- 모델 : Repository
+-- Full Mapping
+-- 실행한 쿼리 결과를 캐시에 저장하여 동일한 쿼리 요청시 바로 반환
+- Mybatis
+-- 구현체 : Mapper 기반
+-- 접근방식 : SQL중심
+-- 모델 : DAO
+-- Partial Mapping
+
+
+○ MSA(마이크로 서비스 아키텍처) : 프로젝트의 모듈화...
+
+★★★★★★★★★소프트웨어 공학★★★★★★★★★
+○ 3R
+- ReUse : 재사용
+- Re-engineering : 재공학
+- Reverse Engineering : 역공학
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+도구들
+★★★★★★★★★컴퓨터 용어★★★★★★★★★
+●●●●●●●●●챕터변경●●●●●●●●●
+○ 
