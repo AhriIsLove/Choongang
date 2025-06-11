@@ -1,0 +1,10 @@
+package och01;
+
+public class hello3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("class명 소문자 안 된다는데... => hello3");
+	}
+
+}
