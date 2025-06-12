@@ -1,0 +1,11 @@
+package och05_ex02;
+
+public enum WEEK {
+	MONDAY,
+	TUESDAY,
+	WEDNESDAY,
+	THURSDAY,
+	FRIDAY,
+	SATURDAY,
+	SUNDAY
+}
