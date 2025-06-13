@@ -2,7 +2,6 @@
 Install/
 Video/
 
-/Project/Java/.metadata/
-/Project/Web/.metadata/
-/Project/JSP/.metadata/
-/Project/Spring/.metadata/
+#이클립스 컴파일/실행 폴더
+.metadata/
+bin/
