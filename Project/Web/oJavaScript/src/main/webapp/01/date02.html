@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var date1 = new Date();
+var day;
+
+document.write("올해는 " + date1.getFullYear() + "년<p>");
+document.write("오늘은 " + (date1.getMonth()+1) + "월 " + date1.getDate() + "일<p>");
+document.write("오늘은 " + date1.getDay() + "요일<p>");
+//현재 요일을 반환
+switch (date1.getDay()) {
+	case 0: day = "일"; break;
+	case 1: day = "월"; break;
+	case 2: day = "화"; break;
+	case 3: day = "수"; break;
+	case 4: day = "목"; break;
+	case 5: day = "금"; break;
+	case 6: day = "토"; break;
+	default:
+		break;
+}
+document.write("오늘은 " + day + "요일<p>");
+</script>
+</head>
+<body>
+	<h1>년/월/일 요일 각각 가져오기</h1>
+</body>
+</html>

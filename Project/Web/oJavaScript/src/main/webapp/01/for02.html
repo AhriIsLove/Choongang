@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+//배열에서 특정값을 가지고 있는 인덱스를 출력
+var lectures = ["html", "css", "자바스크립트", "jsp", "spring"];
+var topic = "자바스크립트";
+for (var i = 0; i < lectures.length; i++) {
+	if(lectures[i] == topic){
+		document.write(topic + " 과목은 " + (i + 1) + "번째 과목입니다.");
+		break;
+	}
+}
+</script>
+</head>
+<body>
+	<h1>for02</h1>
+</body>
+</html>

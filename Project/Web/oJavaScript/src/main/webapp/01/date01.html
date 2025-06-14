@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var date1 = new Date();//Date 객체 생성
+document.write(date1+"<p>");
+var date2 = new Date("2025-05-12T13:30:00");//날짜와 시간까지 표현
+document.write(date2+"<p>");
+var date3 = new Date("2025-05-19");// 시간이 생략되면 자동으로 09:00:00(한국 표준시)으로 설정됨.
+document.write(date3+"<p>");
+var date4 = new Date("2025-05");// 일이 생략되면 자동으로 1일로 설정됨.
+document.write(date4+"<p>");
+var date5 = new Date("2025");// 월이 생략되면 자동으로 1월로 설정됨.
+document.write(date5+"<p>");
+</script>
+</head>
+<body>
+	<h1>Date</h1>
+	<p>
+		자바스크립트에서 Date 객체를 초기화하는 방법<br> 협정 세계시 (UTC) 의 기준시간대(Greenwich
+		Mean Time)<br> new Date()<br> new Date("날짜를 나타내는 문자열")<br>
+		new Date(밀리초)<br> new Date(년, 월, 일, 시, 분, 초, 밀리초)<br>
+	</p>
+</body>
+</html>
