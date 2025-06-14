@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+ul {
+	list-style: square;
+}
+li a {
+	line-height: 30px;
+	font-size: 14px;
+	color: blue;
+	text-decoration: none;
+}
+/* 특정 값으로 끝나는 속성을 가진 요소를 찾아 스타일 적용 */
+a[href $= "hwp"] {
+	background: url("images/hwp_icon.gif") center right no-repeat;
+	padding-right: 25px;
+}
+a[href $= "xls"] {
+	background: url("images/excel_icon.gif") center right no-repeat;
+	padding-right: 25px;
+}
+</style>
+</head>
+<body>
+	<h3>회사 소개 파일 다운 받기(확장자)</h3>
+	<ul>
+		<li><a href="intro.hwp">intro.hwp 파일</a></li>
+		<li><a href="class301.hwp">class301 hwp 파일</a></li>
+		<li><a href="intro.xls">엑셀 파일</a></li>
+		<li><a href="intro_xls">엑셀 파일</a></li>
+		<li><a href="intro xls">엑셀 파일</a></li>
+		<li><a href="intro-xls">엑셀 파일</a></li>
+		<li><a href="introxls">엑셀 파일</a></li>
+	</ul>
+</body>
+</html>
