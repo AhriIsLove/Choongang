@@ -25,7 +25,7 @@
 					</c:if>
 					<!-- 답변 글 -->
 					<c:if test="${num > 0 }">
-						<input type="text" name="subject" value="[답변]" required="required">
+						<input type="text" name="subject" value="[답변] " required="required">
 					</c:if>
 				</td>
 			</tr>

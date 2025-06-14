@@ -17,29 +17,22 @@ public class WriteProAction implements CommandProcess {
 		// TODO Auto-generated method stub
 		
 		// 1. num, pageNum, writer, email, subject, passwd, content
-		int num 		= Integer.parseInt(request.getParameter("num"));
-		String pageNum	= request.getParameter("pageNum");
-		String writer  	= request.getParameter("writer");
-		String email   	= request.getParameter("email");
-		String subject 	= request.getParameter("subject");
-		String passwd  	= request.getParameter("passwd");
-		String content 	= request.getParameter("content");
 		// 2. Board board 생성하고 Value Setting
 		// num, ref = MAX(num)+1
 		// re_level, re_step, readcount = 0
 		// reg_date = sysdate
 		// 나머진는 입력 받은것 그대로
-		Board board = new Board();
-		board.setNum(num);
-		board.setWriter(writer);
-		board.setEmail(email);
-		board.setSubject(subject);
-		board.setReadcount(0);
-		board.setPasswd(passwd);
-		board.setRef(num);
-		board.setRe_step(0);
-		board.setRe_level(0);
-		board.setContent(content);
+        String pageNum = request.getParameter("pageNum");
+        Board board = new Board();
+		board.setNum(Integer.parseInt(request.getParameter("num")));
+        board.setWriter(request.getParameter("writer"));
+        board.setEmail(request.getParameter("email"));
+        board.setSubject(request.getParameter("subject"));
+        board.setPasswd(request.getParameter("passwd"));
+		board.setRef(Integer.parseInt(request.getParameter("ref")));
+		board.setRe_step(Integer.parseInt(request.getParameter("re_step")));
+		board.setRe_level(Integer.parseInt(request.getParameter("re_level")));
+		board.setContent(request.getParameter("content"));
 		//IP Set
 		board.setIp(request.getRemoteAddr());
 		
@@ -57,7 +50,7 @@ public class WriteProAction implements CommandProcess {
 		
 		// 5. requset 객체에 result, num, pageNum
 		request.setAttribute("result", result);
-		request.setAttribute("num", num);
+		request.setAttribute("num", board.getNum());
 		request.setAttribute("pageNum", pageNum);
 		
 		return "writePro.jsp";

@@ -260,37 +260,154 @@ public class BoardDao {
 		// TODO Auto-generated method stub
 		Connection conn = getConnection();
 		PreparedStatement pstmt = null;
-//		ResultSet rs = null;
+		ResultSet rs = null;
 		int result = 0;
 
-		String sql = "INSERT INTO board(num, writer, subject, content, email, readcount, passwd, ref, re_step, re_level, ip, reg_date) "
-				+ " VALUES ((SELECT MAX(num)+1 FROM board), ?, ?, ?, ?, ?, ?, (SELECT MAX(num)+1 FROM board), ?, ?, ?, sysdate)";
+		//게시글 번호 max + 1로 고정
+		String sql1 = "SELECT NVL(max(num), 0) FROM board";
+		//답변의 경우
+		//이전에 작성된 답변이 현재답변보다 아래에 있어야 할 경우(re_step을 한칸씩 다 미룸)
+		String sql2 = "UPDATE BOARD SET re_step = re_step+1 WHERE ref = ? AND re_step > ?";
+		//글 작성
+		String sql3 = "INSERT INTO board(num, writer, subject, content, email, readcount, passwd, ref, re_step, re_level, ip, reg_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, sysdate)";
+		
+//		//도건코드
+//		String sql = "INSERT INTO board(num, writer, subject, content, email, readcount, passwd, ref, re_step, re_level, ip, reg_date) "
+//				+ " VALUES ((SELECT MAX(num)+1 FROM board), ?, ?, ?, ?, ?, ?, (SELECT MAX(num)+1 FROM board), ?, ?, ?, sysdate)";
 		
 		try {
-			pstmt = conn.prepareStatement(sql);
-//			pstmt.setString(1, "");
-			pstmt.setString(1, board.getWriter());
-			pstmt.setString(2, board.getSubject());
-			pstmt.setString(3, board.getContent());
-			pstmt.setString(4, board.getEmail());
-			pstmt.setInt(5, board.getReadcount());
-			pstmt.setString(6, board.getPasswd());
-//			pstmt.setString(8, "MAX(num)+1");
-			pstmt.setInt(7, board.getRe_step());
-			pstmt.setInt(8, board.getRe_level());
-			pstmt.setString(9, board.getIp());
+			pstmt = conn.prepareStatement(sql1);
+			rs = pstmt.executeQuery();
+			int number = 0;
+			if(rs.next()) {
+				number = rs.getInt(1) + 1;
+			}
+			rs.close();
+			pstmt.close();
 			
+			int num = board.getNum();
+			//답변이 아닌경우
+			if(num == 0) board.setRef(number);//글번호 = 답변번호 동일하게 설정
+			//답변의 경우
+			if(num != 0) {
+				System.out.println("BoardDao insert 댓글 sql : " + sql2);
+				System.out.println("BoardDao insert 댓글 board.getRef()  : " + board.getRef());
+				System.out.println("BoardDao insert 댓글 board.getRe_step() : " + board.getRe_step());
+				pstmt = conn.prepareStatement(sql2);
+				pstmt.setInt(1, board.getRef());
+				pstmt.setInt(2, board.getRe_step());
+				pstmt.executeUpdate();
+				pstmt.close();
+				
+				//답변의 정보 작성
+				board.setRe_step(board.getRe_step()+1);
+				board.setRe_level(board.getRe_level()+1);
+			}
+			
+			//글 작성
+			pstmt = conn.prepareStatement(sql3);
+			pstmt.setInt(1, number);
+			pstmt.setString(2, board.getWriter());
+			pstmt.setString(3, board.getSubject());
+			pstmt.setString(4, board.getContent());
+			pstmt.setString(5, board.getEmail());
+			pstmt.setInt(6, board.getReadcount());
+			pstmt.setString(7, board.getPasswd());
+			pstmt.setInt(8, board.getRef());
+			pstmt.setInt(9, board.getRe_step());
+			pstmt.setInt(10, board.getRe_level());
+			pstmt.setString(11, board.getIp());
 			result = pstmt.executeUpdate();
+			
+//			//도건코드
+//			pstmt = conn.prepareStatement(sql);
+////			pstmt.setString(1, "");
+//			pstmt.setString(1, board.getWriter());
+//			pstmt.setString(2, board.getSubject());
+//			pstmt.setString(3, board.getContent());
+//			pstmt.setString(4, board.getEmail());
+//			pstmt.setInt(5, board.getReadcount());
+//			pstmt.setString(6, board.getPasswd());
+////			pstmt.setString(8, "MAX(num)+1");
+//			pstmt.setInt(7, board.getRe_step());
+//			pstmt.setInt(8, board.getRe_level());
+//			pstmt.setString(9, board.getIp());
+//			result = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-//			if(rs != null) rs.close();
+			if(rs != null) rs.close();
 			if(pstmt != null) pstmt.close();
 			if(conn != null) conn.close();
 		}
 		
 		return result;
+	}
+
+	// set : 게시글 삭제(답변 고려X)
+	public int delete(int num, String passwd) throws SQLException {
+		// TODO Auto-generated method stub
+		Connection conn = getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int r_Result = 0;
+
+		String sql1 = "SELECT passwd FROM board WHERE num = ?";
+		String sql2 = "DELETE FROM board WHERE num = ?";
+
+		try {
+			String dbPasswd = "";
+			pstmt = conn.prepareStatement(sql1);
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				dbPasswd = rs.getString(1);
+				if(dbPasswd.equals(passwd)) {
+					rs.close();
+					pstmt.close();
+					pstmt = conn.prepareStatement(sql2);
+					pstmt.setInt(1, num);
+					r_Result = pstmt.executeUpdate();
+				}
+				else {
+					r_Result = 0;
+				}
+			}
+			else {
+				r_Result = -1;
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if(rs != null) rs.close();
+			if (pstmt != null)pstmt.close();
+			if (conn != null)conn.close();
+		}
+		
+//		//내 코드
+//		String sql = "DELETE FROM board WHERE num = ? AND passwd = ?";
+//
+//		try {
+//			pstmt = conn.prepareStatement(sql);
+//			pstmt.setInt(1, num);
+//			pstmt.setString(2, passwd);
+//
+//			r_Result = pstmt.executeUpdate();
+//
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} finally {
+////			if(rs != null) rs.close();
+//			if (pstmt != null)pstmt.close();
+//			if (conn != null)conn.close();
+//		}
+
+		return r_Result;
 	}
 }

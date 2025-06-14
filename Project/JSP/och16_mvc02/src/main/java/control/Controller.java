@@ -135,8 +135,12 @@ public class Controller extends HttpServlet {
 			view = com.requestPro(request, response);
 			System.out.println("1-4. requestServletPro view : " + view); //ListAction의 부모 인터페이스 requestPro()실행 결과 값 : "list.jsp"
 		} catch (Exception e) {
-			// TODO: handle exception
-			throw new ServletException(e);
+			//view("error.jsp")로 이동
+			RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
+			dispatcher.forward(request, response);
+			
+//			// TODO: handle exception
+//			throw new ServletException(e);
 		}
 		
 		//view("list.jsp")로 이동
