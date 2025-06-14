@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function chk(){
+	// 1. name    -> 이름 ? &  fOCUS & false
+	// 2. gender  -> 성별 ? &  fOCUS & false
+	// 3. age     -> 나이 ? &  fOCUS & false
+	//                  숫자 X       숫자 ? &  fOCUS & false
+	if(!frm.name.value){
+		alert("이름?");
+		frm.name.focus();
+		return false;
+	}
+	else if(!frm.gender.value){
+		alert("성별?");
+		frm.gender.focus();
+		return false;
+	}
+	else if(!frm.age.value){
+		alert("나이?");
+		frm.age.focus();
+		return false;
+	}
+	else if(isNaN(frm.age.value)){
+		alert("숫자X 숫자?");
+		frm.age.focus();
+		frm.age.value = "";
+		return false;
+	}
+	return true;
+}
+</script>
+</head>
+<body>
+	<h1>인적 사항 입력</h1>
+	<!-- <form action="person1.jsp" name="frm" onsubmit="return chk()"> -->
+	<!-- <form action="person2.jsp" name="frm" onsubmit="return chk()"> -->
+	<!-- <form action="person3.jsp" name="frm" onsubmit="return chk()"> -->
+	<!-- <form action="person4.jsp" name="frm" onsubmit="return chk()"> -->
+	<form action="person5.jsp" name="frm" onsubmit="return chk()">
+		이름 : <input type="text" 	name="name"><p>
+		성별 : <input type="text" 	name="gender"><p>
+		나이 : <input type="text" 	name="age"><p>
+		<input type="submit" value="입력 완료"><p>
+	</form>
+</body>
+</html>
