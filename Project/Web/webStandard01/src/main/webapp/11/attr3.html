@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+ul {
+	list-style: none;
+}
+li {
+	display: inline;
+	float: left;
+	margin: 10px;
+}
+li a {
+	padding: 5px 20px;
+	font: 14px;
+	color: green;
+	text-decoration: none;
+}
+.flat {
+	background: blue;
+	color: white;
+}
+.flat button { /* 이거 안먹음 */
+	background: blue;
+	color: white;
+}
+[class ~= "button"] { /* 클래스가 button이 들어가면 아래 스타일을 적용 */
+	border: 2px solid black;
+	box-shadow: rgba(0,0,0,0.4) 5px 5px;
+}
+.button { /*이래도 button, flat button 둘다 먹음 : 위에 친구랑 동일한 알고리즘 일듯*/
+	border: 5px solid red;
+	box-shadow: rgba(0,0,0,0.4) 5px 5px;
+}
+.flat.button { /* flat과 button 클래스를 둘 다 가진 요소에게 아래 스타일 적용*/
+}
+
+</style>
+</head>
+<body>
+	<ul>
+		<li><a href="#">메뉴 1</a></li>
+		<li><a href="#">메뉴 2</a></li>
+		<li><a href="#" class="button">메뉴 3</a></li>
+		<li><a href="#" class="flat button">메뉴 4</a></li> <!-- 얘는 flat클래스 이기도 하면서 button클래스 이기도 함 -->
+	</ul>
+</body>
+</html>
