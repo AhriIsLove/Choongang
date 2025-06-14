@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>숫자를 입력하세요</h1>
+	<!-- <form action="num.jsp" name="frm" onsubmit="return chk()"> -->
+	<form action="num2.jsp" name="frm" onsubmit="return chk()">
+		숫자 : <input type="text" name="num"><p>
+		<input type="submit" value="확인">
+	</form>
+	
+	<script type="text/javascript">
+	function chk(){
+		if(!frm.num.value){
+			alert("숫자 입력");
+			frm.num.focus();
+			return false;
+		}
+		else if(isNaN(frm.num.value)){
+			alert("숫자가 아니야");
+			frm.num.focus();
+			frm.num.value = "";
+			return false;
+		}
+		return true;
+	}
+	</script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function chk(){
+	if(!frm.name.value){
+		alert("이름 필수");
+		frm.name.focus();
+		return false;
+	}
+	else if(!frm.id.value){
+		alert("아이디 필수");
+		frm.id.focus();
+		return false;
+	}
+	else if(!frm.password.value){
+		alert("암호 필수");
+		frm.password.focus();
+		return false;
+	}
+	let allChecked = false;
+	for(let i=0; i<frm.notice.length; i++){
+		if(frm.notice[i].checked){
+			allChecked = true;
+			break;
+		}
+	}
+	if(!allChecked) {
+		alert("메일 필수");
+		return false;
+	}
+
+	return true;
+}
+</script>
+</head>
+<body>
+	<h1>개인정보</h1>
+	<form action="Person" method="post" name="frm" onsubmit="return chk()">
+		<table border="1" bgcolor="yellow">
+			<tr>
+				<td>이름</td><td><input type="text" name="name"></td>
+			</tr>
+			<tr>
+				<td>아이디</td><td><input type="text" name="id"></td>
+			</tr>
+			<tr>
+				<td>암호</td><td><input type="password" name="password"></td>
+			</tr>
+			<tr>
+				<td>성별(radio:gender)</td>
+				<td>
+				남자<input type="radio" name="gender" value="남자" checked="checked"><br>
+				여자<input type="radio" name="gender" value="여자">
+				</td>
+			</tr>
+			<tr>
+				<td>메일수신(checkbox:notice)</td>
+				<td>
+				공지<input type="checkbox" name="notice" value="공지"><br>
+				광고<input type="checkbox" name="notice" value="광고"><br>
+				배송<input type="checkbox" name="notice" value="배송">
+				</td>
+			</tr>
+			<tr>
+				<td>직업(select:job)</td>
+				<td>
+				<select name="job">
+				<option>가수</option>
+				<option selected="selected">장군</option>
+				<option>공무원</option>
+				</select>
+				</td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="확인"></td>
+				<td><input type="reset" value="입력취소"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

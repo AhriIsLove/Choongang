@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function chk() {
+	if (!frm.id.value) {
+		alert("아이디는 ? ");
+		frm.id.focus();
+		return false;
+	}
+	if (!frm.password.value) {
+		alert("암호는 ? ");
+		frm.password.focus();
+		return false;
+	}
+	return true;
+}
+</script>
+</head>
+<body>
+	<h1>회원가입</h1>
+	<form action="member.jsp" name="frm" onsubmit="return chk()">
+		아이디 : <input type="text" name="id">
+		<p>
+			암호 : <input type="password" name="password">
+		<p>
+			이름 : <input type="text" name="name">
+		<p>
+			취미 : <select name="hobby" multiple="multiple" size="5">
+				<option value="바둑">바둑</option>
+				<option value="정치">정치</option>
+				<option value="축구">축구</option>
+				<option value="여행">여행</option>
+				<option value="게임">게임</option>
+			</select>
+		<p>
+			성별 : 
+			남자<input type="radio" name="gender" value="남자" checked="checked">
+			여자<input type="radio" name="gender" value="여자">
+		<p>
+			<input type="submit" value="확인"> 
+			<input type="reset"	value="취소">
+	</form>
+</body>
+</html>
