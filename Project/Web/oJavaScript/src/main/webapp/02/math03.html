@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+let banner = new Array();
+for(var i=0; i<7; i++){
+	banner[i] = "../images/"+i+".jpg";
+	//document.write("<img src='"+banner[i]+"'>");
+}
+var ranNumber = Math.random()*7;
+document.write("ranNumber="+ranNumber);
+var ran = Math.floor(ranNumber);
+document.write("<br>ran="+ran);
+document.write("<img src="+banner[ran]+">");
+</script>
+</head>
+<body>
+	<h1>math03</h1>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function chgItem() {
+	let selItemId = document.getElementById("even");
+	console.log("selItemId->", selItemId);
+	selItemId.style.color = "orange";
+}
+function chgText() {
+	var selPId = document.getElementById("changeText");
+	selPId.innerHTML = "changeText 문장 대체";
+}
+</script>
+</head>
+<body>
+	<h1>dom01</h1>
+	<h4>id 이용 선택</h4>
+	<ul>
+	<li>첫번째 Item</li>
+	<li id="even">두번째 Item</li>
+	<li>세번째 Item</li>
+	<li>네번째 Item</li>
+	<li>5번째 Item</li>
+	</ul>
+	<p id="changeText">교환</p>
+	<button onclick="chgItem()">even</button>
+	<button onclick="chgText()">changeText</button>
+</body>
+</html>

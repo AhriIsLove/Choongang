@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var varName = "varName1...";
+let letName = "letName1...";
+const constName = "constName1...";
+noName = "noName1...";
+
+document.write("1.varName->"+varName+"<br>");
+document.write("1.letName->"+letName+"<br>");
+document.write("1.constName->"+constName+"<br>");
+document.write("1.noName->"+noName+"<br>");
+
+
+document.write("---------2. var, let, notype은 재할당 가능---------<br>");
+document.write("---------2. const는 재할당 불가능---------<br>");
+varName = 100;
+document.write("2.varName->"+varName+"<br>");
+letName = 300;
+document.write("2.letName->"+letName+"<br>");
+//const는 재할당 불가능
+//constName = 500; //Uncaught TypeError: Assignment to constant variable
+document.write("2.constName->"+constName+"<br>");
+noName = 700;
+document.write("2.noName->"+noName+"<br>");
+
+
+document.write("---------3. var, notype 재선언 가능---------<br>");
+document.write("---------3. let, const는 재선언 불가능---------<br>");
+var varName = "varName3...";
+//let letName = "letName3...";
+//const constName = "constName3...";
+noName = "noName3...";
+
+document.write("3.varName->"+varName+"<br>");
+document.write("3.letName->"+letName+"<br>");
+document.write("3.constName->"+constName+"<br>");
+document.write("3.noName->"+noName+"<br>");
+
+</script>
+</head>
+<body>
+	<h1>var vs let 01</h1>
+</body>
+</html>

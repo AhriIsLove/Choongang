@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function init(){
+	for(var i=0;i<=9;i++) hi(i);
+}
+function hi(i) {
+	/* 
+	document.write(i+"대박 나세요<br>");
+	document.write(i+"대박 취업복 터졌다<p>");
+	 */
+
+	document.body.innerHTML += i + "대박 나세요<br>";
+	document.body.innerHTML += i + "대박 취업복 터졌다<p>";
+}
+</script>
+</head>
+<body onload="init()">
+	<h1>funtion02</h1>
+</body>
+</html>

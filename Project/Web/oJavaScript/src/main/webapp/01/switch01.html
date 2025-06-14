@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var a = parseInt(prompt("1~7사이 숫자를 입력하세요", ""));
+console.log(typeof a);
+console.log(a);
+
+//if 
+// else if 
+// else
+// a<1 || a>7 ->잘못 입력하셨습니다
+// 문자 입력     ->숫자가 아닙니다
+// 정상입력 -> Switch
+//        1) fontcolor -> red      , msg->1 입력하셨습니다
+//        2) fontcolor -> orange   , msg->2 입력하셨습니다
+//        3) fontcolor -> yellow   , msg->3 입력하셨습니다
+//        4) fontcolor -> green    , msg->4 입력하셨습니다
+//        5) fontcolor -> blue     , msg->5 입력하셨습니다
+//        6) fontcolor -> navy     , msg->6 입력하셨습니다
+//        default) fontcolor -> violet,  , msg->7 입력하셨습니다
+if(a < 1 || a > 7){
+	document.write("잘못 입력하셨습니다.");
+}
+else if(a == NaN){
+	document.write("숫자가 아닙니다.");
+}
+else{
+	var color;
+	switch(a){
+	case 1: color = "red"; break;
+	case 2: color = "orange"; break;
+	case 3: color = "yellow"; break;
+	case 4: color = "green"; break;
+	case 5: color = "blue"; break;
+	case 6: color = "navy"; break;
+	default: color = "violet"; break;
+	}
+	
+	document.write(("msg->" + a + "입력하셨습니다.").fontcolor(color));
+	
+	document.write("<h1 style=\"color:"+color+"\">");
+	document.write("msg->" + a + "입력하셨습니다.");
+	document.write("</h1>");
+}
+
+
+
+
+</script>
+</head>
+<body>
+	<h1 style="color:red">Switch01</h1>
+</body>
+</html>

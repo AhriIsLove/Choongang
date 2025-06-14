@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+overImg = new Array();
+outImg = new Array();
+for(var i=0;i<4;i++){
+	overImg[i] = "../images/"+ i+"over.jpg";
+	outImg[i] = "../images/"+ i+"out.jpg";
+}
+
+function ov(pNum) {
+	document.images[pNum].src = overImg[pNum];
+}
+function ot(pNum) {
+	document.images[pNum].src = outImg[pNum];
+}
+</script>
+
+</head>
+<body>
+	<h1>dom Image Menu 바꾸기</h1>
+	<img alt="" src="../images/0out.jpg" onmouseover="ov(0)" onmouseout="ot(0)"><p>
+	<img alt="" src="../images/1out.jpg" onmouseover="ov(1)" onmouseout="ot(1)"><p>
+	<img alt="" src="../images/2out.jpg" onmouseover="ov(2)" onmouseout="ot(2)"><p>
+	<img alt="" src="../images/3out.jpg" onmouseover="ov(3)" onmouseout="ot(3)"><p>
+</body>
+</html>

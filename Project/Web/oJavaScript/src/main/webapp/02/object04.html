@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function Dog(color, name, age){
+	this.color = color;
+	this.name = name;
+	this.age = age;
+}
+
+let myDog = new Dog("흰색", "하루", 1);
+document.write("우리 집 강아지는 "+myDog.name+", color는 "+myDog.color + "<p>");
+
+myDog.family = "시베리안 허스키"; // 품종 프로퍼티 추가
+myDog.breed = function() { //털색을 포함한 품종을 반환해 주는 메소드를 추가함.
+	return this.color + " " + this.family;
+}
+myDog.nameAge = function() { //이름과나이 반환해 주는 메소드를 추가함.
+	return this.name + " " + this.age;
+}
+document.write("우리 집 강아지는 "+myDog.breed()+"입니다" + "<p>");
+document.write("우리 집 강아지 이름과 나이는 "+myDog.nameAge()+"입니다" + "<p>");
+</script>
+</head>
+<body>
+	<h1>object04</h1>
+	<p>
+		생성자 함수(constructor function)와 일반 함수에 기술적인 차이는 없음. <br> 다만 생성자 함수는
+		아래 두 관례를 따름 <br> 함수 이름의 첫 글자는 대문자로 시작. <br> 반드시 'new' 연산자를
+		붙여 실행 <br> 생성자 함수엔 보통 return 문이 없음. <br> 반환해야 할 것들은 모두 this에
+		저장되고, this는 자동으로 반환되기 때문에 <br> 반환문을 명시적으로 써 줄 필요가 없음
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var color = ["red","orange","yellow","green","blue","navy","violet"];
+function chk(pNum){
+	document.body.style.backgroundColor = color[pNum];
+}
+</script>
+</head>
+<body>
+	<h1>dom 색상 바꾸기</h1>
+	<table border="1" width="200" height="80">
+		<tr>
+			<td bgcolor="red" onmouseover="chk(0)"></td>
+			<td bgcolor="orange" onmouseover="chk(1)"></td>
+			<td bgcolor="yellow" onmouseover="chk(2)"></td>
+			<td bgcolor="green" onmouseover="chk(3)"></td>
+			<td bgcolor="blue" onmouseover="chk(4)"></td>
+			<td bgcolor="navy" onmouseover="chk(5)"></td>
+			<td bgcolor="violet" onmouseover="chk(6)"></td>
+		</tr>
+	</table>
+</body>
+</html>

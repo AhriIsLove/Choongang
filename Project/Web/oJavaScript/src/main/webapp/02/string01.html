@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var len = 0;
+do {
+	var str = prompt("6자 이하 입력하세요", "");
+	len = str.length;
+	if(len == 0) alert("입력 안 했네");
+}while (len > 6 || len < 1);
+document.write("입력한 글 : \""+str+"\", 길이 : "+len+"<p>");
+
+</script>
+</head>
+<body>
+	<h1>string01</h1>
+</body>
+</html>

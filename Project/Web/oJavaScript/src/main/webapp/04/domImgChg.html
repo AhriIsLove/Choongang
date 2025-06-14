@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function chk(pNum) {
+	//alert('pNum->'+pNum);
+	
+	//document에 존재하는 모든 이미지리스트에서 0번째
+	document.images[0].src = "../images/" + pNum + ".gif";
+}
+</script>
+</head>
+<body>
+	<h1>dom Image 바꾸기</h1>
+	<center>
+		<img alt="3" src="../images/3.gif">
+		<img alt="4" src="../images/4.gif">
+		
+		<button onclick="chk(1)">목마</button>
+		<button onclick="chk(2)">우체통</button>
+		<button onclick="chk(3)">불자동차</button>
+	</center>
+</body>
+</html>

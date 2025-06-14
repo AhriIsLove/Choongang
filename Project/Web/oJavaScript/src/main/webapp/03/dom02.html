@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function chgRedColor(pColorText) {
+	//alert("chgRedColor pColorText->"+pColorText);
+	let str = document.getElementById("text");
+	str.style.color = "red";
+	str.innerHTML = pColorText;
+}
+function chgOrangeColor(pColorText) {
+	//alert("chgOrangeColor pColorText->"+pColorText);
+	let str = document.getElementById("text");
+	str.style.color = "orange";
+	str.innerHTML = pColorText;
+}
+</script>
+</head>
+<body>
+	<h1>dom02 Event통해 수행</h1>
+	<p id="text">기본색 검정</p>
+	<button ondblclick="chgRedColor('빨간색')">빨간색</button>
+	<button onclick="chgOrangeColor('오렌지색')">오렌지색</button>
+</body>
+</html>

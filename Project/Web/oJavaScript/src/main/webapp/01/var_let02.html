@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+a = 7;
+b = "대박";
+
+document.write("정수a : " + a + "<p>");
+document.write("문자b : " + b + "<br>");
+
+function varTest(){
+	alert("varTest dblClick");
+	var x1 = 1;
+	x2 = 1;
+	
+	if(true) {
+		var x1 = 2;//재선언
+		x2 = 4;
+		var x3 = 10;
+		alert("varTest x1->"+x1);
+		alert("varTest x2->"+x2);
+	}
+	alert("varTest x1->"+x1);//재선언 결과 반영됨
+	alert("varTest x2->"+x2);//재선언 결과 반영됨
+	alert("varTest x3->"+x3);//블럭 안에서 선언해도 밖에서 쓸 수 있음
+}
+function letTest(){
+	alert("letTest Click");
+	let x1 = 1;
+	let x2 = 1;
+	
+	const c1 = 1;
+	
+	if(true) {
+		let x1 = 2;//새로운 변수 정의
+		x2 = 4;//재할당
+		alert("letTest x1->"+x1);
+		alert("letTest x2->"+x2);
+
+		//c1 = 2; 에러
+		//alert("letTest c1->"+c1); 에러
+		const c1 = 3;//새로운 변수 정의
+		alert("letTest c1->"+c1);
+	}
+	alert("letTest x1->"+x1);//다른 블럭에서 변경된 것은 반영되지 않음
+	alert("letTest x2->"+x2);
+}
+
+</script>
+</head>
+<body>
+	<h1>var let 02</h1>
+	<button ondblclick="varTest()">varTest</button>
+	<button onclick="letTest()">letTest</button>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var dracura = {
+		name : '김준수',
+		age : 38,
+		addr : "드라큐라"
+}
+for(var key in dracura){
+	document.write("1."+key+":"+dracura[key]+"<br>");
+}
+
+//2.append
+dracura.phone = "01022223333";
+document.write("<p>");
+for(var key in dracura){
+	document.write("2."+key+":"+dracura[key]+"<br>");
+}
+
+//3.delte
+delete(dracura.addr);
+document.write("<p>");
+for(var key in dracura){
+	document.write("3."+key+":"+dracura[key]+"<br>");
+}
+
+</script>
+</head>
+<body>
+	<h1>object03</h1>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+let person = {
+		name : "홍길동",
+		birthday : "030219",
+		pId : "1234567",
+		//생년월일과 개인 id를 합쳐서 주민번호 반환.
+		fullId : function(){
+			return this.birthday + this.pId;
+		}
+}
+document.write("person.name->"+person.name+"<p>");
+document.write("person.fullId()->"+person.fullId()+"<p>");
+document.write("function(){return this.birthday + this.pId;}<p>");
+document.write("function(){return this.birthday + this.pId;}()<p>");
+</script>
+</head>
+<body>
+	<h1>object02</h1>
+</body>
+</html>
