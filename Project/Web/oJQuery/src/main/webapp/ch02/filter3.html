@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript">
+	$(function(){
+		/* 
+		$('h1').css('background', 'orange')
+		.filter(':even').css('color','red')//index기준 짝수번째
+		.filter(':odd').css('color','blue')//index기준 짝수번째 중 홀수번째에게 덮어쓰기
+		;
+		 */
+		$('h1').css('background', 'orange')
+		.filter(':even').css('color','red')//index기준 짝수번째
+		.end()//chain 중 find와 filter등을 종료한다.
+		.filter(':odd').css('color','blue')//index기준 홀수번째
+		;
+	});
+</script>
+</head>
+<body>
+	<h1>0 월요일</h1>
+	<h1>1 비온다</h1>
+	<h1>2 귀찮다</h1>
+	<h1>3 늦게 일어났다</h1>
+	<h1>4 지각</h1>
+	<h1>5 대박</h1>
+	<h1>6 난마돌</h1>
+</body>
+</html>

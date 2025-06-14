@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript">
+	$(function(){
+		//div의 첫번쨰 span, div의 마지막 span에게
+		$('div span:first-child, div span:last-child')
+		.css('color','blue')
+		.css('font-size', '30px')
+		;
+	});
+</script>
+</head>
+<body>
+	<div>
+		<span>one,</span> <span>two,</span> <span>three,</span> <span>four</span>
+	</div>
+	<div>
+		<span>five,</span> <span>six,</span> <span>seven,</span><span>eight</span>
+	</div>
+</body>
+</html>

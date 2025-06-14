@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('td').eq(0).css('background', 'yellow');
+		$('td').eq(3).css('background', 'orange');
+		$('td').last().css('background', 'blue');//마지막 = eq(-1)
+		$('td').eq(-2).css('background', 'pink');//마지막에서 두번쨰
+		$('td').eq(-4).css('background', 'cyan');//마지막에서 4번째
+	});
+</script>
+</head>
+<body>
+<table border="1">
+		<tr><td>1구슬</td><td>2구슬</td></tr>
+		<tr><td>3구슬</td><td>4구슬</td></tr>
+		<tr><td>5구슬</td><td>6구슬</td></tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('tr:even').css('background', 'orange');//index기준 : 짝수
+		$('tr:odd').css('background', 'violet');//index기준 : 홀수
+	});
+</script>
+</head>
+<body>
+	<table border="1">
+		<tr>
+			<td>0구슬</td>
+			<td>1구슬</td>
+		</tr>
+		<tr>
+			<td>2구슬</td>
+			<td>3구슬</td>
+		</tr>
+		<tr>
+			<td>4구슬</td>
+			<td>5구슬</td>
+		</tr>
+	</table>
+</body>
+</html>

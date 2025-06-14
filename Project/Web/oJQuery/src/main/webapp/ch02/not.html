@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		//$('input:not(:checked+span)').css('background','pink');//아무 변화 없음
+		$('input:not(:checked)+span').css('background','pink');
+		$('input:checked+span').css('background','yellow');
+	});
+</script>
+</head>
+<body>
+	<div>
+		<input type="checkbox">
+		<span>사과</span>
+	</div>
+	<p>
+	<div>
+		<input type="checkbox" checked="checked">
+		<span>바나나</span>
+	</div>
+	<p>
+	<div>
+		<input type="checkbox">
+		<span>복숭아</span>
+	</div>
+	<p>
+	<div>
+		<input type="checkbox" checked="checked">
+		<span>귤</span>
+	</div>
+	<p>
+</body>
+</html>
