@@ -22,6 +22,7 @@ table {
 			<td><a href="writeForm.do">글쓰기</a></td>
 		</tr>
 	</table>
+	<!-- 게시글 목록 -->
 	<table>
 		<tr>
 			<th>번호</th>
@@ -35,28 +36,57 @@ table {
 		<c:if test="${totCnt > 0 }">
 			<c:forEach var="board" items="${boardList }">
 				<tr>
+					<!-- 번호 -->
 					<td>${startNum }</td>
-					<td class="left" width=200><c:if
-							test="${borad.readcount > 20 }">
-							<img alt="" src="images/hot.gif"
-								onmouseover="getDeptName(${board.num})">
+					<!-- 제목 -->
+					<td class="left" width=200>
+						<!-- Hot 게시글 : 조회수 20 초과 -->
+						<c:if test="${board.readcount > 20 }">
+							<img alt="" src="images/hot.gif" onmouseover="getDeptName(${board.num})">
 						</c:if>
-						<c:if
-							test="${borad.re_level > 0 }">
+						<!-- 답변 게시글 구분 -->
+						<c:if test="${board.re_level > 0}">
 							<img alt="" src="images/level.gif" width="${board.re_level*10 }">
 							<img alt="" src="images/re.gif">
 						</c:if>
-						<a href="content.do?num=${board.num }&pageNum=${currentPage)">${board.subject }</a>
-						</td>
-						<td>${board.writer }</td>
-						<td><a href="mailto:${board.email }">${board.email }</a></td>
-						<td>${board.ip }</td>
-						<td>${board.reg_date }</td>
-						<td>${board.readcount }</td>
+						<!-- 게시글 링크 -->
+						<a href="content.do?num=${board.num }&pageNum=${currentPage}">${board.subject }</a>
+						<!-- 보드를 넘기면 더 좋지 않을까? -->
+						<!-- getParameter가 String으로만 받아진다. -->
+						<%-- <a href="content.do?board=${board }">${board.subject }</a> --%>
+					</td>
+					<!-- 작성자 -->
+					<td>${board.writer }</td>
+					<!-- 이메일 -->
+					<td><a href="mailto:${board.email }">${board.email }</a></td>
+					<!-- IP -->
+					<td>${board.ip }</td>
+					<!-- 작성일 -->
+					<td>${board.reg_date }</td>
+					<!-- 조회수 -->
+					<td>${board.readcount }</td>
 				</tr>
 				<c:set var="startNum" value="${startNum - 1 }"></c:set>
 			</c:forEach>
 		</c:if>
+		<!-- 게시글이 없는 경우 -->
+		<c:if test="${totCnt  == 0}">
+			<tr>
+				<td colspan="7">데이터가 없습니다.</td>
+			</tr>
+		</c:if>
 	</table>
+	<!-- 페이지 전환 행 -->
+	<div style="text-align: center;">
+		<c:if test="${startPage > blockSize }">
+			<a href="list.do?pageNum=${startPage-blockSize }">[이전]</a>
+		</c:if>
+		<c:forEach var="i" begin="${startPage }" end="${endPage }">
+			<a href="list.do?pageNum=${i }">[${i }]</a>
+		</c:forEach>
+		<c:if test="${endPage > blockSize }">
+			<a href="list.do?pageNum=${startPage+blockSize }">[다음]</a>
+		</c:if>
+	</div>
 </body>
 </html>

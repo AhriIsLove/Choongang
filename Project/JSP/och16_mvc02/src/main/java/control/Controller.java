@@ -10,7 +10,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import service.CommandProcess;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -70,7 +69,7 @@ public class Controller extends HttpServlet {
 		}
 
 		// /list.do=service.ListAction
-		Iterator keyIter = pr.keySet().iterator();
+		Iterator<Object> keyIter = pr.keySet().iterator();
 		while (keyIter.hasNext()) {
 			String command = (String) keyIter.next();// list.do,writeForm.do
 			String className = pr.getProperty(command);// service.ListAction,service.WriteFormAction

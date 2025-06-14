@@ -20,6 +20,6 @@
 	</servlet>
 	<servlet-mapping><!-- 서블릿 이벤트 연결 -->
 		<servlet-name>Controller</servlet-name><!-- 서블릿 명 -->
-		<url-pattern>*.do</url-pattern><!-- 이벤트 종류 : 모든 경우 중에서 .do라고 시작하는 url이 호출된 경우 -->
+		<url-pattern>*.do</url-pattern><!-- 이벤트 종류 : *.do형태의 url이 호출된 경우 -->
 	</servlet-mapping>
 </web-app>
