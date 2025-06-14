@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function chk() {
+	if (!frm.num.value) {
+		alert("숫자!");
+		frm.num.focus();
+		return false;
+	}
+	else if (isNaN(frm.num.value)) {
+		alert("숫자!!!");
+		frm.num.focus();
+		frm.num.value = "";
+		return false;
+	}
+	return true;
+}
+</script>
+</head>
+<body>
+<h1>숫자를 입력하세요</h1>
+<form action="Fibonazzi" name="frm" onsubmit="return chk()">
+숫자 : <input type="text" name="num"><p>
+<input type="submit" value="확인">
+</form>
+</body>
+</html>
