@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function chk() {
+	if(frm.id.value.length == 0){
+		alert("이름 부탁해요");
+		frm.id.focus();
+		return;
+	}
+	if(frm.pass.value.length == ""){
+		alert("password 부탁해요");
+		frm.pass.focus();
+		return;
+	}
+}
+</script>
+</head>
+<body>
+	<h1>로그인</h1>
+	<form action="kkk.jsp" name="frm">
+		이름 : <input type="text" name="id">
+		<p>
+		암호 : <input type="password" name="pass">
+		<p>
+		<input type="button" value="확인" onclick="chk()">
+		<input type="submit">
+	</form>
+</body>
+</html>

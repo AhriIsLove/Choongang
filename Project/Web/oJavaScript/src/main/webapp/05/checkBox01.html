@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function chk() {
+		var str = "좋아하는 영화는?\n";
+		if (frm.ch1.checked)//body바로 아래에 있는 요소들은 name을 바로 참조하는것이 가능하다
+			str += frm.ch1.value + "\n";
+		if (frm.ch2.checked)
+			str += frm.ch2.value + "\n";
+		if (frm.ch3.checked)
+			str += frm.ch3.value + "\n";
+		alert(str);
+	}
+</script>
+</head>
+<body>
+	<h2>좋아하는 영화를 선택하세요</h2>
+	<form action="" name="frm">
+		데몬 
+		<input type="checkbox" name="ch1" id="m1" value="데몬">
+		<label for="m2">야당</label> <!-- for는 label이 어떤 id를 위한 label인지 라는 뜻으로 for를 사용함 -->
+		<input type="checkbox" name="ch2" id="m2" value="야당">
+		<label for="m3">마인</label>
+		<input type="checkbox" name="ch3" id="m3" value="마인">
+		<p>
+		<input type="button" value="확인" onclick="chk()">
+	</form>
+</body>
+</html>

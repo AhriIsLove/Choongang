@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		var array1 = [
+			{name:'중앙정보', 	link:'http://www.choongang.co.kr'},
+			{name:'다음', 	link:'http://www.daum.net'},
+			{name:'네이버', 	link:'http://www.naver.com'},
+			{name:'구글', 	link:'http://www.google.com'},
+		];
+		
+		//for문
+		$.each(array1, function(index, item){
+			let out = index + '<a href="'+item.link+'">'+item.name+'</a><p>';
+			document.body.innerHTML += out;
+		});
+	})
+</script>
+</head>
+<body>
+	<h1>jQuery Array</h1>
+</body>
+</html>

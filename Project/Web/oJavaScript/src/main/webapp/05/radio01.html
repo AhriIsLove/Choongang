@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function chk() {
+	var mStr = "좋아하는 영화는?\n";
+	var sStr = "좋아하는 노래는?\n";
+	
+	for(let i=0;frm.movie.length;i++){
+		if(frm.movie[i].checked){
+			mStr += frm.movie[i].value+"\n";
+			break;
+		}
+	}
+	for(let i=0;frm.song.length;i++){
+		if(frm.song[i].checked){
+			sStr += frm.song[i].value+"\n";
+			break;
+		}
+	}
+	
+	alert(mStr+sStr);
+}
+</script>
+</head>
+<body>
+	<form action="" name="frm">
+		<h1>다음에서 선택</h1>
+		1. 가장 좋아하는 영화 한 개만을 선택<br>
+		<input type="radio" name="movie" value="범죄도시" id="m1">
+		<label for="m1">범죄도시</label>
+		<input type="radio" name="movie" value="그녀가죽었다" id="m2">
+		<label for="m2">그녀가죽었다</label>
+		<input type="radio" name="movie" value="쿵후 펜더" id="m3">
+		<label for="m3">쿵후 펜더</label>
+		<hr>
+		2. 좋아하는 노래를 선택<br>
+		<input type="radio" name="song" value="세월이 가면" id="s1">
+		<label for="s1">세월이 가면</label>
+		<input type="radio" name="song" value="미스터리" id="s2">
+		<label for="s2">미스터리</label>
+		<input type="radio" name="song" value="일테노래" id="s3">
+		<label for="s3">일테노래</label>
+		<input type="radio" name="song" value="꿈의무게" id="s4">
+		<label for="s4">꿈의무게</label>
+		<hr>
+		<input type="button" value="확인" onclick="chk()">
+	</form>
+</body>
+</html>

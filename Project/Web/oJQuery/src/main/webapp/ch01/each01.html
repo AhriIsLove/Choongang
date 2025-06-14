@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	var eh = $('div.simpletext1, span, p');//해당되는 모든 요소 가져오기
+	//var eh = $('div.simpletext1, span, p, div');//4개(중복되는 요소는 삭제함)
+	var cnt = "갯수 : " + eh.length + "\n";
+	var result = "Select Tag 내용 : ";
+	
+	eh.each(function(){
+		result += $(this).text() + " ";
+	});
+	
+	alert(cnt + result);
+});
+</script>
+</head>
+<body>
+	<span>simple</span>
+	<div class='simpletext1'>jQuery</div>
+	<div>basic</div>
+	<p>example</p>
+	<p>example</p>
+	<p>example</p>
+</body>
+</html>

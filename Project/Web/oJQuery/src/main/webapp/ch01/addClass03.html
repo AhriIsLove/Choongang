@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.spotlight{background-color: #ff0;}
+.redtext{color: #f00;}
+.largetext{font-size: 30pt;}
+.italictext{font-style: italic;}
+</style>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('span').addClass('redtext');
+	$('div').addClass('spotlight');
+	$('#simpletext2').addClass('largetext');
+	$('.simpletext1').addClass('italictext');
+});
+</script>
+</head>
+<body>
+	<span id="simpletext1">simple</span>
+	<div class="simpletext1">jQuery</div>
+	<span id="simpletext2">basic</span>
+	<div id="simpletext3">example</div>
+</body>
+</html>
