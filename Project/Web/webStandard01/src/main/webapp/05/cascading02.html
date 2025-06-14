@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	/* id로 부여하는 것이 1순위 */
+	#habor {
+		color: green;
+		border: 1px solid gray;
+		padding: 10px;
+	}
+	/* class로 부여하는 것이 2순위 */
+	.heading {
+		color: red;
+	}
+	/* 그외로 부여하는 것이 3순위 */
+	h1 {
+		color: blue;
+	}
+	
+	/* 그외에는 cascade방식(물이 흐르다 : 위에서 아래로 진행한다) */
+</style>
+</head>
+<body>
+	<h1 id="habor" class="heading">세계 3대 미항</h1>
+	<img alt="브라질 리우데자네이루" src="images/rio.png">
+	
+	<p>시드니(Sydney), 호주</p>
+	<p>리우데자네이루(Rio de Janeiro), 브라질</p>
+	<p>나폴리(Naples), 이탈리아</p>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+div {
+	border: 1px solid #ccc;
+}
+#container {
+	width: 960px;
+	padding: 20px;
+	margin: 0px auto; /* 상하는 0px, 좌우는 auto */
+}
+#header {
+	padding: 20px;
+	margin-bottom: 20px;
+}
+#contents {
+	width: 620px;
+	padding: 20px;
+	float: left;
+	margin-bottom: 20px;
+}
+#sidebar {
+	width: 220px;
+	padding: 20px;
+	float: right;
+	margin-bottom: 20px;
+	background: #eee;
+}
+#footer {
+	clear: both; /* float 속성의 영향을 받는 요소를 만났을 때 both(왼쪽,오른쪽) float을 해제하고 새로운 줄에 배치 */
+	padding: 20px;
+}
+</style>
+</head>
+<body>
+	<div id="container">
+		<div id="header">
+			<h1>사이트 제목 ***</h1>
+			<h3>큰 메뉴 --> ul</h3>
+		</div>
+		<div id="sidebar">
+			<h2>사이드 바</h2>
+			<ul>
+				<li>소메뉴</li>
+				<li>광고</li>
+			</ul>
+		</div>
+		<div id="contents">
+			<h2>본문</h2>
+			<p>재산권의 행사는 공공복리에 적합하도록 하여야 한다. 정부는 회계연도마다 예산안을 편성하여 회계연도 개시
+				90일전까지 국회에 제출하고, 국회는 회계연도 개시 30일전까지 이를 의결하여야 한다.</p>
+			<p>대통령의 임기가 만료되는 때에는 임기만료 70일 내지 40일전에 후임자를 선거한다. 제2항과 제3항의 처분에
+				대하여는 법원에 제소할 수 없다. 언론·출판에 대한 허가나 검열과 집회·결사에 대한 허가는 인정되지 아니한다.</p>
+		</div>
+		<div id="footer">
+			<h2>푸터</h2>
+			<p>저작권정보.</p>
+			<p>개발사/개발사 정보.</p>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	.container { /* .은 클래스를 나타낸다. */
+		width: 600px;
+		margin: 0 auto;
+	}
+	/* 순서없는 목록에 적용할 스타일 */
+	ul {
+		list-style-type: none;/* 불릿 없앰 */
+	}
+	label.title {
+		font-weight: bold; /* 굵은 글씨 */
+		width: 80px;
+		display: inline-block; /* 정해진 길이만큼 무조건 표시 */
+		vertical-align: top; /* 상단으로 정렬 */
+		/* float: left; */
+	}
+	div.centered {
+		text-align: center; /* 가운데 정렬 */
+	}
+	fieldset {
+		/* margin: 15px; */ /* 상하좌우 */
+		margin: 15px 10px; /* 상하 좌우 */
+		/* margin: 10px 20px 30px 40px; */ /* 상 우 하 좌 : 시계방향 */
+	}
+	/* 필드셋의 레전드(그룹박스의 제목) */
+	fieldset legend {
+		font-weight: bold;
+		font-size: 18px;
+		color: purple;
+	}
+	ul li {
+		margin-bottom: 10px;
+	}
+</style>
+</head>
+<body>
+	<form action="kkk.jsp">
+		<div class="container"> <!-- 디비전 -->
+			<h1>상품 주문서</h1>
+			<fieldset> <!-- 그룹박스 -->
+				<legend>개인 정보</legend> <!-- 그룹박스 제목 -->
+				<ul>
+					<li>
+						<label for="uname" class="title">이름</label>
+						<!-- placeholder 데이터가 없을때 나타나는 문구 -->
+						<!-- required 필수 입력 데이터 -->
+						<input type="text" id="uname" placeholder="여백없이 입력" required>
+					</li>
+					<li>
+						<label for="tel1" class="title">연락처</label>
+						<input type="tel" id="tel1" placeholder="연락가능한 번호">
+					</li>
+				</ul>
+			</fieldset>
+			
+			<fieldset>
+				<legend>배송지 정보</legend>
+				<ul>
+					<li>
+						<label for="addr" class="title">주소</label>
+						<input type="text" size="40" id="addr" required>
+					</li>
+					<li>
+						<label for="tel2" class="title">전화번호</label>
+						<input type="tel" id="tel2" required>
+					</li>
+					<li>
+						<label for="comment" class="title">메모</label>
+						<textarea rows="3" cols="40" id="comment"></textarea>
+					</li>
+				</ul>
+			</fieldset>
+			
+			<fieldset>
+				<legend>주문 정보</legend>
+				<ul>
+					<li>
+						<label><input type="checkbox">과테말라 안티구아 (100g)</label>
+						<label><input type="number" value="0" min="0" max="5">개</label> <!-- number : 스핀박스 -->
+					</li>
+					<li>
+						<label><input type="checkbox">인도네시아 만델링 (100g)</label>
+						<label><input type="number" value="0" min="0" max="5">개</label>
+					</li>
+					<li>
+						<label><input type="checkbox">탐라는도다(블렌딩) (100g)</label>
+						<label><input type="number" value="0" min="0" max="5">개</label>
+					</li>
+				</ul>
+			</fieldset>
+			
+			<div class="centered">
+				<input type="submit" value="주문하기">
+				<input type="reset" value="다시작성"> <!-- input에 작성된 모든 내용 삭제 -->
+			</div>
+		</div>
+	</form>
+</body>
+</html>
