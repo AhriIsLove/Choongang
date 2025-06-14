@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/httpRequest.js"></script>
+<script type="text/javascript">
+	function chk() {
+		sendRequest("temperate.jsp", null, tempShow, "GET");
+	}
+	function tempShow() {
+		let temp = document.getElementById("temp");
+		let max = document.getElementById("max");
+
+		if (httpRequest.readyState == 4) {
+			if (httpRequest.status == 200) {
+				let value = httpRequest.responseText;
+				temp.innerHTML = value;
+
+				//  결과값을  tp배열로 전환
+				let tp = value.split(",");
+				let arrTemperateFloat = new Array(tp.length);
+
+				for (let i = 0; i < tp.length; i++) {
+					arrTemperateFloat[i] = parseFloat(tp[i]);
+				}
+				let maxTemperate = 0;
+				for (let i = 0; i < arrTemperateFloat.length; i++) {
+					if (maxTemperate < arrTemperateFloat[i])
+						maxTemperate = arrTemperateFloat[i];
+				}
+				max.innerHTML = maxTemperate;
+			} else {
+				alert("Server 오류");
+			}
+		}
+	}
+</script>
+</head>
+<body>
+	<input type="button" value="온도보기" onclick="chk()">
+	<p>온도
+	<div id="temp"></div>
+	<p>최고온도
+	<div id="max"></div>
+</body>
+</html>

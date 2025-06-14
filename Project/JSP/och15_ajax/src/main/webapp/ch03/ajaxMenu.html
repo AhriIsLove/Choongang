@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript">
+	$(function() {
+// 		id:menu1 항목 클릭시
+		$('#menu1').click(function() {
+// 			비동기로
+			$.ajax({
+// 				menu.jsp를 실행
+				url : 'menu.jsp',
+				//리턴 타입
+				dataType : 'html',
+// 				완료되면
+				success : function(/*dataType */data){
+// 					id:msg1 항목에 data 삽입
+					$('#msg1').html(data)
+				}
+			})
+		});
+		
+		//sendRequest(url(server PGM), param, callback, methodType);
+		$('#menu2').click(function(){
+			$.ajax({
+				url : 'menu.jsp',
+				dataType : 'html',
+				success : function(data){
+					$('#msg2').html($(data).find('li'))//li태그만 찾아서
+				}
+			})
+		});
+	});
+</script>
+</head>
+<body>
+	<div>
+		<a id="menu1">메뉴선택1</a>
+		<p>
+			<span id="msg1"></span>
+	</div>
+	<p>
+	<p>
+	<p>
+	<p>
+	<p>
+	<p>
+	<div>
+		<a id="menu2">메뉴선택2</a>
+		<p>
+			<span id="msg2"></span>
+	</div>
+</body>
+</html>

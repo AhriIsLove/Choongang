@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/httpRequest.js"></script>
+<script type="text/javascript">
+	function chk() {
+		let params = "name=" + encodeURIComponent(frm.name.value);
+		alert("params : "+ params);
+		
+		// sendRequest(url(server PGM), params, callback, method)
+		sendRequest("hello.jsp", params, result, "POST");
+		
+	}
+	function result() {
+// 		httpRequest.readyState == 0 : 최초
+// 		httpRequest.readyState == 1 : get요청
+// 		httpRequest.readyState == 2 : send요청
+// 		httpRequest.readyState == 3 : 응답 받음
+// 		httpRequest.readyState == 4 : 응답 완료
+		if(httpRequest.readyState == 4){
+// 			httpRequest.status == 200 : 정상
+// 			httpRequest.status == 404 : 비정상
+			if(httpRequest.status == 200){
+				let text1 = httpRequest.responseText;
+				alert("responseText : " + text1);
+				
+				let start = text1.indexOf("<body>");
+				let end = text1.indexOf("</body>");
+				let text2 = text1.substring(start+6, end); /* +6 는 '<body>'만큼 */
+				alert(text2);
+				
+			}
+			else{
+				alert("Server 오류");
+			}
+		}
+	}
+</script>
+</head>
+<body>
+	<h1>이름을 입력하세요</h1>
+	<form action="" name="frm">
+		<input type="text" name="name">
+		<p>
+			<input type="button" value="확인" onclick="chk()">
+	</form>
+</body>
+</html>
