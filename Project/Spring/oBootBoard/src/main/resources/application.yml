@@ -8,7 +8,7 @@ spring:
     username: scott
     password: tiger
 
-  # View Resolver : jsp파일 사용 설정
+  # View Resolver : default 폴더 경로(/WEB-INF/views/), default 파일 형식(.jsp) 설정
   mvc:
     view:
       prefix: /WEB-INF/views/
