@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.oracle.oBootJpa02.domain.Member;
 import com.oracle.oBootJpa02.service.MemberService;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
+
+
 
 @Controller
 public class MemberController {
@@ -58,4 +62,35 @@ public class MemberController {
 		
 		return "members/memberList";
 	}
+	
+	@GetMapping("/memberModifyForm")
+	public String memberModify(Member member, Model model) {
+		System.out.println("MemberController memberModify id : " + member.getId());
+		Member findMember = memberService.findByMember(member.getId());
+		
+		System.out.println("findMember : " + findMember);
+		model.addAttribute("member", findMember);
+		
+		return "members/memberModify";
+	}
+	
+	@PostMapping("/members/memberUpdate")
+	public String memberUpdate(Member member, Model model) {
+		System.out.println("MemberController memberUpdate member : " + member);
+		memberService.memberUpdate(member);
+		System.out.println("MemberController memberUpdate End...");
+		
+		return "redirect:/members";
+	}
+	
+	@GetMapping("/findByListMembers")
+	public String findByListMembers(Member member, Model model) {
+		List<Member> memberList = memberService.getListFindByMembers(member);
+		System.out.println("memberList.get(0).getName() : " + memberList.get(0).getName());
+		System.out.println("memberList.get(0).getTeam().getName() : " + memberList.get(0).getTeam().getName());
+		model.addAttribute("memberList", memberList);
+		
+		return "members/memberList";
+	}
+	
 }

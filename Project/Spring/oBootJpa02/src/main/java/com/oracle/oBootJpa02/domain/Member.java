@@ -54,4 +54,6 @@ public class Member {
 	// Entity에 반영하지 않음
 	@Transient
 	private String teamName;
+	@Transient
+	private String teamId;
 }

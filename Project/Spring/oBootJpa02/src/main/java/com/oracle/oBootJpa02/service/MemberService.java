@@ -1,5 +1,6 @@
 package com.oracle.oBootJpa02.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,6 @@ import jakarta.transaction.Transactional;
 @Transactional
 public class MemberService {
 	private final MemberRepository memberRepository;
-
 	@Autowired
 	public MemberService(MemberRepository memberRepository) {
 		this.memberRepository = memberRepository;
@@ -40,6 +40,28 @@ public class MemberService {
 		System.out.println("MemberService getListSearchMember searchName : " + searchName);
 		List<Member> listMember = memberRepository.findByNames(searchName);
 		System.out.println("MemberService getListSearchMember listMember.size() : " + listMember.size());
+		
+		return listMember;
+	}
+
+	public Member findByMember(BigDecimal memberId) {
+		Member member = memberRepository.findByMember(memberId);
+		System.out.println("MemberService findByMember member : " + member);
+		
+		return member;
+	}
+
+	public int memberUpdate(Member member) {
+		System.out.println("MemberService memberUpdate member : " + member);
+		int result = memberRepository.updateByMember(member);
+		System.out.println("MemberService memberUpdate End..." + member);
+		
+		return result;
+	}
+
+	public List<Member> getListFindByMembers(Member member) {
+		List<Member> listMember = memberRepository.findByMembers(member.getId(), member.getSal());
+		System.out.println("MemberService getListFindByMembers listMember.size() : " + listMember.size());
 		
 		return listMember;
 	}

@@ -1,0 +1,21 @@
+server:
+  port: 8386
+# Oracle Connect
+spring:
+  # Datasource Bean 생성
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521/xe
+    username: scottJpa
+    password: tiger
+
+  # JPA Setting
+  jpa:
+    show-sql: true
+    hibernate:
+      #update해도 최초 실행시 Entity 없으면 Create 해줌
+      ddl-auto: update
+
+# logger를 통해 하이버네이트 실행 SQL
+logging.level:
+  org.hibernate.SQL: debug   

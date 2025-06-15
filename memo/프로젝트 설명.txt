@@ -63,7 +63,7 @@
 ○ oBootBoardWarMaven : 게시판 예제 War:Maven 배포 연습
 ○ oBootJpa01 : JPA, Lombok
 ○ oBootJpa02 : JPA, Lombok 심화
-
+○ oBootJpaApi01 : API
 
 
 
