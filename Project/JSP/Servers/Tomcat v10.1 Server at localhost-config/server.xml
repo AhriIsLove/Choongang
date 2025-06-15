@@ -140,7 +140,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="och02" path="/och02" reloadable="true" source="org.eclipse.jst.jee.server:och02"/></Host>
+      <Context docBase="och02" path="/och02" reloadable="true" source="org.eclipse.jst.jee.server:och02"/><Context docBase="och12_mvc01" path="/och12_mvc01" reloadable="true" source="org.eclipse.jst.jee.server:och12_mvc01"/><Context docBase="och10" path="/och10" reloadable="true" source="org.eclipse.jst.jee.server:och10"/><Context docBase="och11" path="/och11" reloadable="true" source="org.eclipse.jst.jee.server:och11"/><Context docBase="och05" path="/och05" reloadable="true" source="org.eclipse.jst.jee.server:och05"/><Context docBase="och06" path="/och06" reloadable="true" source="org.eclipse.jst.jee.server:och06"/><Context docBase="och03" path="/och03" reloadable="true" source="org.eclipse.jst.jee.server:och03"/><Context docBase="och14" path="/och14" reloadable="true" source="org.eclipse.jst.jee.server:och14"/><Context docBase="och04" path="/och04" reloadable="true" source="org.eclipse.jst.jee.server:och04"/><Context docBase="och09" path="/och09" reloadable="true" source="org.eclipse.jst.jee.server:och09"/><Context docBase="och07" path="/och07" reloadable="true" source="org.eclipse.jst.jee.server:och07"/><Context docBase="och08" path="/och08" reloadable="true" source="org.eclipse.jst.jee.server:och08"/></Host>
     </Engine>
   </Service>
 </Server>
