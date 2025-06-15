@@ -1,5 +1,7 @@
 #폴더 무시
+Data/
 Install/
+Private/
 Video/
 
 #이클립스 컴파일/실행 폴더/파일

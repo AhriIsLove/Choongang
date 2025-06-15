@@ -15,7 +15,7 @@ public class OracleDriver01 {
 			// Oracel Driver Memory Up
 			Class.forName(driver);//JDBS 드라이버 로드
 			System.out.println("Start2");
-			Connection conn = DriverManager.getConnection(url,"scott","tiger");//데이터베이스 연결
+			Connection conn = DriverManager.getConnection(url,"admin","ahrilove1213");//데이터베이스 연결
 			System.out.println("Start3");
 			if (conn != null) {
 				System.out.println("Success 연결 성공");
