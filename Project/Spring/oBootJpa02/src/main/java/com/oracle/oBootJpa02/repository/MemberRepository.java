@@ -1,11 +1,11 @@
-package com.oracle.oBootJpa01.repository;
+package com.oracle.oBootJpa02.repository;
 
 import java.util.List;
 
-import com.oracle.oBootJpa01.domain.Member;
+import com.oracle.oBootJpa02.domain.Member;
 
 public interface MemberRepository {
 	Member memberSave(Member member);
-	List<Member> findAllMember();
+	List<Member> findAll();
 	List<Member> findByNames(String searchName);
 }
