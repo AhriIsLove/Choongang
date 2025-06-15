@@ -64,7 +64,7 @@
 ○ oBootJpa01 : JPA, Lombok
 ○ oBootJpa02 : JPA, Lombok 심화
 ○ oBootJpaApi01 : API
-
+○ oBootMybatis01 : ByBatis
 
 
 

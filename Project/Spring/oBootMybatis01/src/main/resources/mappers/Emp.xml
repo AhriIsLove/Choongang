@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 쿼리 : 클래스개념? -->
+<mapper namespace="com.oracle.oBootMybatis01.EmpMapper">
+	<!-- 쿼리 : 함수개념? -->
+	<select id="empTotal" resultType="int">
+		SELECT COUNT(*) FROM emp
+	</select>
+</mapper>
