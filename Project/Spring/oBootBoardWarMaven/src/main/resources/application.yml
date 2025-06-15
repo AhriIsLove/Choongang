@@ -1,0 +1,15 @@
+server:
+  port: 8983
+# Oracle Connect
+spring:
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521/xe
+    username: scott
+    password: tiger
+
+  # View Resolver : default 폴더 경로(/WEB-INF/views/), default 파일 형식(.jsp) 설정
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp

@@ -78,7 +78,25 @@ public class BController {
 		model.addAttribute("request", request);
 		bExecuteCommand.bWriteCmd(model);
 		
-		return "write_view";
+		return "redirect:list";
 	}
 	
+	@RequestMapping("reply_view")
+	public String reply_view(HttpServletRequest request, Model model) {
+		LOGGER.info("reply_view start...");
+
+		model.addAttribute("request", request);
+		bExecuteCommand.bReplyViewCmd(model);
+		
+		return "reply_view";
+	}
+	@PostMapping("reply")
+	public String reply(HttpServletRequest request, Model model) {
+		LOGGER.info("reply start...");
+
+		model.addAttribute("request", request);
+		bExecuteCommand.bReplyCmd(model);
+		
+		return "redirect:list";
+	}
 }

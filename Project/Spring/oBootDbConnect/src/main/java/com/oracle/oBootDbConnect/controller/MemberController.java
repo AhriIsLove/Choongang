@@ -30,7 +30,6 @@ public class MemberController {
 	// 컴포넌트 스캔과 자동 의존관계 설정
 	// 자바 코드로 직접 스프링 빈 등록하기
 	private final MemberService memberService;
-
 	@Autowired
 	public MemberController(MemberService memberService) {
 		// TODO Auto-generated constructor stub

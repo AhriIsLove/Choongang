@@ -1,5 +1,6 @@
 package com.oracle.oBootBoard.command;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -68,7 +69,6 @@ public class BExecuteCommand {
 //		2) request 이용 ->  bId 추출
 //		3) dao  instance 선언
 //		4) delete method 이용하여 삭제
-		
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 
@@ -99,6 +99,55 @@ public class BExecuteCommand {
 			jdbcDao.write(bName, bTitle, bContent);
 		} catch (Exception e) {
 			// TODO: handle exception
+		}
+	}
+
+	public void bReplyViewCmd(Model model) {
+//		1)  model이용 , map 선언
+//		2) request 이용 ->  bid  추출
+//		3) dao  instance 선언
+//		4) reply_view method 이용하여 (bid)
+//			- BDto dto = dao.reply_view(bId);
+		Map<String, Object> map = model.asMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		
+		String bId = request.getParameter("bId");
+		BDto dto = null;
+		try {
+			dto = jdbcDao.reply_view(bId);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("reply_view", dto);
+	}
+
+	public void bReplyCmd(Model model) {
+//		1)  model이용 , map 선언
+//		2) request 이용 -> bid,         bName ,  bTitle,
+//		                  bContent ,  bGroup , bStep ,
+//		                  bIndent 추출
+//		3) dao  instance 선언
+//		4) reply method 이용하여 댓글저장 
+//		  - dao.reply(bId, bName, bTitle, bContent, bGroup, bStep, bIndent);
+		
+		Map<String, Object> map = model.asMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		
+		String bId = request.getParameter("bId");
+		String bName = request.getParameter("bName");
+		String bTitle = request.getParameter("bTitle");
+		String bContent = request.getParameter("bContent");
+		String bGroup = request.getParameter("bGroup");
+		String bStep = request.getParameter("bStep");
+		String bIndent = request.getParameter("bIndent");
+		
+		try {
+			jdbcDao.reply(bId, bName, bTitle, bContent, bGroup, bStep, bIndent);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 }

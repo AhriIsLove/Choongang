@@ -17,7 +17,7 @@ public class SpringConfig {
 		this.dataSource = dataSource;
 	}
 	
-	//직접 Bean에 넣는다.
+	//직접 Bean에 넣는다 : 생성 후 Servlet에게 전달
 	@Bean
 	public MemberRepository memberRepository() {
 //		return new MemoryMemberRepository();// 서버의 메모리 저장 방식
