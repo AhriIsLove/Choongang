@@ -9,8 +9,6 @@ spring:
     username: scott
     password: tiger
     
-  
-  # View Resolver  -> thymleaf
   #Jpa Setting
   jpa:
     show-sql: true
@@ -22,8 +20,6 @@ spring:
     view:
       prefix: /WEB-INF/views/
       suffix: .jsp
-        
- 
       
 logging.level:
   org.hibernate.SQL: debug   # logger를 통해 하이버네이트 실행 SQL 

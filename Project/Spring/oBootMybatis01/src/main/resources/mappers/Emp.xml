@@ -1,10 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!-- 쿼리 : 클래스개념? -->
 <mapper namespace="com.oracle.oBootMybatis01.EmpMapper">
-	<!-- 쿼리 : 함수개념? -->
 	<select id="empTotal" resultType="int">
 		SELECT COUNT(*) FROM emp
+	</select>
+	
+<!-- 	'parameterType="Emp" resultType="Emp"'의  -->
+<!-- 		'Emp'는  -->
+<!-- 	'configuration.xml'에서  -->
+<!-- 		typeAlias로 작성된  -->
+<!-- 		com.oracle.oBootMybatis01.dto.Emp이다 -->
+	<select id="tkEmpListAll" parameterType="Emp" resultType="Emp">
+	SELECT * 
+	FROM (
+		SELECT rownum rn, a.* 
+		FROM (
+			(SELECT * FROM emp ORDER BY empno) a	
+		)
+	)
+<!-- 	파라미터가 여러개라면 DAO의 값을 사용합니다 -->
+	WHERE rn BETWEEN #{start} and #{end}
+	</select>
+	
+	<select id="tkEmpSelOne" parameterType="int" resultType="Emp">
+	SELECT * FROM emp WHERE empno = #{empno}
+<!-- 	파라미터가 하나라면 아무거나 써도 됩니다 -->
+<!-- 	SELECT * FROM emp WHERE empno = #{abab} -->
+	</select>
+	
+	<update id="tkEmpUpdate" parameterType="Emp">
+	UPDATE emp SET 
+		ename = #{ename},
+		job = #{job},
+		sal = #{sal},
+		hiredate = #{hiredate},
+		<if test="#{comm}!=null">comm = #{comm},</if>
+		mgr = #{mgr},
+		deptno = #{deptno}
+	WHERE empno = #{empno}
+	</update>
+	
+	<select id="tkSelectManager" resultType="Emp">
+	SELECT * 
+	FROM emp 
+	WHERE empno IN (
+		SELECT mgr FROM emp
+	)
 	</select>
 </mapper>
