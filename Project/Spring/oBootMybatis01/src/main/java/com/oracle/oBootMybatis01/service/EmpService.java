@@ -17,4 +17,12 @@ public interface EmpService {
 	List<Emp> listManager();
 
 	List<Dept> deptSelect();
+
+	int insert(Emp pEmp);
+
+	int deleteEmp(int empno);
+
+	int condTotalEmp(Emp pEmp);
+
+	List<Emp> listSearchEmp(Emp pEmp);
 }

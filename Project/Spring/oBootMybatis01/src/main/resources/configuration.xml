@@ -3,6 +3,7 @@
 
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.oracle.oBootMybatis01.dto.Emp"	alias="Emp" />
+		<typeAlias type="com.oracle.oBootMybatis01.dto.Emp" alias="Emp" />
+		<typeAlias type="com.oracle.oBootMybatis01.dto.Dept" alias="Dept" />
 	</typeAliases>
 </configuration>

@@ -16,8 +16,15 @@ public class DeptDaoImpl implements DeptDao {
 
 	@Override
 	public List<Dept> deptSelect() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Dept> deptList = null;
+		
+		try {
+			deptList = session.selectList("tkSelectDept");
+		} catch (Exception e) {
+			System.out.println("tkSelectDept 오류 : " + e.getMessage());
+		}
+		
+		return deptList;
 	}
 
 }

@@ -40,7 +40,7 @@ public class EmpDaoImpl implements EmpDao {
 		List<Emp> empList = null;
 		System.out.println("EmpDaoImpl listEmp START...");
 		try {
-			empList = session.selectList("tkEmpListAll", emp);
+			empList = session.selectList("tkEmpListAll3", emp);
 			System.out.println("EmpDaoImpl listEmp empList : " + empList.size());
 		} catch (Exception e) {
 			System.out.println("EmpDaoImpl listEmp e : " + e.getMessage());
@@ -80,5 +80,62 @@ public class EmpDaoImpl implements EmpDao {
 		List<Emp> empList = session.selectList("tkSelectManager");
 		
 		return empList;
+	}
+
+	@Override
+	public int insert(Emp pEmp) {
+		int insertResult = 0;
+		
+		try {
+			System.out.println(pEmp.getHiredate());
+			insertResult = session.insert("insertEmp", pEmp);
+			System.out.println("성공~");
+		} catch (Exception e) {
+			System.out.println("실패...");
+		}
+		
+		return insertResult;
+	}
+
+	@Override
+	public int deleteEmp(int empno) {
+		int deleteResult = 0;
+		
+		try {
+			deleteResult = session.delete("deleteEmp", empno);
+			System.out.println("삭제 성공~");
+		} catch (Exception e) {
+			System.out.println("삭제 실패..." + e.getMessage());
+		}
+		
+		return deleteResult;
+	}
+
+	@Override
+	public int condTotalEmp(Emp pEmp) {
+		int condEmp = 0;
+		
+		try {
+			condEmp = session.selectOne("condEmpTotal", pEmp);
+			System.out.println("조회 성공~");
+		} catch (Exception e) {
+			System.out.println("조회 실패...");
+		}
+		
+		return condEmp;
+	}
+
+	@Override
+	public List<Emp> listSearchEmp(Emp pEmp) {
+		List<Emp> listSearchEmp = null;
+		
+		try {
+			listSearchEmp = session.selectList("tkEmpSearchList3", pEmp);
+			System.out.println("조회 성공~ listSearchEmp : " + listSearchEmp.size());
+		} catch (Exception e) {
+			System.out.println("조회 실패...");
+		}
+		
+		return listSearchEmp;
 	}
 }

@@ -12,40 +12,101 @@
 <!-- 		typeAlias로 작성된  -->
 <!-- 		com.oracle.oBootMybatis01.dto.Emp이다 -->
 	<select id="tkEmpListAll" parameterType="Emp" resultType="Emp">
-	SELECT * 
-	FROM (
-		SELECT rownum rn, a.* 
+		SELECT * 
 		FROM (
-			(SELECT * FROM emp ORDER BY empno) a	
+			SELECT rownum rn, a.* 
+			FROM (
+				(SELECT * FROM emp ORDER BY empno) a	
+			)
 		)
-	)
-<!-- 	파라미터가 여러개라면 DAO의 값을 사용합니다 -->
-	WHERE rn BETWEEN #{start} and #{end}
+	<!-- 	파라미터가 여러개라면 DAO의 값을 사용합니다 -->
+		WHERE rn BETWEEN #{start} and #{end}
+	</select>
+	<select id="tkEmpListAll3" parameterType="Emp" resultType="Emp">
+		SELECT * 
+		FROM (
+			SELECT rownum rn, a.* 
+			FROM (
+				(SELECT * FROM emp ORDER BY empno) a	
+			)
+		)
+	<!-- 	부등호(<,>) 처리 방법 -->
+		<![CDATA[
+		WHERE rn >= #{start} AND rn <= #{end}
+		]]>
 	</select>
 	
 	<select id="tkEmpSelOne" parameterType="int" resultType="Emp">
-	SELECT * FROM emp WHERE empno = #{empno}
+		SELECT * FROM emp WHERE empno = #{empno}
 <!-- 	파라미터가 하나라면 아무거나 써도 됩니다 -->
 <!-- 	SELECT * FROM emp WHERE empno = #{abab} -->
 	</select>
 	
 	<update id="tkEmpUpdate" parameterType="Emp">
-	UPDATE emp SET 
-		ename = #{ename},
-		job = #{job},
-		sal = #{sal},
-		hiredate = #{hiredate},
-		<if test="#{comm}!=null">comm = #{comm},</if>
-		mgr = #{mgr},
-		deptno = #{deptno}
-	WHERE empno = #{empno}
+		UPDATE emp SET 
+			ename = #{ename},
+			job = #{job},
+			sal = #{sal},
+			hiredate = #{hiredate},
+			<if test="#{comm}!=null">comm = #{comm},</if>
+			mgr = #{mgr},
+			deptno = #{deptno}
+		WHERE empno = #{empno}
 	</update>
 	
 	<select id="tkSelectManager" resultType="Emp">
-	SELECT * 
-	FROM emp 
-	WHERE empno IN (
-		SELECT mgr FROM emp
-	)
+		SELECT * 
+		FROM emp 
+		WHERE empno IN (
+			SELECT mgr FROM emp
+		)
+	</select>
+	
+	<insert id="insertEmp" parameterType="Emp">
+		INSERT INTO 
+		emp (empno, ename, job, sal, hiredate, comm, mgr, deptno) 
+		VALUES (#{empno}, #{ename}, #{job}, #{sal}, #{hiredate}, #{comm}, #{mgr}, #{deptno})
+	</insert>
+	
+	<delete id="deleteEmp" parameterType="Emp">
+		DELETE FROM emp WHERE empno = #{empno}
+	</delete>
+	
+	<select id="condEmpTotal" parameterType="Emp" resultType="int">
+		SELECT count(*) FROM emp
+		<choose>
+			<when test="search == 's_job'">
+			WHERE job like '%' || #{keyword} || '%'
+			</when>
+			<when test="search == 's_ename'">
+			WHERE ename like '%' || #{keyword} || '%'
+			</when>
+			<otherwise>
+			
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="tkEmpSearchList3" parameterType="Emp" resultType="Emp">
+		SELECT * FROM (
+			SELECT rownum rn, se.* FROM ( 
+				(
+				SELECT * FROM emp
+				<choose>
+					<when test="search == 's_job'">
+					WHERE job like '%' || #{keyword} || '%'
+					</when>
+					<when test="search == 's_ename'">
+					WHERE ename like '%' || #{keyword} || '%'
+					</when>
+					<otherwise>
+					
+					</otherwise>
+				</choose>
+				ORDER BY empno
+				) se
+			)
+		)
+		WHERE rn BETWEEN #{start} AND #{end}
 	</select>
 </mapper>

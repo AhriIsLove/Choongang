@@ -65,4 +65,32 @@ public class EmpServiceImpl implements EmpService {
 		
 		return deptList;
 	}
+
+	@Override
+	public int insert(Emp pEmp) {
+		int insertResult = ed.insert(pEmp);
+		
+		return insertResult;
+	}
+
+	@Override
+	public int deleteEmp(int empno) {
+		int deleteResult = ed.deleteEmp(empno);
+		
+		return deleteResult;
+	}
+
+	@Override
+	public int condTotalEmp(Emp pEmp) {
+		int condEmp = ed.condTotalEmp(pEmp);
+		
+		return condEmp;
+	}
+
+	@Override
+	public List<Emp> listSearchEmp(Emp pEmp) {
+		List<Emp> listSearchEmp = ed.listSearchEmp(pEmp);
+		
+		return listSearchEmp;
+	}
 }
