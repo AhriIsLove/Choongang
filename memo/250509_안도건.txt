@@ -1,0 +1,84 @@
+---------[문항1]---------
+DBA : 접근 가능
+scott3 : 접근 가능(정답에서 제외됨)
+U1 : 접근 가능(scott3으로부터 권한받았으며 권한부여까지 받음)
+UA : 접근 불가능(scott3으로부터 권한을 받았으나 DBA로부터 권한 뺏김)
+U2 : 접근 가능(U1으로부터 권한 받음)
+U3 : 접근 불가능(U1은 권한부여할 수 없음)
+UB : 접근 불가능(UA로부터 권한을 받았으나 DBA로부터 권한 뺏김)
+UC : 접근 불가능(UA로부터 권한을 받았으나 DBA로부터 권한 뺏김)
+
+3명 : DBA, U1, U2
+
+---------[문항2]---------
+가)
+	CREATE USER scott IDENTIFIED BY tiger;
+나)
+	호스트 이름 : OracleDB가 설치되어있는 PC의 IP주소이다.
+	- localhost
+	- 127.0.0.1
+	- 설치PC의 IP
+
+---------[문항3]---------
+[1]
+	DDL(데이터 정의 언어) : DB에서 데이터를 정의할 때 사용하며, 내용이 데이터 사전에 저장된다.
+	- CREATE, ALTER, DROP
+	DML(데이터 조작 언어) : DB에서 데이터를 조회, 추가, 삭제, 변경시 사용된다.
+	- SELECT, INSERT, UPDATE, DELETE
+	DCL(데이터 제어 언어) : DB에서 데이터에 대한 규칙을 제어할 때 사용되며, 
+	- GRANT, REVOKE, COMMIT, ROLLBACK
+[2]
+	PK
+	- PrimaryKey(기본키)로 테이블에서 데이터를 식별할때 사용된다.
+	- 유일성, NotNull, 최소성의 특징을 가진다.
+	- PK는 Index와 달리 테이블당 1개만 설정 가능하다.
+	- PK는 Index보다 SELECT의 속도가 빠르다.
+	Index
+	- 인덱스는 테이블에서 SELECT 성능 향상의 목적으로 사용된다.
+	- Index는 테이블당 여러개 설정이 가능하다.
+	- Index는 SELECT 속도가 빠르지만 상대적으로 PK보다 느리다.
+
+---------[문항4]---------
+SUM(COL1) + SUM(COL2) + SUM(COL3)
+==========================
+			NULL
+
+※ DB의 SUM 함수는 해당 칼럼에 속하는 데이터들의 값을 모두 더하는 함수이다.
+하지만 데이터의 값이 NULL이 포함될 경우 결과를 NULL로 반환한다.
+
+=> 150이 나온다고 하네요...?
+
+---------[문항5]---------
+CREATE OR REPLACE PROCEDURE in_emp3(
+	p_name	IN emp.ename%type,
+	p_sal		IN emp.sal%type,
+	p_job		IN emp.job%type)
+IS
+	v_empno	emp.empno%type;	
+
+	highsal_err	EXCEPTION;
+
+BEGIN
+	SELECT MAX(empno)+1
+	INTO v_empno
+	FROM emp;
+
+	IF p_sal < 9000
+		INSERT INTO emp
+		(empno, ename, sal, job, hiredate) 
+		VALUES
+		(v_empno, p_name, p_sal, p_job, sysdate);
+	ELSE
+		RAISE highsal_err;
+	END IF;
+	
+	DBMS_OUTPUT.ENABLE;
+	EXCEPTION
+		WHEN DUP_VAL_ON_INDEX THEN
+			DBMS_OUTPUT.PUT_LINE('PreDefined --> Oracle 선언 Error');
+		WHEN highsal_err THEN
+			DBMS_OUTPUT.PUT_LINE('최고급여 ->9000 이상 오류 발생');
+		WHEN OTHERS THEN
+			DBMS_OUTPUT.PUT_LINE('');
+
+END;

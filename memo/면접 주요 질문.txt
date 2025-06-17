@@ -440,6 +440,10 @@ WHEN NOT MATCHED THEN ~
 
 ○ 필터 : 
 
+○ URI(Uniform Resource Identifier) : 자원을 식별하는 모든 방법
+- URL(Uniform Resource Locator) : 자원을 위치(ip:port:path)를 통해 식별하는 방법
+- URN(Uniform Resource Name) : 자원을 이름으로 식별하는 방법
+
 ●●●●●●●●●챕터변경●●●●●●●●●
 ○ Ajax(Asynchronous Javascript And Xml) : JavaScript와 XML 형식을 이용한 '비동기'적 정보 교환 기법
 
@@ -491,6 +495,10 @@ WHEN NOT MATCHED THEN ~
 -- 용량 제한 없음
 -- 전송 데이터가 노출되지 않음
 
+○ Redirect : Spring MVC가 브라우저에게 Redirect 응답을 보내서 클라이언트가 새로운 요청을 보내게 함
+- Request/Response 객체 초기화
+- 외부 URL이동시
+
 ●●●●●●●●●챕터변경●●●●●●●●●
 ○ jQuery : 자바스크립트 라이브러리(front-end:클라이언트에서 사용)
 - Ajax 개발에 주요 사용
@@ -515,7 +523,7 @@ WHEN NOT MATCHED THEN ~
 - 디자인패턴, 아키텍처 + 소스 코드
 - Spring
 
-○ Spring : 
+○ Spring
 - 구조
 -- Core : IoC(Inversion of Control), DI(Dependency Injection), DDD 기반의 디자인패턴
 -- Spring MVC : MVC2를 총괄하는 DispatcherServlet이 존재
@@ -544,8 +552,27 @@ WHEN NOT MATCHED THEN ~
 -- 모델 : DAO
 -- Partial Mapping
 
+○ DAO/Repository : Service에서 Data를 처리하기 위한 Model의 주요 객체
+- DAO
+-- DB 접근
+-- MyBatis(DTO)
+- Repository
+-- 객체 접근
+-- JPA(Entity)
 
 ○ MSA(마이크로 서비스 아키텍처) : 프로젝트의 모듈화...
+
+○ Rest API(REpresentational State Transfer API) : resource에 고유한 URI를 부여해서 활용 하는 API
+- 특징
+-- MSA : 클라이언트-서버 구조
+-- JWT(Json Web Token) : 무상태성(매번 
+-- 캐시 : *블로그 참조*
+-- 계층화 : *블로그 참조*
+- 장점
+-- 확장성 : 서비스 확장 용이
+-- 재사용 : *블로그 참조*
+-- 관리성 : *블로그 참조*
+
 
 ★★★★★★★★★소프트웨어 공학★★★★★★★★★
 ○ 3R

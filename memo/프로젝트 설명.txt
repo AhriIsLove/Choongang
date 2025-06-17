@@ -57,14 +57,30 @@
 
 ★★★★★★★★★Spring★★★★★★★★★
 ○ oBootHello : 서버 개념, Legacy(JSP)방식, SpringBoot방식
+- Spring Web, Thymeleaf
 ○ oBootDbConnect : Oracle연결
+- JDBC API, Spring Web, Oracle Driver, Thymeleaf
 ○ oBootBoard : 게시판 예제
+- JDBC API, Spring Web, Oracle Driver
 ○ oBootBoardWarGradle : 게시판 예제 War:Gradle 배포 연습
 ○ oBootBoardWarMaven : 게시판 예제 War:Maven 배포 연습
 ○ oBootJpa01 : JPA, Lombok
-○ oBootJpa02 : JPA, Lombok 심화
-○ oBootJpaApi01 : API
-○ oBootMybatis01 : ByBatis
+- JDBC API, Spring Web, Oracle Driver, Lombok, Spring Data JPA
+○ oBootJpa02 : JPA, Lombok 심화(시퀀스, FK), JUnit테스트
+- JDBC API, Spring Web, Oracle Driver, Lombok, Spring Data JPA
+○ oBootJpaApi01 : RestAPI, Lambda
+- JDBC API, Lombok, Oracle Driver, Spring Data JPA, Spring Web, Validation
+○ oBootBybatis01 : MyBatis, Validation
+- JDBC API, Lombok, Oracle Driver, Spring Data JPA, Spring Web, Validation, Java Mail Sender, Spring Security
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,0 +1,50 @@
+---------[문항1] (15점)---------
+aa=6 bb=5
+a=6 b=6
+10
+12
+12
+
+---------[문항2] (15점)---------
+String sql = "DELETE FROM Dept WHERE deptno = " + deptno;
+try {
+        Class.forName(driver);
+        //scott -> OracleUserName, tiger -> OracleUserPassword
+        conn = DriverManager.getConnection(url, "scott", "tiger");
+        stmt = conn.createStatement();
+        int result = stmt.executeUpdate(sql);
+        
+        if(result > 0) {
+        	System.out.println("삭제성공");
+        }
+        else {
+        	System.out.println("삭제실패");
+        }
+} catch (Exception e) {
+		// TODO: handle exception
+	} finally {
+		if(stmt!=null)stmt.close();
+		if(conn!=null)conn.close();
+	}
+
+sc.close();
+
+---------[문항3] (15점)---------
+○ Statement, PreparedStatement, CallableStatement는 이클립스에서 DataBase에 연결하여 SQL쿼리를 사용하기 위한 Interface이다.
+○ Statement는 기본적인 인터페이스로 PreparedStatement와 CallableStatement의 부모 인터페이스이다.
+○ PreparedStatement는 SQL쿼리의 파라미터 값을 나중에 설정 할 수 있도록 하는 기능을 제공하여 가독성 및 보안성이 장점이다.
+○ CallableStatement는 PreparedStatement를 상속받은 인터페이스로 reparedStatement의 기능에 DataBase의 프로시저를 사용할 수 있는 인터페이스이다.
+
+---------[문항4] (20점)---------
+K1 k1 = new K1();
+K2 k2 = new K2();
+Thread k2Thread = new Thread(k2);
+   	
+k1.start();
+k2Thread.start();
+
+---------[문항5] (20점)---------
+5 Sub
+
+---------[문항6] (15점)---------
+implements
