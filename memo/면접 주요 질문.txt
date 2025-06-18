@@ -444,6 +444,18 @@ WHEN NOT MATCHED THEN ~
 - URL(Uniform Resource Locator) : 자원을 위치(ip:port:path)를 통해 식별하는 방법
 - URN(Uniform Resource Name) : 자원을 이름으로 식별하는 방법
 
+○ SMTP(Simple Mail Transfer Protocol) : 메일 전송 프로토콜
+
+○ OSI 7계층<-> TCP/IP 4계층
+- 물리	 <-> 네트워크 엑서스
+- 데이터링크<-> 네트워크 엑서스
+- 네트워크	 <-> 인터넷
+- 전송	 <-> 전송
+- 세션	 <-> 응용
+- 표현	 <-> 응용
+- 응용	 <-> 응용
+
+
 ●●●●●●●●●챕터변경●●●●●●●●●
 ○ Ajax(Asynchronous Javascript And Xml) : JavaScript와 XML 형식을 이용한 '비동기'적 정보 교환 기법
 

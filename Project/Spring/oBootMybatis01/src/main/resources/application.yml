@@ -21,6 +21,18 @@ spring:
       prefix: /WEB-INF/views/
       suffix: .jsp
       
+  # Gmail Transfer
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ahrilove1214@gmail.com
+    password: bcmr xywj synk vdmq
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls.enable: true
+      
 logging.level:
   org.hibernate.SQL: debug   # logger를 통해 하이버네이트 실행 SQL 
   

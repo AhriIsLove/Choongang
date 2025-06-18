@@ -1,0 +1,35 @@
+★★★★★★★★★메일전송★★★★★★★★★
+○ 27.Python Mailing.pdf참조
+○ ExampleProject : Spring/oBootMybatis01
+- Gmail에서 앱 비밀번호 설정
+1. Gmail 계정으로 로그인
+2. https://security.google.com/settings/security/apppasswords 페이지로 이동
+2-1. Google 계정 관리 - Google 계정 검색 : 앱 비밀번호
+3. '앱 선택'에서 '맞춤'을 선택하고 앱 이름 지정 (예: Spring Mail)
+4. '생성' 버튼을 클릭하면 16자리 앱 비밀번호가 생성됨
+- application.yml에 다음을 추가한다
+spring:  
+	mail:
+		host: smtp.gmail.com
+		port: 587
+		username: ahrilove1214@gmail.com
+		password: 앱 비밀번호
+		properties:
+			mail:
+				smtp:
+					auth: true
+					starttls.enable: true
+- 메일전송할 곳(Controller)에 JavaMailSender 선언
+private final JavaMailSender mailSender;
+- 메일전송 코드 작성
+MimeMessage message = mailSender.createMimeMessage();
+MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
+
+messageHelper.setFrom("보내는이메일");
+messageHelper.setTo("받는이메일");
+messageHelper.setSubject("제목");
+messageHelper.setText("내용");
+			
+mailSender.send(message);
+
+

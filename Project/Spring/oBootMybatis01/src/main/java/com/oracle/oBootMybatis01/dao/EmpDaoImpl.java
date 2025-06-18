@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.oracle.oBootMybatis01.dto.Dept;
 import com.oracle.oBootMybatis01.dto.Emp;
+import com.oracle.oBootMybatis01.dto.EmpDept;
 
 import lombok.RequiredArgsConstructor;
 
@@ -137,5 +138,19 @@ public class EmpDaoImpl implements EmpDao {
 		}
 		
 		return listSearchEmp;
+	}
+
+	@Override
+	public List<EmpDept> listEmpDept() {
+		List<EmpDept> listEmpDept = null;
+		
+		try {
+			listEmpDept = session.selectList("tkListEmpDeptL");
+			System.out.println("tkListEmpDept 성공");
+		} catch (Exception e) {
+			System.out.println("tkListEmpDept 실패");
+		}
+		
+		return listEmpDept;
 	}
 }

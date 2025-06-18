@@ -11,6 +11,7 @@
 	<h3>사원 수 : ${totalEmp }</h3>
 
 	<a href="writeFormEmp">writeFormEmp 입력</a>
+	<p />
 	<a href="writeFormEmp3">writeFormEmp3 입력(Validation)</a>
 	<p />
 	<form action=""></form>

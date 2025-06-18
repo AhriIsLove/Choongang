@@ -1,7 +1,10 @@
 package com.oracle.oBootMybatis01.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,10 +14,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.oracle.oBootMybatis01.dto.Dept;
+import com.oracle.oBootMybatis01.dto.DeptVO;
 import com.oracle.oBootMybatis01.dto.Emp;
+import com.oracle.oBootMybatis01.dto.EmpDept;
 import com.oracle.oBootMybatis01.service.EmpService;
 import com.oracle.oBootMybatis01.service.Paging;
 
+import jakarta.mail.internet.MimeMessage;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +33,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Slf4j
 public class EmpController {
 	private final EmpService es;
+	// MIME(영어: Multipurpose Internet Mail Extensions)는 전자 우편을 위한 인터넷 표준 포맷
+	private final JavaMailSender mailSender;
 
 	@RequestMapping("/listEmpStart")
 	public String listEmpStart(Emp emp, Model model) {
@@ -249,5 +257,86 @@ public class EmpController {
 		model.addAttribute("listEmp", listSearchEmp);
 
 		return "list";
+	}
+
+	@GetMapping("/listEmpDept")
+	public String listEmpDept(Model model) {
+		// Service ,DAO -> listEmpDept
+		// Mapper만 ->EmpDept.xml(tkListEmpDept)
+		List<EmpDept> listEmpDept = es.listEmpDept();
+		model.addAttribute("listEmpDept", listEmpDept);
+		
+		return "listEmpDept";
+	}
+	
+	@RequestMapping("/mailTransport")
+	public String mailTransport(HttpServletRequest request, Model model) {
+		System.out.println("mailTransport 1");
+		String toMail = "dgan123@naver.com";
+		String fromMail = "ahrilove1214@gmail.com";
+		String title = "mailTransport 제목";
+		
+		try {
+			MimeMessage message = mailSender.createMimeMessage();
+			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
+			System.out.println("mailTransport 2");
+			messageHelper.setFrom(fromMail);
+			messageHelper.setTo(toMail);
+			messageHelper.setSubject(title);
+			String tempPassword = (int)(Math.random() * 999999) + 1 + "";
+			messageHelper.setText("임시 비밀번호 : " + tempPassword);
+
+			System.out.println("mailTransport 3");
+			
+			mailSender.send(message);
+			model.addAttribute("check", 1);
+		} catch (Exception e) {
+			System.out.println("mailTransport Exception : " + e.getMessage());
+			model.addAttribute("check", 2);
+		}
+		
+		return "mailResult";
+	}
+	
+	@RequestMapping("/writeDeptIn")
+	public String writeDeptIn(Model model) {
+		
+		
+		return "writeDept3";
+	}
+	
+	@PostMapping("/writeDept")
+	public String writeDept(DeptVO deptVO, Model model) {
+		es.insertDept(deptVO);
+		if(deptVO == null) {
+			System.out.println("deptVO null");
+		}
+		else {
+			System.out.println("deptVO.getOdeptno" + deptVO.getOdeptno());
+			System.out.println("deptVO.getOdname" + deptVO.getOdname());
+			System.out.println("deptVO.getOloc" + deptVO.getOloc());
+			model.addAttribute("msg", "정상 입력 ^^7");
+			model.addAttribute("dept", deptVO);
+		}
+		
+		return "writeDept3";
+	}
+	
+	// Map 적용
+	@GetMapping("/writeDeptCursor")
+	public String writeDeptCursor(Model model) {
+		// 부서범위 조회
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("sDeptno",10);//부서범위 시작
+		map.put("eDeptno",50);//부서범위 끝
+		
+		es.selListDept(map);
+		List<Dept> deptLists = (List<Dept>) map.get("dept");
+		for(Dept dept : deptLists) {
+			System.out.println("dept : " + dept);
+		}
+		model.addAttribute("deptList", deptLists);
+		
+		return "writeDeptCursor";
 	}
 }

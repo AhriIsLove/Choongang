@@ -1,5 +1,6 @@
 package com.oracle.oBootMybatis01.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -8,7 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.oracle.oBootMybatis01.dao.DeptDao;
 import com.oracle.oBootMybatis01.dao.EmpDao;
 import com.oracle.oBootMybatis01.dto.Dept;
+import com.oracle.oBootMybatis01.dto.DeptVO;
 import com.oracle.oBootMybatis01.dto.Emp;
+import com.oracle.oBootMybatis01.dto.EmpDept;
 
 import lombok.RequiredArgsConstructor;
 
@@ -92,5 +95,23 @@ public class EmpServiceImpl implements EmpService {
 		List<Emp> listSearchEmp = ed.listSearchEmp(pEmp);
 		
 		return listSearchEmp;
+	}
+
+	
+	@Override
+	public List<EmpDept> listEmpDept() {
+		List<EmpDept> listEmpDept = ed.listEmpDept();
+		
+		return listEmpDept;
+	}
+
+	@Override
+	public void insertDept(DeptVO deptVO) {
+		dd.insertDept(deptVO);
+	}
+
+	@Override
+	public void selListDept(HashMap<String, Object> map) {
+		dd.selListDept(map);
 	}
 }

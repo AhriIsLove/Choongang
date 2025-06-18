@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.oracle.oBootMybatis01.dto.Dept;
 import com.oracle.oBootMybatis01.dto.Emp;
+import com.oracle.oBootMybatis01.dto.EmpDept;
 
 public interface EmpDao {
 	int totalEmp();
@@ -23,4 +24,6 @@ public interface EmpDao {
 	int condTotalEmp(Emp pEmp);
 
 	List<Emp> listSearchEmp(Emp pEmp);
+
+	List<EmpDept> listEmpDept();
 }
