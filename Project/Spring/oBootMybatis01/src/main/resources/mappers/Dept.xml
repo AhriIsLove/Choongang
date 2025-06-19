@@ -38,4 +38,14 @@
 		)
 	}
 	</select>
+<!-- 	DeptResult 선언 없이 받기 포기! -->
+<!-- 	<select id="procDeptList2" parameterType="java.util.Map" resultType="Dept" statementType="CALLABLE"> -->
+<!-- 	{ -->
+<!-- 		call Dept_Cursor3( -->
+<!-- 			#{sDeptno, mode=IN, jdbcType=INTEGER},  -->
+<!-- 			#{eDeptno, mode=IN, jdbcType=INTEGER},  -->
+<!-- 			#{dept, mode=OUT, 	jdbcType=CURSOR, javaType=java.sql.ResultSet, resultType=Dept} -->
+<!-- 		) -->
+<!-- 	} -->
+<!-- 	</select> -->
 </mapper>

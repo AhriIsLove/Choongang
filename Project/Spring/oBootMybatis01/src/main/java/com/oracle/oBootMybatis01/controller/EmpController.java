@@ -17,6 +17,7 @@ import com.oracle.oBootMybatis01.dto.Dept;
 import com.oracle.oBootMybatis01.dto.DeptVO;
 import com.oracle.oBootMybatis01.dto.Emp;
 import com.oracle.oBootMybatis01.dto.EmpDept;
+import com.oracle.oBootMybatis01.dto.Member1;
 import com.oracle.oBootMybatis01.service.EmpService;
 import com.oracle.oBootMybatis01.service.Paging;
 
@@ -245,13 +246,13 @@ public class EmpController {
 		int condEmp = es.condTotalEmp(pEmp);
 		System.out.println("listSearch3.condEmp : " + condEmp);
 		model.addAttribute("totalEmp", condEmp);
-		
+
 		// 2. Paging 작업
 		Paging page = new Paging(condEmp, pEmp.getCurrentPage());
 		pEmp.setStart(page.getStart());
 		pEmp.setEnd(page.getEnd());
 		model.addAttribute("page", page);
-		
+
 		// 3. listSearchEmp
 		List<Emp> listSearchEmp = es.listSearchEmp(pEmp);
 		model.addAttribute("listEmp", listSearchEmp);
@@ -265,17 +266,17 @@ public class EmpController {
 		// Mapper만 ->EmpDept.xml(tkListEmpDept)
 		List<EmpDept> listEmpDept = es.listEmpDept();
 		model.addAttribute("listEmpDept", listEmpDept);
-		
+
 		return "listEmpDept";
 	}
-	
+
 	@RequestMapping("/mailTransport")
 	public String mailTransport(HttpServletRequest request, Model model) {
 		System.out.println("mailTransport 1");
 		String toMail = "dgan123@naver.com";
 		String fromMail = "ahrilove1214@gmail.com";
 		String title = "mailTransport 제목";
-		
+
 		try {
 			MimeMessage message = mailSender.createMimeMessage();
 			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
@@ -283,60 +284,116 @@ public class EmpController {
 			messageHelper.setFrom(fromMail);
 			messageHelper.setTo(toMail);
 			messageHelper.setSubject(title);
-			String tempPassword = (int)(Math.random() * 999999) + 1 + "";
+			String tempPassword = (int) (Math.random() * 999999) + 1 + "";
 			messageHelper.setText("임시 비밀번호 : " + tempPassword);
 
 			System.out.println("mailTransport 3");
-			
+
 			mailSender.send(message);
 			model.addAttribute("check", 1);
 		} catch (Exception e) {
 			System.out.println("mailTransport Exception : " + e.getMessage());
 			model.addAttribute("check", 2);
 		}
-		
+
 		return "mailResult";
 	}
-	
+
 	@RequestMapping("/writeDeptIn")
 	public String writeDeptIn(Model model) {
-		
-		
+
 		return "writeDept3";
 	}
-	
+
 	@PostMapping("/writeDept")
 	public String writeDept(DeptVO deptVO, Model model) {
 		es.insertDept(deptVO);
-		if(deptVO == null) {
+		if (deptVO == null) {
 			System.out.println("deptVO null");
-		}
-		else {
+		} else {
 			System.out.println("deptVO.getOdeptno" + deptVO.getOdeptno());
 			System.out.println("deptVO.getOdname" + deptVO.getOdname());
 			System.out.println("deptVO.getOloc" + deptVO.getOloc());
 			model.addAttribute("msg", "정상 입력 ^^7");
 			model.addAttribute("dept", deptVO);
 		}
-		
+
 		return "writeDept3";
 	}
-	
+
 	// Map 적용
 	@GetMapping("/writeDeptCursor")
 	public String writeDeptCursor(Model model) {
 		// 부서범위 조회
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("sDeptno",10);//부서범위 시작
-		map.put("eDeptno",50);//부서범위 끝
-		
+		map.put("sDeptno", 10);// 부서범위 시작
+		map.put("eDeptno", 50);// 부서범위 끝
+
 		es.selListDept(map);
 		List<Dept> deptLists = (List<Dept>) map.get("dept");
-		for(Dept dept : deptLists) {
+		for (Dept dept : deptLists) {
 			System.out.println("dept : " + dept);
 		}
 		model.addAttribute("deptList", deptLists);
-		
+
 		return "writeDeptCursor";
+	}
+
+	// 1. interceptor 시작화면
+	@RequestMapping("/interCeptorForm")
+	public String interCeptorForm(Model model) {
+		System.out.println("interCeptorForm S");
+
+		System.out.println("interCeptorForm E");
+		return "interCeptorForm";
+	}
+
+	// 2번 인터셉터
+	@RequestMapping("/interCeptor")
+	public String interCeptor(Member1 member1, Model model) {
+		System.out.println("interCeptor S" + member1.getId());
+
+		// 존재 : 1
+		// 비존재 : 0
+		int memCnt = es.memCount(member1.getId());
+		System.out.println("interCeptor memCnt : " + memCnt);
+
+		model.addAttribute("id", member1.getId());
+		model.addAttribute("memCnt", memCnt);
+
+		System.out.println("interCeptor E");
+		return "interCeptor";
+	}
+
+	// SampleInterceptor내용을 받아서 처리 case1
+	@RequestMapping("/doMemberWrite")
+	public String doMemberWrite(Model model, HttpServletRequest request) {
+		String ID = (String) request.getSession().getAttribute("ID");
+		System.out.println("doMemberWrite o((>ω< ))o ");
+		model.addAttribute("id", ID);
+
+		return "doMemberWrite";
+	}
+
+	// SampleInterceptor내용을 받아서 처리 case2
+	@RequestMapping("/doMemberList")
+	public String doMemberList(Model model, HttpServletRequest request) {
+		System.out.println("doMemberList o((>ω< ))o ");
+		String ID = (String) request.getSession().getAttribute("ID");
+		
+		// Member1 List Get Service
+		// Service,  --> listMem(EmpService es)
+		//  DAO      --> listMem(Member1DaoImpl)
+		// Mapper --> listMember1(Member1)
+		Member1 member1 = new Member1();
+		member1.setId(ID);
+		List<Member1> listMem = es.listMem(member1);
+		
+		model.addAttribute("ID", ID);
+		model.addAttribute("listMem", listMem);
+
+		System.out.println("doMemberList o((>ω< ))o 123");
+		
+		return "doMemberList";
 	}
 }

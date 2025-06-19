@@ -8,10 +8,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.oracle.oBootMybatis01.dao.DeptDao;
 import com.oracle.oBootMybatis01.dao.EmpDao;
+import com.oracle.oBootMybatis01.dao.Member1Dao;
 import com.oracle.oBootMybatis01.dto.Dept;
 import com.oracle.oBootMybatis01.dto.DeptVO;
 import com.oracle.oBootMybatis01.dto.Emp;
 import com.oracle.oBootMybatis01.dto.EmpDept;
+import com.oracle.oBootMybatis01.dto.Member1;
 
 import lombok.RequiredArgsConstructor;
 
@@ -21,6 +23,7 @@ public class EmpServiceImpl implements EmpService {
 
 	private final EmpDao ed;
 	private final DeptDao dd;
+	private final Member1Dao md;
 	
 	@Override
 	public int totalEmp() {
@@ -113,5 +116,18 @@ public class EmpServiceImpl implements EmpService {
 	@Override
 	public void selListDept(HashMap<String, Object> map) {
 		dd.selListDept(map);
+	}
+
+	@Override
+	public int memCount(String id) {
+		int result = md.memCount(id);
+		
+		return result;
+	}
+
+	@Override
+	public List<Member1> listMem(Member1 member1) {
+		List<Member1> listMem = md.listMem(member1);
+		return listMem;
 	}
 }

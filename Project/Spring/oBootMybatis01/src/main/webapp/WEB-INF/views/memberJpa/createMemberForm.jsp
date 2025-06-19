@@ -8,6 +8,7 @@
 <body>
 	<h1>Mybatis JPA 회원 등록</h1>
 	<div class="container">
+		<%-- ${pageContext.request.contextPath } : src/main/webapp/WEB-INF/views --%>
 		<form action="${pageContext.request.contextPath }/memberJpa/save" method="post">
 			ID :
 			<input type="text" id="id" name="id" required="required">
@@ -20,7 +21,7 @@
 			<p />
 			<button type="submit">등록</button>
 		</form>
-		<a href="/members">JPA Member List 조회</a>
+		<a href="/memberJpa/members">JPA Member List 조회</a>
 		<p />
 	</div>
 </body>
