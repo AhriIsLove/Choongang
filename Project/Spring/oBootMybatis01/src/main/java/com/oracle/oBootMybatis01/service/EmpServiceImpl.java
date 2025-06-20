@@ -130,4 +130,10 @@ public class EmpServiceImpl implements EmpService {
 		List<Member1> listMem = md.listMem(member1);
 		return listMem;
 	}
+
+	@Override
+	public String deptName(int deptno) {
+		String deptName = dd.deptName(deptno);
+		return deptName;
+	}
 }

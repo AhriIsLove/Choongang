@@ -41,4 +41,10 @@ public class DeptDaoImpl implements DeptDao {
 		session.selectOne("procDeptList", map);
 	}
 
+	@Override
+	public String deptName(int deptno) {
+		String deptName = session.selectOne("deptName", deptno);
+		return deptName;
+	}
+
 }

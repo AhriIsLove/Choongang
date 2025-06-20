@@ -26,7 +26,7 @@ spring:
     host: smtp.gmail.com
     port: 587
     username: ahrilove1214@gmail.com
-    password: **** **** **** ****
+    password: bcmr xywj synk vdmq
     properties:
       mail:
         smtp:

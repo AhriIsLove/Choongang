@@ -70,7 +70,7 @@
 - JDBC API, Spring Web, Oracle Driver, Lombok, Spring Data JPA
 ○ oBootJpaApi01 : RestAPI, Lambda
 - JDBC API, Lombok, Oracle Driver, Spring Data JPA, Spring Web, Validation
-○ oBootBybatis01 : MyBatis, Validation, Join, Mail, Procedure(Cursor), Interceptor, Optional
+○ oBootBybatis01 : MyBatis, Validation, Join, Mail, Procedure(Cursor), Interceptor, Optional, Img Upload, Ajax
 - JDBC API, Lombok, Oracle Driver, Spring Data JPA, Spring Web, Validation, Java Mail Sender, Spring Security
 
 

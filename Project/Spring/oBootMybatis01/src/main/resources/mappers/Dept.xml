@@ -48,4 +48,8 @@
 <!-- 		) -->
 <!-- 	} -->
 <!-- 	</select> -->
+
+	<select id="deptName" parameterType="int" resultType="String">
+		SELECT dname FROM dept WHERE deptno = #{deptno}
+	</select>
 </mapper>
