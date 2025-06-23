@@ -67,7 +67,6 @@ public class AjaxController {
 		return resultMap;
 	}
 
-	// Ajax List Test
 	@RequestMapping("/listEmpAjaxForm2")
 	public String listEmpAjaxForm2(Model model) {
 		Emp emp = new Emp();
@@ -79,5 +78,66 @@ public class AjaxController {
 		model.addAttribute("listEmp", listEmp);
 
 		return "listEmpAjaxForm2";
+	}
+
+	@RequestMapping("/empnoDelete")
+	@ResponseBody
+	public String empnoDelete(Emp emp) {
+		int delStatus = es.deleteEmp(emp.getEmpno());
+		String delStatusStr = Integer.toString(delStatus);
+		return delStatusStr;
+	}
+
+	@RequestMapping("/empnoDelete03")
+	@ResponseBody
+	public Map<String, Object> empnoDelete03(Emp emp) {
+		int delStatus = es.deleteEmp(emp.getEmpno());
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("delStatus", delStatus);
+		return resultMap;
+	}
+
+	@RequestMapping("/listEmpAjaxForm3")
+	public String listEmpAjaxForm3(Model model) {
+		Emp emp = new Emp();
+		// 10명만 데려온다.
+		emp.setStart(1);
+		emp.setEnd(15);
+
+		List<Emp> listEmp = es.listEmp(emp);
+		model.addAttribute("result", "kkk");
+		model.addAttribute("listEmp", listEmp);
+
+		return "listEmpAjaxForm3";
+	}
+	
+	@RequestMapping("/empListUpdate")
+	@ResponseBody
+	public Map<String, Object> empListUpdate(@RequestBody @Valid List<Emp> listEmp) {
+		int updateResult = 0;
+		
+		for(Emp emp : listEmp) {
+			System.out.println("emp : " + emp);
+			
+//			updateResult = es.listUpdateEmp(emp);
+			updateResult = 1;
+		}
+		
+		Map<String, Object> response = new HashMap<>();
+		response.put("updateResult", updateResult);
+		return response;
+	}
+	
+	@RequestMapping("/transactionInsertUpdate")
+	@ResponseBody
+	public String transactionInsertUpdate(Emp emp, Model model) {
+		System.out.println("transactionInsertUpdate S");
+		int returnMember = 0;
+		
+		returnMember = es.transactionInsertUpdate();
+		
+		System.out.println("transactionInsertUpdate E : " + returnMember);
+		String returnMemberString = String.valueOf(returnMember);
+		return returnMemberString;
 	}
 }

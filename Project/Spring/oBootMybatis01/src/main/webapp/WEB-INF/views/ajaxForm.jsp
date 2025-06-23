@@ -22,5 +22,7 @@
 	<p />
 	<a href="/listEmpAjaxForm2">listEmpAjaxForm2(Ajax JSP 객체리스트 Get)</a>
 	<p />
+	<a href="/listEmpAjaxForm3">listEmpAjaxForm3(Ajax List를 Controller로 전송)</a>
+	<p />
 </body>
 </html>

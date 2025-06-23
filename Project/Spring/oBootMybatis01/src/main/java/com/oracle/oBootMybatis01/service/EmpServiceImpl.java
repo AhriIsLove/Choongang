@@ -136,4 +136,15 @@ public class EmpServiceImpl implements EmpService {
 		String deptName = dd.deptName(deptno);
 		return deptName;
 	}
+
+	@Override
+	public int transactionInsertUpdate() {
+		System.out.println("transactionInsertUpdate (SERVICE) S");
+		System.out.println("transactionInsertUpdate (SERVICE) E");
+		//transaction X
+//		return md.transactionInsertUpdate();
+		
+		//transaction O
+		return md.transactionInsertUpdate3();
+	}
 }

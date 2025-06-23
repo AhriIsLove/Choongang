@@ -119,7 +119,7 @@ function jsonParse(pSendData){
 	<h2>Serialize Test</h2>
 	<form name="empTrans" id="empTrans">
 		<input type="hidden" id="empno" name="empno" value="1234">
-		<input type="hidden" id="ename" name="ename" value="시리얼">
+		<input type="hidden" id="ename" name="ename" value="시리얼(직렬)">
 		<input type="hidden" id="sal" name="sal" value="1000">
 		<input type="button" value="Ajax Serialize 확인" onclick="empWriteBtn()">
 	</form>

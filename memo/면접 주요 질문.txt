@@ -538,20 +538,14 @@ WHEN NOT MATCHED THEN ~
 - Spring
 
 ○ Spring
-- 구조
--- Core : IoC(Inversion of Control), DI(Dependency Injection), DDD 기반의 디자인패턴
+- 핵심기술
+-- DI(Dependency Injection) : 객체가 필요한 다른 객체를 직접 만들지 않고, 외부에서 '주입'받아서 사용하는 방식
 -- Spring MVC : MVC2를 총괄하는 DispatcherServlet이 존재
 -- AOP(Aspect-Oriented Programming) : 프록시기반의 인프라
--- ORM
--- DAO
-
-○ SpringBoot의 프로젝트 템플릿
-- Gradle
--- 사용 툴 : SpringBoot, Android
--- 환경설정파일 : build.gradle
-- Maven
--- 사용 툴 : SpringBoot, Spring
--- 환경설정파일 : pom.xml
+-- ORM(Object RelationDB Mapping) : 객체 DB 맵핑
+- 구조
+-- Core : IoC(Inversion of Control), DI, DDD 기반의 디자인패턴
+○ AOP : 핵심 비즈니스 로직(로그인, 판매/구매)과 공통 관심사(로깅, 보안 등)를 분리해서 코드의 중복을 줄이고 모듈화하는 프로그래밍 패러다임
 
 ○ ORM(Object Relational Mapping) : 객체와 RDB를 Mapping 하는 기술(JDBC 내장)
 - JPA(Java Persistence API) : 자바 ORM 기술 표준
@@ -574,11 +568,17 @@ WHEN NOT MATCHED THEN ~
 -- 객체 접근
 -- JPA(Entity)
 
-○ MSA(마이크로 서비스 아키텍처) : 프로젝트의 모듈화...
+○ SpringBoot의 프로젝트 템플릿
+- Gradle
+-- 사용 툴 : SpringBoot, Android
+-- 환경설정파일 : build.gradle
+- Maven
+-- 사용 툴 : SpringBoot, Spring
+-- 환경설정파일 : pom.xml
 
 ○ Rest API(REpresentational State Transfer API) : resource에 고유한 URI를 부여해서 활용 하는 API
 - 특징
--- MSA : 클라이언트-서버 구조
+-- MSA(마이크로 서비스 아키텍처) : 클라이언트-서버 구조 : 서버를 API로만 구성
 -- JWT(Json Web Token) : 무상태성(매번 
 -- 캐시 : *블로그 참조*
 -- 계층화 : *블로그 참조*

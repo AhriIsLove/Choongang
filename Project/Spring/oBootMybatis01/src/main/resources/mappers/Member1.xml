@@ -10,4 +10,13 @@
 <!-- 		SELECT * FROM member1 WHERE id = #{id} -->
 		SELECT * FROM member1
 	</select>
+	
+	<insert id="insertMember1" parameterType="Member1">
+		INSERT INTO member1(id, password, name) 
+			VALUES (
+				#{id}, 
+				#{password}, 
+<!-- 				null값 삽입시 에러 발생 : type 지정으로 null값 부여 가능 -->
+				#{name, jdbcType=VARCHAR})
+	</insert>
 </mapper>

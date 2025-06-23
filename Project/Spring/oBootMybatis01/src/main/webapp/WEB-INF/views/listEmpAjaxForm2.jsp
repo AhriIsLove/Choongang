@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript">
 function getEmpnoDelete(pIndex)  {
 	// url    -> empnoDelete(EmpRestController)
@@ -15,20 +16,20 @@ function getEmpnoDelete(pIndex)  {
 	var selEname =   $("#ename"+pIndex).val();
 	
     // 결과를 text로 받음 
-	$.ajax({
-		url:"/empnoDelete",
-		data:{  empno : selEmpno 
-			  , ename : selEname
-			 },
-		dataType:'text',
-		success:function(data){
-			alert(".ajax getDeptDelete data->"+data); 
-			if (data == '1') {
-				// 성공하면 아래라인 수행 --> Delete Tag 
-				$('#emp'+pIndex).remove();     
-			}
-		}
-	});
+// 	$.ajax({
+// 		url:"/empnoDelete",
+// 		data:{  empno : selEmpno 
+// 			  , ename : selEname
+// 			 },
+// 		dataType:'text',
+// 		success:function(data){
+// 			alert(".ajax getDeptDelete data->"+data); 
+// 			if (data == '1') {
+// 				// 성공하면 아래라인 수행 --> Delete Tag 
+// 				$('#emp'+pIndex).remove();     
+// 			}
+// 		}
+// 	});
 	// 결과를 객체로 받음 
 	$.ajax({
 		url:"/empnoDelete03",
@@ -42,6 +43,32 @@ function getEmpnoDelete(pIndex)  {
 				// 성공하면 아래라인 수행 
 				$('#emp'+pIndex).remove();/*  Delete Tag */
 			}
+		}
+	});
+}
+
+function getListDept(){
+	var str = "";//<select>생성 str
+	var str2 = "";//<option>생성 str
+	
+	$.ajax({
+		url:"/sendVO3",
+		dataType:'json',
+		success:function(deptList){
+			//json -> string
+			var jsonStr = JSON.stringify(deptList);
+// 			console.log(jsonStr);
+// 			$('#dept_list_str').append(jsonStr);
+			//콤보박스로 생성
+			str += "<select name = 'dept'";
+			$(deptList).each(function(){
+				str2 = "<option value='"+this.deptno+"'>"+this.dname+"</option>";
+				str += str2;
+			})
+			str += "</select><p/>"
+			//id가 dept_list_combobox인 div태그에 추가
+			//.html(str)은 덮어쓰기
+			$('#dept_list_combobox').append(str);
 		}
 	});
 }
