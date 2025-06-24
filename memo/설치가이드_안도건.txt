@@ -459,8 +459,32 @@
 -- Line width 설정(150)
 -- <p>태그는 <p/>로 닫아주기
 
-32. node.js 설치
-32-1. 설치파일 실행
+32. Intellij-SpringBoot 연동
+32-1. SpringBoot 설치
+○ https://start.spring.io/
+- ADD DEPENDENCIES... 로 라이브러리 추가
+-- Spring Web : 웹 개발 기본
+-- Spring Boot DevTools : Spring 개발 도구
+-- Spring Data JPA : Database 연동
+-- Spring Security : 보안*
+-- OAuth2 Client : 소셜 로그인*
+-- Lombok
+-- Validation : 데이터 유효성 검사
+-- Oracle Driver : 오라클DB 연동
+- GENERATE
+○ intellij에서 불러오기
+- 생성한 압축파일 풀기
+- 좌상단 - 파일 - 열기 - 폴더선택
+- 우상단 - 톱니바퀴 - 플러그인 - 필요한 라이브러리 추가
+-- Lombok
+-- .ignore
+○ 빌드 환경 설정
+- 디버그 버튼 옆 '현재 파일 V' - 구성 편집... - 새 항목 추가... - 애플리케이션
+-- 모듈 선택(jdk-17)
+-- 메인 선택(src/main/java/.../Application)
+
+33. node.js 설치
+33-1. 설치파일 실행
 ○ node-v22.13.0-x64.msi
 - Next - Next - Next - Next - Automaically ... 체크 - Next - Install - Finish
 ○ Install Additional Tools for No...(자동실행)
@@ -471,21 +495,21 @@
 - cmd - 'node -- version'
 - cmd - 'npm -- version'
 
-33. VisualStudioCode 설치
-33-1. 설치파일 실행
+34. VisualStudioCode 설치
+34-1. 설치파일 실행
 ○ VSCodeUserSetup-x64-1.90.2.exe
 - 다음(N) > - 다음(N) > - 다음(N) > - 다음(N) > - 설치(I) - 종료(F)
 
-34. VisualStudioCode Plug-In 설치
-34-1. Simple React Snippets
+35. VisualStudioCode Plug-In 설치
+35-1. Simple React Snippets
 ○ 좌측 배너 - EXTENSIONS
 - 'Simple React Snippets' 검색 - 'Simple React Snippets' Install
-34-2. Tailwind CSS IntelliSense
+35-2. Tailwind CSS IntelliSense
 ○ 좌측 배너 - EXTENSIONS
 - 'Tailwind CSS IntelliSense' 검색 - 'Tailwind CSS IntelliSense' Install
 
-35. React 설치
-35-1. React 설치
+36. React 설치
+36-1. React 설치
 ○ 프로젝트 생성할 경로로 이동
 - cmd - cd C:\react\Sources
 ○ yarn 설치
@@ -495,10 +519,10 @@
 -- 'npm install -g npm@11.4.2'
 ○ react 프로젝트 생성
 - 'yarn create react-app todo01'
-35-2. React 프로젝트 열기
+36-2. React 프로젝트 열기
 ○ VSCode에서 React 프로젝트 열기
 - File - Open Folder... - todo01 폴더 선택
-35-3. Tailwind CSS 설치
+36-3. Tailwind CSS 설치
 ○ 프로젝트 생성할 경로로 이동
 - cmd - cd C:\react\Sources
 ○ Tailwind CSS 설치
