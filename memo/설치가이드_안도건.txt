@@ -1,0 +1,540 @@
+1. JDK(자바 개발 키트) 설치
+1-1. jdk-17_windows-x64_bin.msi 실행
+1-2. 설치 확인
+○ cmd에 java
+1-3. 시스템 변수(환경 변수) 추가
+○ 변수 이름 : JAVA_HOME
+○ 변수 값 : C:\Program Files\Java\jdk-17
+1-4. 시스템 변수(환경 변수) 편집 : Path
+○ %JAVA_HOME%\bin\ 추가
+
+2. eclipse(이클립스) 설치
+2-1. eclipse-inst-jre-win64.exe 실행
+○ 2번항목 : Eclipse IDE for Enterprise Java and Web Developers 설치
+2-2. workspace 경로 설정
+○ C:\Java Programming\Sources 으로 설정
+2-3. Java 기본 환경으로 변경
+○ 우상단의 Open Perspective에서 Java EE 에서 Java로 변경
+2-4. 콘솔 창 추가
+○ 좌상단의 메뉴 - Window - Show View - Console
+
+3. Intellij 설치
+3-1. IntelliJ IDEA Community Edition 설치
+○ ideaIC-2024.3.5.exe
+○ https://www.jetbrains.com/ko-kr/idea/download/?section=windows#section=windows
+
+4. Oracle 설치
+4-1. OracleXE112_Win64\DISK\setup.exe 설치
+4-2. Password 입력(oracle)
+4-3. 설치확인
+○ C\oraclexe 폴더 확인
+○ cmd - sqlplus system/oracle
+- sqlplus 계정명/비밀번호
+
+5. SQLDeveloper 설치
+5-1. sqldeveloper-20.4.1.407.0006-x64\sqldeveloper\sqldeveloper.exe 설치
+○ 절대경로가 길어지면 안되는 경우가 있다고하여 간단한 경로에 옮겨서(sqldeveloper폴더) 실행하는것을 추천
+5-2. '환경설정 임포트 확인'에서 '아니오'선택
+
+6. SQLDeveloper - Oracle 연결 설정
+6-1. 좌상단 '접속'그룹에서 'Oracle 접속' 우클릭 - '새 접속'
+6-2. '새로 만들기/데이터베이스 접속 선택'에서 설정 값 입력
+○ Name : system
+○ 사용자 이름(U) : system
+○ 비밀번호(P) : oracle
+6-3. '접속'하여 생성
+
+7. 사용자 생성
+7-1. 좌상단 '접속'그룹에서 'system'선택 후 'SQL 워크시트(ALT+F10)' 선택
+7-2. 사용자 생성 : "create USER scott Identified by tiger;" ('scott'이름과 'tiger'비밀번호로)
+7-3. 권한 부여 : "GRANT DBA To scott;"
+7-4. 새로운 사용자로 '새 접속'
+○ Name : scott
+○ 사용자 이름(U) : scott
+○ 비밀번호(P) : tiger
+
+8. Eclipse-Oracle 연결 설정
+8-1. C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib\ojdbc6.jar의 파일 원하는 경로에 복사
+8-2. 이클립스 프로젝트에 경로추가
+○ 프로젝트 우클릭 - Build Path - Add External Archives... - ojdbc6.jar선택 - Apply
+○ 프로젝트 우클릭 - Build Path - Configure Build Path - Libraries탭 - Modulepath선택 - Add External JARs...선택 - ojdbc6.jar선택 - Apply
+- 이론상 완료, 오류가 난다면
+○ 이클립스 재실행
+○ Add 'requires java.sql' to module-info.java로 module-info.java에 requires java.sql 추가
+- 이래도 안된다면
+○ module-info.java 삭제
+
+9. MySQL 설치
+9-1. mysql-8.4.0-winx64.msi 설치
+9-2. Typical 선택 후 Install 진행
+9-3. MySQL Root Password입력
+○ mysql84
+
+10. MySQL workbench 설치
+10-1. mysql-workbench-community-8.0.36-winx64.msi 설치
+10-2. MySQL Connections의 Local instance MySQL84 선택
+○ Password입력 : mysql84
+○ 자동로그인 선택
+
+11. MySQL DB생성
+11-1. 스키마 생성
+○ Schemas 그룹에서 우클릭 'Create Schema...'
+○ 'scottdb'
+11-2. 기본 스키마 설정
+○ 생성된 'scottdb' 우클릭 'Set as Default Schema'
+
+12. 이클립스-MySQL 연결
+12-1. mysql-connector-j-8.0.33.jar(드라이버 파일) 원하는 위치에 복사
+12-2. 프로젝트 우클릭 - Build Path - Add External Archives... - mysql-connector-j-8.0.33.jar선택 - Apply
+
+13. postgresql 설치
+13-1. postgresql-17.0-1-windows-x64.exe 설치
+13-2. Password 입력
+○ 'postgre'
+13-3. Port 입력
+○ 5432
+13-4. Locale 입력
+○ Korean, Korea
+13-5. Stack Builder에서 'PostgreSQL ~ on port 5432' 선택
+13-6. Add-ons, tools and utilities 선택
+○ pgAgent (64bit) for PostgreSQL 17
+13-7. Database Drivers 선택
+○ psqlODBC (64bit) v13.02.0000-1
+13-8. Database Server 선택
+○ PostgreSQL (64bit) v17.4-2
+13-9. EnterpriseDB Tools 선택
+○ Postgres Enterprise Manager Agent v10.0.0-1
+○ Postgres Enterprise Manager Server v9.8.0-1
+13-10. Setup PEM Server 'Cancel'
+13-10. Setup PEM Agent 'Cancel'
+13-11. Setup pgAgent 'Cancel'
+13-12. Setup psqlodbc 'Cancel'
+13-13. Setup PostgreSQL 'Cancel'
+
+14. postgre 환경 설정
+14-1. 시작 - 'Pgadmin 4' 실행
+14-2. 좌측 Object Explorer의 Server 더블클릭
+○ 비밀번호 입력 'postgre'
+14-3. 좌측 Object Explorer 옆 'Query Tool'아이콘 클릭
+14-4. SQL 시작
+
+15. postgre 이클립스 연결
+15-1. Oracle, MySQL과 동일하게 진행
+○ 'postgresql-42.7.3.jar'파일만 다름
+
+16. EX-ERD 설치
+16-1. 'eXERD_Installer_v2.3.1.01.exe' 실행
+16-2. 작업공간 설정하기
+○ 'C:\exerd' 폴더 생성 후 작업공간으로 경로 지정
+
+17. EX-ERD의 ERD를 오라클에 Import(엔지니어링)
+17-1. 상단 메뉴의 'eXERD' - '포워드 엔지니어링' 선택
+○ '이름 앞에 스키마 표시' 항목 선택 해제
+17-2. 연결 설정 생성
+○ 설정 관리 - 새 연결 - 'Oracle 9i/10g/11g/12c' 선택
+- 이름 : scott5
+- JDBC 드라이버 선택 : ojdbc6.jar
+- 호스트 : localhost
+- SID : xe
+- 사용자 : scott5
+- 비밀번호 : tiger
+○ 연결 설정
+- 연결 테스트 후 완료
+
+18. 오라클의 ERD를 EX-ERD로 Export(리버스 엔지니어링)
+18-1. 상단 메뉴의 'eXERD' - '리버스 엔지니어링' 선택
+18-2. 연결 설정 생성
+○ 설정 관리 - 새 연결 - 'Oracle 9i/10g/11g/12c' 선택
+- 이름 : scott
+- JDBC 드라이버 선택 : ojdbc6.jar
+- 호스트 : localhost
+- SID : xe
+- 사용자 : scott
+- 비밀번호 : tiger
+○ 연결 설정
+- 연결 테스트 후 완료
+○ 옵션 설정
+- 가져오고 싶은 항목 선택 후 완료
+
+19. 톰캣 설치
+19-1. apache-tomcat-10.1.17.exe 실행
+○ Configuration 설정
+- Server Shutdown Port : 8139
+- HTTP/1.1 Connector Port : 8181
+- UserName : tomcat
+- Password : tomcat
+○ jdk연동
+- C:\Program Files\Java\jdk-17
+○ 톰캣 중지
+- 자동시작 체크 해제 OR 우하단 트레이아이콘에서 톰캣을 열고 Stop버튼을 눌러 서비스를 멈춘다.
+
+20. 이클립스 - 톰캣 연동
+20-1. 이클립스 : 원하는 폴더 경로 설정
+○ 'Browse...' 선택 후 C:\JSP\Sources
+20-2. 이클립스 : 'JAVA EE'로 설정
+○ 우상단의 툴바에서 'Open Perspective'로 'JAVA EE' 선택하여 설정
+20-3. 이클립스에서 톰캣 서버 생성
+○ 하단의 Servers 탭에서 'No servers are available. Click this link to create a new server...' 선택하여 서버 생성
+- 'Apache' 폴더의 'Tomcat v10.1 Server' 선택 후 Next
+- 'Browse...'선택하여 Tomcat 실행 폴더 지정
+-- 'C:\Program Files\Apache Software Foundation\Tomcat 10.1'폴더 선택
+- 'JRE'에서 'jdk-17' 선택 후 Finish
+20-4. 'Dynamic Web Project' 생성
+○ 좌상단의 메뉴에서 File - New - Dynamic Web Project
+- 'Target runtime'에 'Apache Tomcat v10.1'이 선택되어 있는지 확인 후 Next
+- Next
+- Generate web.xml deployment descriptor 체크 후 Finish
+20-5. web 확장자 Chrome으로 설정
+○ 메뉴의 Window - Preferences
+- General - Web Browser - Chrome 선택
+- General - Workspace - 'Text file encoding'이 'UTF-8' 확인
+20-6. 프로젝트 생성 후 최초 컴파일
+○ 컴파일시 Run On Server에서 Tomcat v10.1 Server at localhost 선택후 Finish
+
+21. JSTL 라이브러리 추가
+21-1. jakarta.servlet.jsp.jstl-2.0.0.jar, jakarta.servlet.jsp.jstl-api-2.0.0.jar파일을 WEB-INF/lib 폴더에 추가
+21-2. JSP 파일 상단에 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 추가
+
+22. Eclipse 배포하는 방법
+22-1. 배포파일 생성(.war)
+○ 프로젝트 - Export - WAR file
+- Browse...(경로선택) - Finish
+- 생성된 프로젝트명.war 복사
+22-2. 배포파일 WAS에 넣기
+○ C:\Program Files\Apache Software Foundation\Tomcat 10.1\webapps
+- 생성한 프로젝트명.war 붙혀넣기
+22-3. 테스트
+○ 톰캣 서비스 시작
+- 윈도우 - service - Apache Tomcat 10.1 Tomcat10 시작
+-- C:\Program Files\Apache Software Foundation\Tomcat 10.1\bin에서 bat로도 톰캣 시작 가능
+○ war 작동 확인
+- C:\Program Files\Apache Software Foundation\Tomcat 10.1\webapps - 프로젝트명 폴더 생성 확인
+○ 접속 시도
+- 프로젝트의 경로 접속 : http://localhost:8181/och12_mvc01/loginForm.jsp
+
+23. Eclipse GitHub
+23-1. Eclipse GitHub 연동
+○ 프로젝트 - Team - Share Project
+- Create... - 원하는 경로 선택(C:\Users\user\git\repository) - Finish - Finish
+23-2. 깃허브 로그인
+○ dgan123@naver.com / 비밀번호
+23-3. 깃허브 프로젝트 생성
+○ new - Repository name(프로젝트명) 입력 - Description(설명) 입력 - Create Repository
+23-4. 깃허브 링크 복사
+○ Quick setup — if you’ve done this kind of thing before 복사
+23-5. Eclipse Git환경 추가
+○ Eclipse 우상단에 Open Perspective - Git - Open
+○ repository - Remotes - Create Remotes...
+- Create - Chagn... 
+-- URI에 복사한 링크 붙혀넣기
+-- User : AhriIsLove
+-- Password : 비밀번호
+-- Finish
+- Advanced...
+-- All Branches
+-- Finish
+- Save and Push
+-- User : AhriIsLove
+-- Password : 클래식 토큰 비밀번호
+○ 비밀번호 토큰 생성
+- GitHub - 계정 - Settings - Developer settings - Personal access tokens - Tokens(classic)
+-- Generate new token - Generate new token(classic)
+-- name 작성
+-- repo 체크
+-- Create Token 클릭
+23-6. 커밋
+○ 프로젝트 - Team - Commit
+- Unstaged Changes에서 원하는 파일 선택 후 + 버튼을 눌러 Staged Chagnes로 이동
+- Commit Message 작성
+23-7. 프로젝트 가져오기
+○ 방법1
+- Eclipse Git환경에서 Clone a Git Repository and add the clone to this view - Clone URI - URI 붙혀넣기 - Next - Next - Finish
+- 생성된 Repository 선택 - Import Project - Finish
+○ 방법2
+- File - Import... - Git - Projects from Git - Clone URI - 붙혀넣기 - Next - Next - Directory 경로 설정 - Next - Finish(New Project 창 생성) - cancel
+- Eclipse Git환경에서 생성된 Repository - Remotes - origin - Fetch
+- C:\Users\user\git에서 폴더 째로 파일 원하는 경로에 복사
+- Eclripse - Import - General - Existing Projects into workspace
+
+24. Eclipse GitHub 공유
+○ 프로젝트 만들기
+○ git 프로젝트 만들기
+○ 깃 연결하기
+○ 최초커밋하기
+○ Remotes 생성/연결하기
+○ git 사용자 추가
+- 프로젝트 들어가서
+- Settings
+- Collaborators
+- add people(조원의 Email 입력)
+
+25. Eclipse GitHub 공유 받기
+○ git 접근 요청 수락하기
+- 받은 email확인 - View invitation - accept
+○ eclipse 프로젝트 연동
+- file - import... 
+- git - Projects from git
+- clone uri
+-uri붙혀넣기
+-Next
+-Next
+-Import exiting Eclipse projects
+
+26. Spring 설치(한글경로주의!)
+26-1. Spring 파일 다운로드
+○ spring-tool-suite-4-4.jar 프로젝트 경로에 복사
+26-2. Spring 설치
+○ 프로젝트 경로에서 cmd 실행
+- 'java -jar spring-tool-suite-4-4.jar' 실행
+- 'sts-4.21.0.RELEASE'폴더 생성 확인
+26-3. Spring 실행
+○ 'sts-4.21.0.RELEASE'의 SpringToolSuite4.exe 실행
+- Spring Tool Suite 4 Launcher에서 프로젝트의 소스 폴더 경로로 변경 실행
+26-4. 환경설정
+○ 콘솔창 생성
+-- Window - Show View - Console
+○ 서버창 생성
+-- Window - Show View - Other - Server - Servers
+○ 크롬 설정
+-- WIndow - Preferences - General - Web Brower - Chrome
+○ UTF-8
+-- WIndow - Preferences - General - Workspace - Text file encoding - UTF-8
+26-5. Spring-boot 연동
+○ 'Eclipse Web Developer Tools 3.32'설치
+- Help - Eclipse marketplace
+- 'Eclipse web'검색해서 'Eclipse Web Developer Tools 3.32' Install
+- Confirm - Finish
+- PGP 체크 - Always trust all content 체크 후 Trust Selected
+- Restart Now
+○ 'Eclipse Enterprise Java and Web Developer Tools 3.32'설치
+- Help - Eclipse marketplace
+- 'Eclipse Enterprise Java and Web Developer Tools 3.32' Install
+- Confirm - Finish
+- PGP 체크 - Always trust all content 체크 후 Trust Selected
+- Restart Now
+○ UTF-8
+- Window - Preferences - Web
+-- CSS Files - Encoding : ISO 10646/Unicode(UTF-8)
+-- HTML Files - Encoding : ISO 10646/Unicode(UTF-8)
+-- JSP Files - Encoding : ISO 10646/Unicode(UTF-8)
+-- Apply and Close
+26-6. 프로젝트 생성
+○ 'Spring Starter Project' 생성
+- File - New - Spring Starter Project
+-- 프로젝트 정보 입력
+--- Name : 프로젝트 명
+--- Group : com.회사명
+--- Version : version1.0
+--- Description : 프로젝트명 project for Spring Boot
+--- Package : com.회사명.프로젝트명
+--- Next
+-- 프로젝트 참조 선택
+--- Template Engines/Thymeleaf 체크
+--- Web/Spring Web 체크 : Spring MVC모델 사용을 위해
+--- Next
+-- Finish
+○ port지정
+- 프로젝트 - src/main/resources - application.properties
+-- 'server.port=8381' 추가
+○ 실행
+- 프로젝트 - Run As - Spring Boot App(Alt + Shift + X, B)
+○ 재실행(relaunch)
+- 단축키 지정(Ctrl+R)
+-- Window - Preferences - General - Keys - relaunch
+-- Binding(Ctrl + R) - Apply
+-- STS4(Eclipse)재실행
+
+27. SpringBoot 배포하는 방법
+27-1. JAR 파일 배포 후 콘솔 실행(외부파일:jsp 없을때)
+○ cmd에서 프로젝트 경로로 이동(프로젝트 - Show in Local Terminal)
+- 'gradlew build'
+○ JAR 파일 실행
+- 'cd 프로젝트경로/build/libs'
+- 'java -jar 프로젝트명-version1.0.jar'
+27-2. WAR:Maven 파일 배포
+○ 프로젝트 생성시 Maven, War 설정
+- Type : Maven
+- Packaging : War
+○ pom.xml 파일 환경 설정 매칭
+- 환경 설정 반영 방법1
+-- 프로젝트 - Maven - Update Project
+- 환경 설정 반영 방법2
+-- 프로젝트 - Run As - Maven Clean
+-- 프로젝트 - Run As - Maven Install
+- 환경 설정 반영 방법3
+-- 'C:\Users\user'의 .m2 폴더(라이브러리폴더) 삭제 후 방법1,2 재시도
+○ War 파일 배포
+- 프로젝트 - Export... - Web - WAR file - Browse... - Finish
+○ 톰캣 webapps 경로에 war 파일 복사
+- 'C:\Program Files\Apache Software Foundation\Tomcat 10.1\webapps' 에 war 파일 복사
+○ 톰캣 시작
+- 서비스 - 톰캣 - 시작
+○ 접근 경로
+- ip:Tomcat Port/Project Context
+27-3. WAR:Gradle 파일 배포
+○ 프로젝트 생성시 Gradle, War 설정
+- Type : Gradle - Groovy
+- Packaging : War
+○ Tomcat 서버 연결
+- Servers에서 'No servers are available. Click this link to create a new server...' 클릭
+- Apache - Tomcat v10.1 Server - Next
+- Browse... - C:\Program Files\Apache Software Foundation\Tomcat 10.1
+- JRE:jdk-17 선택 - Next
+- 프로젝트 서버 선택 - Add - Finish
+○ JSP 오류 해결
+- build.gradle - Gradle - Refresh Gradle Porject
+- 프로젝트 - Properties - Project Facets - Dynamic Web Module의 버전을 6.0으로 설정 - Apply
+- 프로젝트 - Properties - Project Facets - Runtimes - Apache Tomcat v10.1 체크 - Apply
+- 안되는 파일들은 되는 파일들로부터 상단의 <%%>라인 덮어쓰기
+○ War 파일 배포
+- 프로젝트 - Export... - Web - WAR file - Browse... - Finish
+○ 톰캣 webapps 경로에 war 파일 복사
+- 'C:\Program Files\Apache Software Foundation\Tomcat 10.1\webapps' 에 war 파일 복사
+○ 톰캣 시작
+- 서비스 - 톰캣 - 시작
+○ 접근 경로
+- ip:Tomcat Port/Project Context
+
+28. Lombok 설치
+○ Lombok 설치 시작
+- cmd에서 'lombok.jar'이 있는 폴더로 이동
+- java -jar lombok.jar
+○ STS 찾기
+- Specify location... - 'sts-4.21.0.RELEASE' 폴더 선택
+○ 설치 진행
+- Install / Update
+○ 적용
+- 프로젝트 생성시
+-- lombok 체크
+
+29. Postman 설치
+29-1. 설치
+○ 설치 시작
+- 'Postman-win64-Setup.exe' 실행
+○ 회원가입 및 로그인
+29-2. 최초실행
+○ My Workspace 이동
+- 상단의 My Workspaces
+○ API 생성
+- 상단의 '+ 탭' 선택
+○ API 테스트
+- URI 입력 후 Send로 테스트
+○ API 저장
+- 상단의 Save
+- 폴더 선택
+
+30. MyBatis 환경 추가
+○ SpringBoot 3.5.0 버전부터 기본 설정 불가능
+○ build.gradle의 dependencies에 추가
+- implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
+- testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.3'
+○ build.gradle 갱신
+- build.gradle - Gradle - Refresh Gradle Project
+○ src/main/resources에 application.yml에 추가
+- mybatis:
+  	config-location: classpath:configuration.xml
+  	mapper-locations: classpath:mappers/*.xml
+○ src/main/resources에 configuration.xml 추가
+- <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+-- 출처 : https://blog.mybatis.org
+- <configuration>
+	<typeAliases>
+		<typeAlias type="com.oracle.oBootMybatis01.dto.Emp"	alias="Emp" />
+	</typeAliases>
+</configuration>
+-- MyBatis 연동할 클래스의 path, name을 넣기
+-- 오류 발생시 Window - Preferences - XML(Wild Web Developer)에서 'Download external resources like referenced DTD, XSD' 체크
+○ src/main/resources에 mappers폴더 추가 후 Emp.xml 추가
+- <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+-- 출처 : https://blog.mybatis.org
+- <mapper namespace="com.oracle.oBootMybatis01.EmpMapper">
+	<select id="empTotal" resultType="int">
+		SELECT COUNT(*) FROM emp
+	</select>
+</mapper>
+
+31. Eclipse Ctrl+Shift+F 기능 개선하기
+○ HTML
+- Window - Preferences - Web - HTML Files - Editor
+-- Line width 설정(150)
+-- <p>태그는 <p/>로 닫아주기
+
+32. node.js 설치
+32-1. 설치파일 실행
+○ node-v22.13.0-x64.msi
+- Next - Next - Next - Next - Automaically ... 체크 - Next - Install - Finish
+○ Install Additional Tools for No...(자동실행)
+- 아무키나 눌러 진행
+○ 관리자: Windows PowerShell(자동실행)
+- Type ENTER to exit: 에서 Enter
+○ 설치확인
+- cmd - 'node -- version'
+- cmd - 'npm -- version'
+
+33. VisualStudioCode 설치
+33-1. 설치파일 실행
+○ VSCodeUserSetup-x64-1.90.2.exe
+- 다음(N) > - 다음(N) > - 다음(N) > - 다음(N) > - 설치(I) - 종료(F)
+
+34. VisualStudioCode Plug-In 설치
+34-1. Simple React Snippets
+○ 좌측 배너 - EXTENSIONS
+- 'Simple React Snippets' 검색 - 'Simple React Snippets' Install
+34-2. Tailwind CSS IntelliSense
+○ 좌측 배너 - EXTENSIONS
+- 'Tailwind CSS IntelliSense' 검색 - 'Tailwind CSS IntelliSense' Install
+
+35. React 설치
+35-1. React 설치
+○ 프로젝트 생성할 경로로 이동
+- cmd - cd C:\react\Sources
+○ yarn 설치
+- 'npm install -g yarn'
+-- 오류 발생 : npm notice To update run: npm install -g npm@11.4.2
+-- 최신 버전 설치
+-- 'npm install -g npm@11.4.2'
+○ react 프로젝트 생성
+- 'yarn create react-app todo01'
+35-2. React 프로젝트 열기
+○ VSCode에서 React 프로젝트 열기
+- File - Open Folder... - todo01 폴더 선택
+35-3. Tailwind CSS 설치
+○ 프로젝트 생성할 경로로 이동
+- cmd - cd C:\react\Sources
+○ Tailwind CSS 설치
+- npm install -D tailwindcss
+○ Tailwind CSS 초기화
+- npx tailwindcss init : 오류...
+-- CRA로 생성하신 프로젝트라면.. 최신 버전 4버전 대신에 3버전을 쓰시는 것이 안전합니다.
+-- https://v3.tailwindcss.com/docs/installation/using-postcss
+-- 가이드
+-- npm install -D tailwindcss@3 postcss autoprefixer
+-- npx tailwindcss init
+○ Tailwind CSS 적용
+- index.css 내용 변경
+-- 전부 지우고 아래 라인 작성
+-- @tailwind base;
+-- @tailwind components;
+-- @tailwind utilities;
+--- 경고가 뜨는데 EXTENSIONS - 'PostCSS Language Support' 설치하면 안뜬다고 함.
+○ App.js 간략화
+- function App() 내부 코드 수정
+return(
+	<div className="text-3xl font-bold underline">
+		Hello World
+	</div>
+);
+○ VSCode 터미널 보안 오류 해결
+- Windows PowerShell 관리자 권한 실행
+- ExecutionPolicy
+- Set-ExecutionPolicy RemoteSigned
+- Y
+
+
+
+
+
+
+
+
+

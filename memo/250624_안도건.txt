@@ -1,0 +1,84 @@
+---------[문항1]---------
+Person
+
+---------[문항2]---------
+<select id="tkEmpSelOne" parameterType="int" resultType="Emp">
+	SELECT * FROM emp WHERE empno = #{empno}
+</select>
+
+---------[문항3]---------
+return "redirect:list.do";
+
+---------[문항4]---------
+Model 객체의
+addAttribute(String key, Object value); 메소드
+
+---------[문항5]---------
+namespace
+
+---------[문항6]---------
+@Configuration
+public class SecurityConfig {
+	// 해시 암호화 방식 사용
+	public BCryptPasswordEncoder encodePwd() {
+		return new BCryptPasswordEncoder();
+	}
+	
+	@Bean
+	protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+		// 내부 보안 비활성화
+		http.cors(cors->cors.disable()).csrf(csrf->csrf.disable());
+		
+		return http.build();
+	}
+}
+
+---------[문항7]---------
+@data
+
+---------[문항8]---------
+#{id}
+
+---------[문항9]---------
+@Entity
+@Table(name = "member7")
+@SequenceGenerator(
+	name = "member_seq_pk_gen",
+	sequenceName = "member_seq_pk",
+	initialValue = 1,
+	allocationSize = 1
+)
+public class Member {
+	@Id
+	@Column(name = "member_num")
+	@GeneratedValue(
+		strategy = GenerationType.SEQUENCE,
+		generator = "member_seq_pk_gen"
+	)
+	private Long id;
+	
+	@Column(name = "member_name")
+	private String name;
+	
+	@ManyToOne
+	@JoinColumn(name = "address")
+	private Address address;
+}
+
+---------[문항10]---------
+Spring MVC
+- Spring에서 제공하는 프레임워크이다.
+- MVC2 모델을 기반으로 Model View Controller로 구성되어있다.
+- Servlet 내장되어 있으며 Servlet은 Model, View, Controller 간의 데이터 전달을 지시한다.
+
+-- Controller
+--- Browser의 요청을 받아 Model에게 데이터를 처리를 요청한다.
+--- 데이터 처리 후 View에게 화면을 응답하도록 한다.
+--- @Controller로 지정한다.
+
+-- Model
+--- Controller에게 데이터 처리 요청을 받아 처리한다.
+--- @Service, @Repository로 지정한다.
+
+-- View
+--- HTML, JSP로 작성한다.

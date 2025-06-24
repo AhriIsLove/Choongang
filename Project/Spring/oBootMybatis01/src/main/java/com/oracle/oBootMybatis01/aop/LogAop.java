@@ -7,7 +7,7 @@ import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
-//AOP 설정 : 공통 기능 캡슐화
+//AOP(Aspect Oriented Programming)설정 : 공통 기능 캡슐화
 @Aspect
 //Component화 하여 Controller/Service/Repository 처럼 실행시 등록
 @Component
@@ -45,9 +45,9 @@ public class LogAop {
 		}
 	}
 	
-//	//이것도 있다...
-//	@Before("pointcutMethod()")
-//	public void beforeMethod() {
-//		System.out.println("AOP beforeMethod!!!");
-//	}
+	//이것도 있다...
+	@Before("pointcutMethod()")
+	public void beforeMethod() {
+		System.out.println("AOP beforeMethod!!!");
+	}
 }
