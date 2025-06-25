@@ -575,7 +575,10 @@ module.exports = {
     autoprefixer: {}, 
   }, 
 };
-36-4. 서버 시작
+36-4. React-Router 설치
+○ react-router-dom 설치
+- yarn add react-router-dom
+36-5. 서버 시작
 ○ npm 서버 시작
 - npm start
 -- 오류발생 : module parse failed: 'import' and 'export' may appear only with 'sourcetype: module' (4:0)
