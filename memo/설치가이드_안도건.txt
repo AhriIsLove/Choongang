@@ -550,7 +550,7 @@ return(
 );
 ○ VSCode 터미널 보안 오류 해결
 - Windows PowerShell 관리자 권한 실행
-- ExecutionPolicy
+- ExecutionPolicy(기본값:Restricted)
 - Set-ExecutionPolicy RemoteSigned
 - Y
 36-3. Tailwind CSS 설치 방법1
