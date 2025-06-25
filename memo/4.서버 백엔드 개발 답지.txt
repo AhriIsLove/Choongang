@@ -1,0 +1,392 @@
+===================================================================================
+[문항1]  form에서 입력한 데이터의 유효성 검사가 끝난 후 유효성 검사에 문제가 있으면 에러 메세지를 form에 출력하려고 할 때 ① 자리에 들어갈 코드를 작성하시오. [10점]
+===================================================================================
+
+>결과
+----------------------------------------------------------------------------------------------------------------------------------------------
+<form>태그
+<form:form commandName="per" action="write2" method="post">
+    ... 이하 생략 ...
+</form:form>
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+>결과에 대한 설명
+Spring MVC에서 <form:form> 태그의 commandName 속성은 JSP 폼과 Controller를 연결하는 역할을 합니다.
+
+1. Controller의 @ModelAttribute("per"):
+Controller의 write 메소드를 보면, 파라미터 @ModelAttribute("per") 라는 어노테이션이 있습니다. 
+이 어노테이션의 역할 폼을 전송받을 때, Person 타입의 객체 p를 모델(Model)에 "per" 라는 이름으로 담습니다.
+유효성 검사(@Valid)에서 오류가 발생하면, 사용자가 입력했던 데이터와 오류 정보를 담고 있는 
+이 "per" 객체를 다시 폼(JSP)으로 전달합니다.
+
+2. JSP의 commandName="per":
+commandName 속성의 값은 Controller의 @ModelAttribute("이름")에 지정된 이름과 반드시 일치해야 합니다.
+commandName="per" 라고 지정하면, 이 폼은 "나는 Controller로부터 'per' 라는 이름의 객체를 받아서 
+작업할 것이다" 라고 선언하는 것과 같습니다.
+
+이 연결 덕분에 <form:errors path="id"/> 태그는 "per" 객체 안에서 id 필드와 관련된 에러 메시지를 찾아 
+화면에 출력할 수 있게 됩니다.
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+> 최종 결론입니다.
+commandName="per" 입니다.
+
+결론적으로, Controller가 모델에 담는 객체의 이름(per)와 폼이 참조할 객체의 이름(per)을 일치시켜야 
+데이터와 에러 메시지가 정상적으로 연동됩니다.
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+===================================================================================
+[문항2]  map id는 tkEmpSelOne 이고 parameterType은 사번 (PK), 결과는 emp DTO로 돌려주는
+Select Mapper를 작성하시요[10점]
+===================================================================================
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oracle.oBootMybatis01.EmpMapper">
+
+       <select id="tkEmpSelOne" parameterType="int" resultType="Emp">
+		SELECT 
+		         EMPNO
+		        ,ENAME
+		        ,JOB
+		        ,SAL
+		        ,HIREDATE
+		        ,COMM
+		        ,MGR
+		        ,DEPTNO
+		FROM EMP
+		WHERE EMPNO = #{empno} 
+	</select>
+
+</mapper>
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+===================================================================================
+[문항3]  수정 작업이 끝난 후 목록보기로 넘어가기 위해 list.do를 요청하려고 한다. (A)에 알맞은 코드는?  [10점]
+===================================================================================
+
+@RequestMapping(value="/modify", method=RequestMethod.POST)
+public String modify(HttpServletRequest request, Model model) {
+    model.addAttribute("request", request);
+    command = new PModifyCommand();
+    command.execute(model);
+    
+    // (A) 수정 작업이 끝난 후, 'list.do' 라는 URL로 다시 요청을 보내라는 의미
+    return "redirect:list.do";
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+> 최종 결론입니다.
+return "redirect:list.do";
+
+데이터에 변경(C/U/D)이 일어난 후에는 redirect:를 사용해 목록이나 상세 보기 페이지로 보내는 방법입니다.
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+===================================================================================
+[문항4]  스프링에서 ModelAndView 객체의 메소드로 뷰에 전달할 값을 추가하기위해 (키, 값)의 형식으로 저장할 때 사용하는 메소드는 ?  [10점]
+===================================================================================
+
+ModelAndView addObject(String attributeName, Object attributeValue)
+
+attributeName (키): 뷰(JSP, Thymeleaf 등)에서 값을 꺼낼 때 사용할 이름(문자열)입니다.
+attributeValue (값): 뷰에 전달할 실제 데이터 객체입니다. (String, int, List, DTO 객체 등 모든 타입 가능)
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+> 최종 결론입니다.
+
+스프링에서 ModelAndView 객체에 (키, 값) 형식으로 
+뷰에 전달할 데이터를 추가할 때 사용하는 메소드는 addObject() 입니다.
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+===================================================================================
+[문항5]  Mybatis에서 mapper화일을 만들 때 (A)자리에 들어갈 코드는?  [5점]
+<mapper (A)="member.model.Member">
+===================================================================================
+
+namespace는 해당 XML 매퍼 파일을 어떤 자바 인터페이스와 연결할지 지정하는 매우 중요한 속성입니다.
+
+역할: 자바 코드와 SQL 코드를 분리하고 연결하는 다리 역할을 합니다.
+값: namespace의 값은 매퍼와 연결될 자바 인터페이스의 전체 경로를 포함한 
+     이름(Fully Qualified Name)과 반드시 일치해야 합니다.
+
+이렇게 연결해두면, 자바 코드에서 member.model.Member 인터페이스의 메소드를 호출했을 때, 
+MyBatis는 이 XML 파일에서 id가 동일한 SQL문을 찾아 실행하고 결과를 반환해 줍니다.
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+> 최종 결론입니다.
+
+(A)는 namespace 입니다.
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+===================================================================================
+[문항6]  Spring Security를 사용하고자 한다. Security의 Hash 암호화만 사용하고, 내부는 모두 사용가능하도록
+어노테이션 및 코딩을 적용
+class SecurityConfig 를 설정하시요 ?  [10점]
+===================================================================================
+1단계: Spring Security 의존성 추가 (이미 있다면 생략)
+
+Gradle (build.gradle)
+implementation 'org.springframework.boot:spring-boot-starter-security'
+
+2단계: SecurityConfig.java 파일 작성
+package com.example.yourproject.config; // 본인 프로젝트의 config 패키지 경로로 지정하세요.
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
+
+@Configuration // 이 클래스가 Spring의 설정 클래스임을 나타냅니다.
+@EnableWebSecurity // Spring Security의 웹 보안 기능을 활성화합니다.
+public class SecurityConfig {
+
+    /**
+     * 비밀번호 암호화(해시)를 위한 PasswordEncoder 빈(Bean)을 등록합니다.
+     * - BCryptPasswordEncoder는 Spring Security에서 권장하는 강력한 해시 알고리즘입니다.
+     * - 이 빈을 등록해두면, 서비스(Service) 등 다른 클래스에서 @Autowired로 주입받아 사용할 수 있습니다.
+     */
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    /**
+     * Spring Security의 필터 체인(보안 규칙)을 설정합니다.
+     * - 이 메소드가 핵심적인 웹 보안 설정을 담당합니다.
+     */
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        
+        // 1. CSRF(Cross-Site Request Forgery) 보호 비활성화
+        //    - REST API 서버가 아니고, 세션/쿠키 기반이 아니라면 비활성화해도 무방합니다.
+        //    - 학습 및 테스트 목적으로는 비활성화하는 것이 편리합니다.
+        http.csrf(csrf -> csrf.disable());
+
+        // 2. HTTP 요청에 대한 인가(Authorization) 규칙 설정
+        http.authorizeHttpRequests(authorize -> authorize
+                // 어떠한 요청(anyRequest)에 대해서도
+                .anyRequest()
+                // 인증/인가 없이 모두 허용(permitAll)합니다.
+                .permitAll()
+        );
+
+        // 3. 폼 기반 로그인 기능 비활성화
+        //    - 모든 요청을 허용하므로, Spring Security가 기본으로 제공하는 로그인 페이지가 필요 없습니다.
+        http.formLogin(formLogin -> formLogin.disable());
+
+        // 4. HTTP Basic 인증 방식 비활성화
+        //    - 요청 헤더에 사용자 이름과 비밀번호를 직접 담아 보내는 방식도 사용하지 않습니다.
+        http.httpBasic(httpBasic -> httpBasic.disable());
+
+        // 설정이 완료된 HttpSecurity 객체를 기반으로 SecurityFilterChain을 빌드하여 반환합니다.
+        return http.build();
+    }
+}
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+===================================================================================
+[문항7]  @ToString, @EqualsAndHashCode, @Getter(모든 속성), @Setter(final 이 아닌 속성), @RequiredArgsConstructor를 합쳐둔 LOMBOK 어느테이션?  [10점]
+===================================================================================
+
+@Data 어노테이션의 기능
+@Getter: 모든 필드에 대한 getter 메소드를 생성합니다.
+@Setter: final로 선언되지 않은 모든 필드에 대한 setter 메소드를 생성합니다.
+@ToString: toString() 메소드를 오버라이드하여 보기 좋은 형태로 생성합니다.
+@EqualsAndHashCode: equals()와 hashCode() 메소드를 오버라이드합니다.
+@RequiredArgsConstructor: final 필드나 @NonNull 어노테이션이 붙은 필드만을 인자로 갖는 생성자를 생성합니다.
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+> 최종 결론입니다.
+Lombok 어노테이션은 @Data 입니다.
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+===================================================================================
+[문항8]  아래의 SQL문에서 ?에 치환될 id필드를 MyBatis 문법으로 표현하시오. (? 자리에 들어갈 코드만 작성하시오)  [10점]
+===================================================================================
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+> 최종 결론입니다.
+#{id} 입니다.
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+===================================================================================
+[문항9]  아래의 Member 객체를 아래 조건에 의해 설정하시요
+1) JPA에 의한 Table 생성을 한다
+2) Table 명칭은 member7
+3) id Column은 member_num이며 PK
+  Hiberate 기본 SEQuence 작성
+4) Address  객체를 member7 Table 컬럼으로 추가
+5) name속성의 Column명은 member_name
+
+public class Member {
+    private Long id;
+    private String name;
+    private Address address;
+ 
+}
+[15점]
+===================================================================================
+1. Member.java (Entity 클래스)
+package com.example.model;
+
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+// 1) JPA에 의한 Table 생성을 위해 @Entity 선언
+@Entity
+// 2) Table 명칭을 "member7"로 지정
+@Table(name = "member7")
+@Getter
+@Setter
+@NoArgsConstructor // JPA는 기본 생성자를 필요로 합니다.
+public class Member {
+
+    // 3) id Column은 member_num이며 PK, Hibernate 기본 Sequence 사용
+    @Id // 이 필드가 Primary Key임을 나타냅니다.
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "member_seq_generator")
+    @SequenceGenerator(name = "member_seq_generator", sequenceName = "member7_seq", initialValue = 1, allocationSize = 1)
+    @Column(name = "member_num") // DB 컬럼명을 "member_num"으로 지정합니다.
+    private Long id;
+
+    // 5) name 속성의 Column명은 "member_name"으로 지정
+    @Column(name = "member_name", nullable = false, length = 100) // nullable, length 등 제약조건 추가 가능
+    private String name;
+
+    // 4) Address 객체를 member7 Table 컬럼으로 추가 (포함)
+    @Embedded
+    private Address address;
+
+}
+
+
+2. Address.java (Embeddable 클래스)
+package com.example.model;
+
+import javax.persistence.Embeddable;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+// 이 객체의 필드들이 다른 Entity 테이블의 컬럼으로 포함될 수 있음을 나타냅니다.
+@Embeddable
+@Getter
+@Setter
+@NoArgsConstructor
+public class Address {
+
+    private String city;
+    private String street;
+    private String zipcode;
+
+    // 예시 생성자
+    public Address(String city, String street, String zipcode) {
+        this.city = city;
+        this.street = street;
+        this.zipcode = zipcode;
+    }
+}
+
+3. DDL (테이블 생성 SQL)
+CREATE TABLE member7 (
+    member_num BIGINT NOT NULL PRIMARY KEY,
+    member_name VARCHAR(100) NOT NULL,
+    city VARCHAR(255),
+    street VARCHAR(255),
+    zipcode VARCHAR(255)
+);
+
+CREATE SEQUENCE member7_seq START WITH 1 INCREMENT BY 1;
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+===================================================================================
+[문항10]  Spring MVC에  대하여 1) 설명하고 2) 구성 및 역할에 대해  기술하시요 ?  [10점]
+===================================================================================
+1. Spring MVC란? (설명)
+Spring MVC(Model-View-Controller)는 Spring 프레임워크에서 제공하는 웹 애플리케이션 및 REST API 개발을 위한 
+Spring 프레임워크에서 제공하는 웹 애플리케이션 개발을 위한 모듈 중 하나로, 아키텍처 Style
+
+> Model (모델): 애플리케이션의 데이터와 비즈니스 로직을 담당합니다. 
+   데이터베이스와 연동하여 데이터를 처리하고, 서비스 로직을 수행하는 부분을 포함합니다. 
+   사용자가 보게 될 데이터나 처리된 결과물을 의미합니다. (예: User DTO, 데이터베이스 조회 결과)
+
+> View (뷰): 사용자에게 보여지는 **UI(User Interface)**를 담당합니다. 모델로부터 받은 데이터를 사용하여 
+   화면을 그리고, 사용자와 상호작용하는 최종 결과물을 생성합니다. (예: JSP, Thymeleaf, HTML 파일)
+
+> Controller (컨트롤러): 사용자의 요청(Request)을 받아들이는 중재자 역할을 합니다. 
+   사용자의 입력을 받아 모델에 처리를 위임하고, 모델이 처리한 결과를 바탕으로 어떤 뷰를 사용자에게 보여줄지 결정합니다.
+
+2. Spring MVC의 구성 요소 및 역할 (구성 및 역할)
+
+Spring MVC는 DispatcherServlet이라는 핵심 구성 요소를 중심으로 동작합니다. 
+클라이언트의 요청이 들어왔을 때부터 응답이 나갈 때까지의 처리 과정과 각 구성 요소의 역할은 다음과 같습니다.
+
+1. 클라이언트 요청: 사용자가 웹 브라우저를 통해 특정 URL을 요청합니다.
+2. DispatcherServlet (디스패처 서블릿)
+  > 역할: 프론트 컨트롤러(Front Controller). Spring MVC의 가장 핵심적인 엔진으로, 
+     모든 클라이언트의 요청을 가장 먼저 받습니다. 요청을 직접 처리하지 않고, 요청에 맞는 다른 구성 요소들에게 작업을 위임하고    
+     전체 흐름을 제어하는 중앙 허브 역할을 합니다.
+3. HandlerMapping (핸들러 매핑)
+  > 역할: 들어온 요청(URL, HTTP Method 등)을 분석하여 어떤 컨트롤러(핸들러)가 처리해야 할지 찾아내는 역할을 합니다. 
+     @RequestMapping, @GetMapping 등의 어노테이션을 보고 적절한 컨트롤러 메소드를 찾아 DispatcherServlet에 알려줍니다.
+4. Controller (컨트롤러)
+  > 역할: HandlerMapping이 찾아준 컨트롤러가 실제 요청을 처리합니다. 비즈니스 로직(Service 호출 등)을 실행하고, 
+    데이터를 가공하여 Model 객체를 생성합니다. 작업이 끝나면, 어떤 뷰를 보여줄지에 대한 **논리적인 뷰 이름(Logical View 
+     Name)을 DispatcherServlet에 반환합니다.
+5. ModelAndView
+  > 역할: 컨트롤러가 처리한 결과 **데이터(Model)**와 뷰에 대한 **정보(View 이름)**를 담는 컨테이너 객체입니다. 컨트롤러는 
+     이 객체를 DispatcherServlet에 반환할 수 있습니다. (최근에는 Model 객체를 파라미터로 받아 데이터를 담고, String 타입으로
+     뷰 이름을 직접 반환하는 방식을 더 많이 사용합니다.
+6. ViewResolver (뷰 리졸버)
+  > 역할: 컨트롤러로부터 받은 논리적인 뷰 이름을 실제 물리적인 뷰 객체로 변환하는 역할을 합니다. 예를 들어, 컨트롤러가 
+     "home"이라는 뷰 이름을 반환하면, ViewResolver는 설정(prefix, suffix)에 따라 /WEB-INF/views/home.jsp와 같은 실제 파일 
+     경로를 찾아내어 View 객체를 생성합니다.
+7. View (뷰)
+  > 역할: 최종적으로 화면을 그리는(렌더링하는) 역할을 합니다. 모델로부터 전달받은 데이터를 
+     뷰 템플릿(JSP, Thymeleaf 등)과 결합하여 사용자가 보게 될 최종 응답 화면(HTML)을 생성합니다.
+8. 클라이언트 응답: DispatcherServlet은 View가 생성한 응답을 클라이언트(웹 브라우저)에게 전달합니다.
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+

@@ -522,7 +522,7 @@
 36-2. React 프로젝트 열기
 ○ VSCode에서 React 프로젝트 열기
 - File - Open Folder... - todo01 폴더 선택
-36-3. Tailwind CSS 설치
+36-3. Tailwind CSS 설치 방법1
 ○ 프로젝트 생성할 경로로 이동
 - cmd - cd C:\react\Sources
 ○ Tailwind CSS 설치
@@ -553,11 +553,33 @@ return(
 - ExecutionPolicy
 - Set-ExecutionPolicy RemoteSigned
 - Y
-
-
-
-
-
+36-3. Tailwind CSS 설치 방법1
+○ tailwindcss 설치 제거
+- npm uninstall tailwindcss @tailwindcss/postcss
+○ 되는 버전 tailwindcss 설치
+- npm install -D tailwindcss@3.4.1 postcss autoprefixer
+○ 초기화
+- npx tailwindcss init
+○ tailwind.config.js 파일 수정
+module.exports = { 
+  content: ["./src/**/*.{js,jsx,ts,tsx}"], 
+  theme: { 
+    extend: {}, 
+  }, 
+  plugins: [], 
+}
+○ postcss.config.js 파일 생성
+module.exports = { 
+  plugins: { 
+    tailwindcss: {}, 
+    autoprefixer: {}, 
+  }, 
+};
+36-4. 서버 시작
+○ npm 서버 시작
+- npm start
+-- 오류발생 : module parse failed: 'import' and 'export' may appear only with 'sourcetype: module' (4:0)
+-- package.json에서 "type": "commonjs" 삭제
 
 
 
