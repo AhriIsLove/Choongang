@@ -72,11 +72,11 @@
 - JDBC API, Lombok, Oracle Driver, Spring Data JPA, Spring Web, Validation
 ○ oBootMybatis01 : MyBatis, Validation, Join, Mail, Procedure(Cursor), Interceptor, Optional, Img Upload, Ajax, transaction, AOP, Chat(WebSocket)
 - JDBC API, Lombok, Oracle Driver, Spring Data JPA, Spring Web, Validation, Java Mail Sender, Spring Security, +Mybatis
-○ oBootTodoApi01 : API, MSA(React 연동)
+○ oBootTodoApi01 : API, MSA(React 연동), @Builder
 - JDBC API, Lombok, Oracle Driver, Spring Data JPA, Spring Web, Validation, +Mybatis
 
-
-
+★★★★★★★★★React★★★★★★★★★
+○ todo01 : tailwindcss, Suspense, Navigate, Outlet, API
 
 
 

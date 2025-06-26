@@ -452,6 +452,8 @@
 		SELECT COUNT(*) FROM emp
 	</select>
 </mapper>
+○ mapper 오류 : Downloading external resources is disabled 해결
+- Window - Preferences - XML(Wild Web Developer) - Download external resources like referenced DTD, XSD 체크
 
 31. Eclipse Ctrl+Shift+F 기능 개선하기
 ○ HTML
@@ -524,7 +526,7 @@
 - File - Open Folder... - todo01 폴더 선택
 36-3. Tailwind CSS 설치 방법1
 ○ 프로젝트 생성할 경로로 이동
-- cmd - cd C:\react\Sources
+- cmd - cd C:\react\Sources\todo01
 ○ Tailwind CSS 설치
 - npm install -D tailwindcss
 ○ Tailwind CSS 초기화
@@ -584,6 +586,8 @@ module.exports = {
 -- 오류발생 : module parse failed: 'import' and 'export' may appear only with 'sourcetype: module' (4:0)
 -- package.json에서 "type": "commonjs" 삭제
 
-
+37. React-API 연동
+○ axios 설치
+- project Terminal에서 'yarn add axios'
 
 

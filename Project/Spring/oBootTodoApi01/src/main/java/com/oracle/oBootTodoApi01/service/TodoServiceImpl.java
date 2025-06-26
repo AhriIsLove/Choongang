@@ -1,11 +1,15 @@
 package com.oracle.oBootTodoApi01.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import com.oracle.oBootTodoApi01.dao.TodoDao;
 import com.oracle.oBootTodoApi01.domain.Todo;
+import com.oracle.oBootTodoApi01.dto.PageRequestDTO;
+import com.oracle.oBootTodoApi01.dto.PageResponseDTO;
 import com.oracle.oBootTodoApi01.dto.TodoDTO;
 import com.oracle.oBootTodoApi01.repository.TodoRepository;
 
@@ -18,8 +22,9 @@ import lombok.extern.log4j.Log4j2;
 @RequiredArgsConstructor
 @Log4j2
 public class TodoServiceImpl implements TodoService {
-	private final TodoRepository todoRepository;
 	private final ModelMapper modelMapper;
+	private final TodoRepository todoRepository;
+	private final TodoDao todoDao;
 	
 	@Override
 	public Long register(TodoDTO todoDTO) {
@@ -54,6 +59,22 @@ public class TodoServiceImpl implements TodoService {
 		return todoDTO;
 		
 //		return modelMapper.map(todoRepository.findById(tno).orElseThrow(), TodoDTO.class);
+	}
+
+	@Override
+	public PageResponseDTO<TodoDTO> list(PageRequestDTO pageRequestDTO) {
+		List<TodoDTO> dtoList = todoDao.listTodo(pageRequestDTO);
+		System.out.println("TodoServiceImpl list S dtoList : " + dtoList.size());
+		
+		int totalCount = todoDao.totalTodo();
+	
+		//Builder 사용
+		PageResponseDTO<TodoDTO> responseDTO = PageResponseDTO.<TodoDTO>withAll()
+				.dtoList(dtoList)
+				.pageRequestDTO(pageRequestDTO)
+				.totalCount(totalCount).build();
+		
+		return responseDTO;
 	}
 
 }

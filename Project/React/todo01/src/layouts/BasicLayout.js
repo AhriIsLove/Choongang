@@ -44,7 +44,7 @@ const BasicLayout = ({ children }) => {
                 {/* <footer></footer> */}
             </div>
         </>
-    )
-}
+    );
+};
 
 export default BasicLayout;

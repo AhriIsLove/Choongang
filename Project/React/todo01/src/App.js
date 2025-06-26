@@ -8,6 +8,6 @@ function App() {
     //앱을 랜더링
     <RouterProvider router={root}></RouterProvider>
   );
-}
+};
 
 export default App;

@@ -6,9 +6,8 @@ const MainPage = () => {
         <BasicLayout>
             {/* children */}
             <div className="text-3xl">MainPage</div>
-            
         </BasicLayout>
     );
-}
+};
 
 export default MainPage;

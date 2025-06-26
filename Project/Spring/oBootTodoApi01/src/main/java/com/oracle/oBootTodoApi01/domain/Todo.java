@@ -18,6 +18,9 @@ import lombok.ToString;
 @Table(name = "tbl_todo")
 @Getter
 @ToString
+//@AllArgsConstructor : Todo(tno, title, writer, complete, dueDate); 생성자 제공
+//@NoArgsConstructor : Todo(); 생성자 제공
+//@Builder : Todo(tno); Todo(title); Todo(writer); Todo(complete); Todo(dueDate); 생성자들 제공
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
