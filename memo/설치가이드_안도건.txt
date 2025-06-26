@@ -585,6 +585,8 @@ module.exports = {
 - npm start
 -- 오류발생 : module parse failed: 'import' and 'export' may appear only with 'sourcetype: module' (4:0)
 -- package.json에서 "type": "commonjs" 삭제
+-- 오류발생 : 'react-scripts'은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는 배치 파일이 아닙니다.
+-- npm install --save react-scripts
 
 37. React-API 연동
 ○ axios 설치
