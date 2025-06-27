@@ -459,6 +459,8 @@ WHEN NOT MATCHED THEN ~
 - 표현	 <-> 응용
 - 응용	 <-> 응용
 
+○ CORS(Cross-Origin Resource Sharing) : 교차 출처 리소스 공유
+- 실행 중인 웹 애플리케이션이 다른 출처의 리소스에 접근할 수 있도록 허용하는 메커니즘
 
 ●●●●●●●●●챕터변경●●●●●●●●●
 ○ Ajax(Asynchronous Javascript And Xml) : JavaScript와 XML 형식을 이용한 '비동기'적 정보 교환 기법

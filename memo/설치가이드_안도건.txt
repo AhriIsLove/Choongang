@@ -592,4 +592,38 @@ module.exports = {
 ○ axios 설치
 - project Terminal에서 'yarn add axios'
 
+38. Spring-React API 통신 오류 : 
+○ CORS오류 해결 : 'Network Error AxiosError: Network Error'
+- Spring에서 네트워크 통신 중 CORS에 대한 허용을 설정한다.
+-- CustomServletConfig implements WebMvcConfigurer 추가
+-- LocalDateFormatter implements Formatter<LocalDate> 추가
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -42,8 +42,8 @@ public class TodoServiceImpl implements TodoService {
 
 	@Override
 	public int todoTotal() {
-		// TODO Auto-generated method stub
-		return 0;
+		int totalCount = todoDao.totalTodo();
+		return totalCount;
 	}
 
 	@Override
