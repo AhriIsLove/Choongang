@@ -43,7 +43,7 @@ const useCustomMove = () => {
         }
         console.log('moveToList queryStr : ' + queryStr);
 
-        //페이지 이동
+        //페이지 이동 -> 라우터
         navigate({
             pathname:`../list`, //이동 페이지
             search:queryStr     //queryStr를 파라미터로 페이지 이동
@@ -57,13 +57,21 @@ const useCustomMove = () => {
     const moveToRead = (tno) => {
         // console.log(queryDefault);
         
+        //페이지 이동 -> 라우터
         navigate({
             pathname:`../read/${tno}`,
-            search:queryDefault
+            search:queryDefault //수정시 기존의 queryStr 유지(page,size값)
         });
     };
 
-    return {moveToList, page, size, refresh, moveToRead};
+    const moveToModify = (tno) => {
+        navigate({
+            pathname:`../modify/${tno}`,
+            search:queryDefault //수정시 기존의 queryStr 유지(page,size값)
+        });
+    };
+
+    return {moveToList, page, size, refresh, moveToRead, moveToModify};
 };
 
 export default useCustomMove;

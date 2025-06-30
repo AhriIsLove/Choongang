@@ -42,6 +42,7 @@ public class PageResponseDTO<E> {
 		this.prev = start > 1;
 		this.next = totalCount > end * pageRequestDTO.getSize();
 		
+		// 1, 2, 3
 		this.pageNumList = IntStream.rangeClosed(start, end).boxed().collect(Collectors.toList());
 		
 		if(prev)
