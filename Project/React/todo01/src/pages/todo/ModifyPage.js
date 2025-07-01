@@ -9,7 +9,7 @@ const ModifyPage = () => {
             <div className="text-3xl font-extrabold">
                 Todo Modify Page {tno}
             </div>
-            <ModifyComponent></ModifyComponent>
+            <ModifyComponent tno={tno}></ModifyComponent>
         </div>
     );
 };

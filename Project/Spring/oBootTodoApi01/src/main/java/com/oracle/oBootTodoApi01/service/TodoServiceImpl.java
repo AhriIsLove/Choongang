@@ -78,4 +78,25 @@ public class TodoServiceImpl implements TodoService {
 		return responseDTO;
 	}
 
+	@Override
+	public void modify(TodoDTO todoDTO) {
+		Optional<Todo> maybeTodo = todoRepository.findById(todoDTO.getTno());
+		//todo로 cast시도하고 안되면 에러 Throw
+		Todo todo = maybeTodo.orElseThrow();
+		
+		//change : UPDATE JPA 문법 
+		todo.changeTitle(todoDTO.getTitle());
+		todo.changeWriter(todoDTO.getWriter());
+		todo.changeDueDate(todoDTO.getDue_date());
+		todo.changeComplete(todoDTO.isComplete());
+		
+		//save : todo에 대한 COMMIT JPA 문법
+		todoRepository.save(todo);
+	}
+
+	@Override
+	public void remove(Long tno) {
+		todoRepository.deleteById(tno);
+	}
+
 }
