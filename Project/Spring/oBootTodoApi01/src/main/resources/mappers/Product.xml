@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oracle.oBootTodoApi01.ProductMapper">
+	<select id="productTotal" resultType="int">
+		SELECT count(*) FROM product
+	</select>
+	<select id="tkProductListAll" parameterType="ProductDTO" resultType="ProductDTO">
+		<!-- 
+		product p 에서 del_flag가 0(false)인 제품과
+		product_image_list pi 에서 ord가 0(첫번쨰)인 이미지(없을수도)를 가져온다 pro
+		가져온 product에서 순번을 매겨 페이지 번호에 맞는 제품들을 찾는다
+		-->
+		<![CDATA[
+		SELECT * FROM (
+			SELECT rownum rn, pro.* FROM (
+				SELECT p.*, pi.file_name AS simage FROM 
+					(SELECT * FROM product WHERE del_flag = 0) p,
+					(SELECT * FROM product_image_list WHERE ord = 0) pi
+				WHERE p.pno = pi.product_pno(+)
+				ORDER BY p.pno
+			) pro
+		)
+		WHERE rn >= #{start}
+		AND rn <= #{end} 
+		]]>
+	</select>
+</mapper>

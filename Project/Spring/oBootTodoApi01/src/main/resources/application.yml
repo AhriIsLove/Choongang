@@ -22,3 +22,6 @@ logging.level:
 mybatis:
   config-location: classpath:configuration.xml
   mapper-locations: classpath:mappers/*.xml 
+
+#upload Folder
+com.oracle.oBootTodoApi01.upload.path: upload
