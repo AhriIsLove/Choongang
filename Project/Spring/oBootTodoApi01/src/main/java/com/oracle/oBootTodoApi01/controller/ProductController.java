@@ -2,11 +2,15 @@ package com.oracle.oBootTodoApi01.controller;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -14,7 +18,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.oracle.oBootTodoApi01.dto.PageRequestDTO;
 import com.oracle.oBootTodoApi01.dto.PageResponseDTO;
 import com.oracle.oBootTodoApi01.dto.ProductDTO;
-import com.oracle.oBootTodoApi01.dto.TodoDTO;
 import com.oracle.oBootTodoApi01.service.Paging;
 import com.oracle.oBootTodoApi01.service.ProductService;
 import com.oracle.oBootTodoApi01.util.CustomFileUtil;
@@ -80,6 +83,50 @@ public class ProductController {
 		//파일 삭제
 		fileUtil.deletFiles(deleteFileNames);
 		
+		return Map.of("RESULT", "SUCCESS");
+	}
+	
+	@PutMapping("/modify/{pno}")
+	public Map<String, String> modify(@PathVariable(name="pno") Long pno, ProductDTO productDTO){
+		//수정 대상 제품(1u,2u,3u)
+		ProductDTO oldProductDTO = productService.get(pno);
+		//수정 대상 제품이 수정되어야 할 제품 상태(3,4,5)
+		productDTO.setPno(pno);
+		
+		//기존의 파일들(1u,2u,3u)
+		List<String> oldFileNames = oldProductDTO.getUploadFileNames();
+		
+		//새로 업로드 해야 하는 파일들(3,4,5)
+		List<MultipartFile> files = productDTO.getFiles();
+		
+		//새로 업로드 되어서 만들어진 파일 이름들(3u,4u,5u)
+		List<String> currentUploadFileNames = fileUtil.saveFiles(files);
+
+		//유지되는 파일들() : view에서 uploadFileNames에 값을 넣어준 상태로 보내준다면 있을것임(3u)
+		List<String> uploadedFileNames = productDTO.getUploadFileNames();
+		// + 새로 업로드된 파일 이름들(3u,4u,5u)
+		if(currentUploadFileNames != null && currentUploadFileNames.size() > 0) {
+			//addAll : 중복값 허용
+			uploadedFileNames.addAll(currentUploadFileNames);
+		}
+
+		//DB 수정
+		//1u,2u,3u삭제 3u,4u,5u추가
+		productService.modify(productDTO);
+
+		//지워야 하는 파일 목록 찾기(1u,2u,3u)
+		//유지되는 파일들이 view에서 정해줘야 하는데 없으면 old의 3u와 uploaded의 3u는 다른 3u이다.
+		if(oldFileNames != null && oldFileNames.size() > 0) {
+			//기존의 파일들중에(u1,2u,3u)
+			List<String> removeFiles = oldFileNames.stream()
+					//이미 업로드된 파일들을 못찾으면 -1로 삭제대상으로 지정(3u,4u,5u)
+					.filter(fileName -> uploadedFileNames.indexOf(fileName) == -1)
+					.collect(Collectors.toList());
+			
+			//삭제(1u,2u)
+			fileUtil.deletFiles(removeFiles);
+		}
+
 		return Map.of("RESULT", "SUCCESS");
 	}
 }

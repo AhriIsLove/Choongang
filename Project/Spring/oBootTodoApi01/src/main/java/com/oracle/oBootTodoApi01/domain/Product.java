@@ -53,6 +53,7 @@ public class Product {
 	// - JPA는 자동으로 Product 테이블과는 별도로 컬렉션을 저장할 테이블을 생성
 	// - 엔티티명_필드명' 형태의 테이블이 생성됨  PRODUCT_IMAGELIST
 	// - 명시적으로 테이블 이름을 지정하려면 @CollectionTable 어노테이션을 추가로 사용
+	// -- 일반적으로 1:1대응, List로 설정했기 때문에 1:N대응
 	@ElementCollection
 	// @Builder.Default
 	// @Builder는 초기값 지정하는 ' = new ArrayList<>();'를 무시하기 때문에

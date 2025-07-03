@@ -598,14 +598,39 @@ module.exports = {
 -- CustomServletConfig implements WebMvcConfigurer 추가
 -- LocalDateFormatter implements Formatter<LocalDate> 추가
 
+39. 가상머신 설치
+○ 도커(Docker) 설치
+- https://docs.docker.com/desktop/setup/install/windows-install 접속
+- Docker Desktop for Windows - x86_64 다운로드
+- Docker Desktop Installer.exe 실행
+-- OK
+-- Close and restart
+-- Accept
+○ 도커 회원가입
+- skip
+○ 설치 확인
+- cmd 입력
+-- 'docker version' 입력
+-- 'wsl --update' 입력
+-- 'wsl --list --verbose' 입력
+--- dockert-desktop Running 2 확인
+○ dockert-desktop Running 2 확인 안 된 경우
+- 윈도우 우하단 트레이에서 docker Restart
+- cmd 입력
+-- 'wsl --update' 입력
+-- 'wsl --list --verbose' 입력
+-- dockert-desktop Running 2 확인
 
-
-
-
-
-
-
-
+40. Git 설치
+○ Github Desktop - Repository - 'Open in Command Prompt'
+- Install Git
+- Download for Windows
+- Git for Windows/x64 Setup
+○ Git-2.50.0.2-64-bit 실행
+- Next - Next - Next - Next - Next - Next - Next - Next
+- 'Use the OpenSSL library' 체크 - Next - Next - Next - Next - Next - Install - Finish
+○ Github Desktop 재실행
+- Repository - 'Open in Command Prompt'에서 git 명령어 사용가능
 
 
 

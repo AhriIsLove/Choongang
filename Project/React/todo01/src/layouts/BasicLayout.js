@@ -1,4 +1,4 @@
-import BasicMenu from "../components/BasicMenu";
+import BasicMenu from "../components/menus/BasicMenu";
 
 const BasicLayout = ({ children }) => {
     return (
@@ -22,8 +22,6 @@ const BasicLayout = ({ children }) => {
             md : medium(width:768) 사이즈 이상일 경우
             md:flex-row: 여기서 md:는 "medium" 사이즈 화면 이상일 때 적용
                         화면이 어느 정도 커지면, flex-col 대신 자식 요소들을 가로 방향(row)으로 배치
-            
-            
             
             2xl: 1536 이상
             xl : 1280 이상

@@ -4,7 +4,7 @@ import { getList } from "../../api/todoApi";
 import useCustomMove from "../../hooks/useCustomMove";
 import PageComponent from "../common/PageComponent";
 
-//
+// ListComponent에서 사용할 객체(todoDTO)
 const initState = {
     dtoList: [],
     pageNumList: [],

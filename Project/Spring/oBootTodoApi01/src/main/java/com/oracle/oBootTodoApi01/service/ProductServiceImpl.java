@@ -138,4 +138,32 @@ public class ProductServiceImpl implements ProductService {
 		productRepository.updateToDelete(pno, true);
 		
 	}
+
+	@Override
+	public void modify(ProductDTO productDTO) {
+		//DB에서 가져오기
+		Optional<Product> maybeProduct = productRepository.findById(productDTO.getPno());
+		Product product = maybeProduct.orElseThrow();
+		
+		//기본 정보 수정
+		product.changePname(productDTO.getPname());
+		product.changePdesc(productDTO.getPdesc());
+		product.changePrice(productDTO.getPrice());
+		product.changeKeyword(productDTO.getKeyword());
+		
+		//이미지 목록 삭제
+		product.clearList();
+		
+		//이미지 목록 생성
+		List<String> uploadFileNames = productDTO.getUploadFileNames();
+		if(uploadFileNames != null && uploadFileNames.size() > 0) {
+			uploadFileNames.stream()
+			.forEach(uploadName -> {
+				product.addImageString(uploadName);
+			});
+		}
+		
+		//DB에 저장
+		productRepository.save(product);
+	}
 }

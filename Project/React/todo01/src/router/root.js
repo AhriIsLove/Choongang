@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import todoRouter from "./todoRouter";
+import productsRouter from "./productsRouter";
 // const { createBrowserRouter } = "react-router-dom";
 
 //로딩 페이지 생성
@@ -9,6 +10,7 @@ const Loading = <div>Loading...</div>
 const Main = lazy(() => import("../pages/MainPage"));
 const About = lazy(() => import("../pages/AboutPage"));
 const TodoIndex = lazy(() => import("../pages/todo/IndexPage"));
+const ProductsIndex = lazy(() => import("../pages/products/IndexPage"));
 
 //createBrowserRouter : DispatcherServlet의 Controller 같은 친구
 const root = createBrowserRouter([
@@ -31,7 +33,12 @@ const root = createBrowserRouter([
         //TodoIndex에서 리턴되는 BasicLayout의 내용(Outlet)으로 들어감
         //todoRouter 내부의 path는 'todo/'로 시작됨
         children:todoRouter()
-    }
+    },
+    {
+        path:"products",
+        element:<Suspense fallback={Loading}><ProductsIndex></ProductsIndex></Suspense>,
+        children:productsRouter()
+    },
 ]);
 
 //외부 참조 허락
