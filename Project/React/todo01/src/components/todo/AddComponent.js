@@ -10,7 +10,6 @@ const initState = {
 };
 
 const AddComponent = () => {
-    //...initState : 
     const [todo, setTodo] = useState({...initState});
     const [result, setResult] = useState(null);// 결과상태
 

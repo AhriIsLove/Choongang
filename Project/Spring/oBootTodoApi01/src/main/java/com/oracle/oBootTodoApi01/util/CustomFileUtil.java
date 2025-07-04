@@ -10,6 +10,10 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -112,5 +116,39 @@ public class CustomFileUtil {
 				throw new RuntimeException(e.getMessage());
 			}
 		});
+	}
+
+	public ResponseEntity<Resource> getFile(String fileName) {
+		// File.separator
+		// - 환경에 맞는 구분자(/, \, ...) 자동 설정
+		Resource resource = new FileSystemResource(uploadPath + File.separator + fileName);
+		
+		// 요청한 파일이 누락된 경우 default.jpeg를 보내준다.
+		if(!resource.exists()) {
+			resource = new FileSystemResource(uploadPath + File.separator + "default.jpeg");
+		}
+		
+		// 응답 Header 생성 후 Content-Type 적용
+		HttpHeaders headers = new HttpHeaders();
+		try {
+			// Content-Type
+			// - text/html: HTML 문서
+			// - text/css: CSS 파일
+			// - application/javascript: JavaScript 파일
+			// - image/jpeg: JPEG 이미지
+			// - image/jpg: JPG 이미지
+			// - image/png: PNG 이미지
+			// - *** application/json: JSON 데이터 
+			// - application/pdf: PDF 문서
+			headers.add("Content-Type", Files.probeContentType(resource.getFile().toPath()));
+		} catch (Exception e) {
+			return ResponseEntity.internalServerError().build();
+		}
+		
+		// 최종적 200 상태코드 +  응답 Header + 파일 Resource 전달
+		// 주요 목적 : File D/L 또는 Image 보여줄때
+		return ResponseEntity.ok()	// 상태코드 : 200
+				.headers(headers)	// Header : Content-Type
+				.body(resource);	// Body : 파일(resource)
 	}
 }

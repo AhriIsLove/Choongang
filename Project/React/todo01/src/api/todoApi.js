@@ -15,7 +15,7 @@ export const getOne = async(tno) => {
     // - due_date : null
 
     return res.data;
-}
+};
 
 //서버에게 목록 요청
 export const getList = async(pageParam) => {

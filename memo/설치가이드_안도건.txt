@@ -598,7 +598,18 @@ module.exports = {
 -- CustomServletConfig implements WebMvcConfigurer 추가
 -- LocalDateFormatter implements Formatter<LocalDate> 추가
 
-39. 가상머신 설치
+39. Git 설치
+○ Github Desktop - Repository - 'Open in Command Prompt'
+- Install Git
+- Download for Windows
+- Git for Windows/x64 Setup
+○ Git-2.50.0.2-64-bit 실행
+- Next - Next - Next - Next - Next - Next - Next - Next
+- 'Use the OpenSSL library' 체크 - Next - Next - Next - Next - Next - Install - Finish
+○ Github Desktop 재실행
+- Repository - 'Open in Command Prompt'에서 git 명령어 사용가능
+
+40. 가상머신 설치
 ○ 도커(Docker) 설치
 - https://docs.docker.com/desktop/setup/install/windows-install 접속
 - Docker Desktop for Windows - x86_64 다운로드
@@ -620,20 +631,58 @@ module.exports = {
 -- 'wsl --update' 입력
 -- 'wsl --list --verbose' 입력
 -- dockert-desktop Running 2 확인
-
-40. Git 설치
-○ Github Desktop - Repository - 'Open in Command Prompt'
-- Install Git
-- Download for Windows
-- Git for Windows/x64 Setup
-○ Git-2.50.0.2-64-bit 실행
-- Next - Next - Next - Next - Next - Next - Next - Next
-- 'Use the OpenSSL library' 체크 - Next - Next - Next - Next - Next - Install - Finish
-○ Github Desktop 재실행
-- Repository - 'Open in Command Prompt'에서 git 명령어 사용가능
-
-
-
+40-1. 가상머신 리눅스(우분투) 환경 추가
+○ ubuntu 생성(방법1)
+- 상단 Search에 'ubuntu' 검색
+- 목록중 최상위 'ubuntu' 선택(DL:1B+, LIKE:10K+)
+- Pull
+○ ubuntu 실행(방법1)
+- 좌측 배너 Images 선택
+- DownLoad된 ubuntu 체크
+- 실행버튼 선택
+-- Container name : ubuntu_704
+-- Run
+- 실행버튼 선택
+○ ubuntu 생성(방법2)
+- cmd
+-- 'docker create -it --name ubuntu_0704 ubuntu'
+--- 8f7588e8d90364846be80437b277fdd5969b1d130bf55170bf1ce1413b541e37
+-- 'docker ps -a'
+--- 생성된 CONTAINER ID 복사
+○ ubuntu 실행(방법2)
+- cmd
+-- docker start 8f7588e8d903
+-- docker attach 8f7588e8d903
+○ 버전 확인
+- 'cat etc/issue'
+○ 업데이트
+- 'apt-get update'
+○ vim(Edit) 설치
+- 'apt-get install vim'
+- Y
+- 5(Asia)
+- 68(Seoul)
+○ vim확인 및 Edit작업
+- dir(권한) 확인
+-- 'll'
+- file 확인
+-- 'ls'
+- 폴더만들기
+-- 'mkdir abc'
+- 폴더 이동
+-- 'cd abc'
+- 새파일 생성
+-- 'vim kkk.txt'
+-- 입력 모드 전환
+--- a || i
+-- 입력 모드 종료
+--- esc
+-- 저장
+--- :w
+-- 종료
+--- :q
+- 권한부여(7 : 111 : rwx, 0 : 000 : ---)
+-- 'chmod 765 kkk.txt'
 
 
 

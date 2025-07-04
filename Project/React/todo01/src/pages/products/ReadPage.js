@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom"
+import ReadComponent from "../../components/products/ReadComponent";
 
 const ReadPage = () => {
     const { pno } = useParams();
@@ -8,6 +9,7 @@ const ReadPage = () => {
             <div className="text-2xl">
                 Products ReadPage component {pno}
             </div>
+            <ReadComponent pno={pno}/>
         </div>
     );
 };

@@ -18,12 +18,12 @@ public class ProductDTO {
 	private Long pno;
 	private String pname;
 	private int price;
-	private String pdesc;
+	private String pdesc;//설명
 	private String keyword;
 	private boolean delFlag;
 	
 	//조회용
-	private String simage;
+	private String simage;//썸네일이미지
 	private String pageNum;
 	private int start;
 	private int end;

@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import javax.swing.filechooser.FileNameExtensionFilter;
-
+import org.springframework.core.io.Resource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -128,5 +128,12 @@ public class ProductController {
 		}
 
 		return Map.of("RESULT", "SUCCESS");
+	}
+
+	// ResponseEntity는 사용자의 HttpRequest에 대한 응답 데이터를 포함하는 클래스. 
+    // HttpStatus, HttpHeaders, HttpBody를 포함
+	@GetMapping("/view/{fileName}")
+	public ResponseEntity<Resource> viewFileGET(@PathVariable(name="fileName") String fileName){
+		return fileUtil.getFile(fileName);
 	}
 }
