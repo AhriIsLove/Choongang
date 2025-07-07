@@ -53,6 +53,8 @@ const AddComponent = () => {
         }).catch(e => {
             // 실패
             console.error(e);
+            setResult("실패...");// 결과 데이터 변경
+            setFetching(false);//로딩 끝
         });
     };
 

@@ -10,7 +10,11 @@ const getNum = (param, defaultValue) => {
 };
 
 const useCustomMove = () => {
-    //Navigate 선언
+    // Navigate 선언
+    // - pathname이 /로 시작하면 root경로
+    // - pathname이 /없이 시작하면 현재경로
+    // - ../ => 현재경로에서 한단계 위에서부터 시작
+    // - /../ => root에서 한단계 위에서부터 시작
     const navigate = useNavigate();
 
     //useState

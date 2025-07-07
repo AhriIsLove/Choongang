@@ -22,7 +22,11 @@ export const productAdd = async (product) => {
 };
 
 export const getOne = async (pno) => {
+    console.log("getone");
+
     const res = await axios.get(`${prefix}/${pno}`);
+
+    console.log("getone", res);
 
     return res.data;
 };
@@ -36,7 +40,7 @@ export const putOne = async (pno, product) => {
 };
 
 export const deleteOne = async (pno) => {
-    const res = await axios.delete(`${prefix}/${pno}`);
+    const res = await axios.delete(`${prefix}/remove/${pno}`);
 
     return res.data;
 };

@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -33,6 +35,9 @@ public class ProductController {
 	private final ProductService productService;
 	private final CustomFileUtil fileUtil;
 	
+	// FormData로 받을 경우 @RequestBody로 받지 않는다.
+	// - @RequestBody는 application/json형태의 body를 읽는다.
+	// - FormData는 binary형태의 데이터로 전송되어 @RequestBody로 읽을 수 없다.
 	@PostMapping("/register")
 	public Map<String, Long> register(ProductDTO productDTO){
 		log.info("register S : " + productDTO);
@@ -69,6 +74,8 @@ public class ProductController {
 	
 	@GetMapping("/{pno}")
 	public ProductDTO read(@PathVariable(name="pno") Long pno) {
+		System.out.println("0");
+		
 		return productService.get(pno);
 	}
 	
@@ -113,7 +120,7 @@ public class ProductController {
 		//DB 수정
 		//1u,2u,3u삭제 3u,4u,5u추가
 		productService.modify(productDTO);
-
+		
 		//지워야 하는 파일 목록 찾기(1u,2u,3u)
 		//유지되는 파일들이 view에서 정해줘야 하는데 없으면 old의 3u와 uploaded의 3u는 다른 3u이다.
 		if(oldFileNames != null && oldFileNames.size() > 0) {
@@ -126,7 +133,7 @@ public class ProductController {
 			//삭제(1u,2u)
 			fileUtil.deletFiles(removeFiles);
 		}
-
+		
 		return Map.of("RESULT", "SUCCESS");
 	}
 

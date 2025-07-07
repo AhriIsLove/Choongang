@@ -683,7 +683,7 @@ module.exports = {
 --- :q
 - 권한부여(7 : 111 : rwx, 0 : 000 : ---)
 -- 'chmod 765 kkk.txt'
-
+40-2. 
 
 
 

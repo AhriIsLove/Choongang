@@ -45,12 +45,12 @@ const ReadComponent = ({ pno }) => {
                 <button className="rounded p-4 m-2 text-xl w-32 text-white bg-blue-500"
                     type="button"
                     onClick={() => moveToList()}>
-                    List
+                    Product List
                 </button>
                 <button className="rounded p-4 m-2 text-xl w-32 text-white bg-red-500"
                     type="button"
                     onClick={() => moveToModify(pno)}>
-                    Modify
+                    Product Modify
                 </button>
             </div>
         </div>

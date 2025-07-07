@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import ModifyComponent from "../../components/products/ModifyComponent";
 
 const ModifyPage = () => {
     const {pno} = useParams();
@@ -8,6 +9,7 @@ const ModifyPage = () => {
             <div className="text-3xl font-extrabold">
                 Products Modify Page {pno}
             </div>
+            <ModifyComponent pno={pno}/>
         </div>
     );
 };
