@@ -662,10 +662,12 @@ module.exports = {
 - Y
 - 5(Asia)
 - 68(Seoul)
+
+41. docker - ubuntu 기본
 ○ vim확인 및 Edit작업
-- dir(권한) 확인
+- dir(권한) 확인 : ls -al
 -- 'll'
-- file 확인
+- file 확인 : LiSt
 -- 'ls'
 - 폴더만들기
 -- 'mkdir abc'
@@ -681,9 +683,10 @@ module.exports = {
 --- :w
 -- 종료
 --- :q
-- 권한부여(7 : 111 : rwx, 0 : 000 : ---)
+- 권한부여 방법(7 : 111 : rwx, 0 : 000 : ---)
+- 권한부여 순서(관리자, 그룹, 공용)
 -- 'chmod 765 kkk.txt'
-40-2. 
+
 
 
 

@@ -78,7 +78,9 @@
 ★★★★★★★★★React★★★★★★★★★
 ○ todo01 : tailwindcss, Suspense, Navigate, Outlet, API
 
-
+★★★★★★★★★Project★★★★★★★★★
+○ oBootBoard03 : 사내 게시판
+- JDBC API, Java Mail Sender, Lombok, Oracle Driver, Spring Data JPA, Spring Security, Spring Web, Validation
 
 
 
