@@ -2,9 +2,18 @@ package com.oracle.oBootBoard03.repository;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import com.oracle.oBootBoard03.domain.Dept;
+import com.oracle.oBootBoard03.dto.DeptDto;
 
-public interface DeptRepository {
-	List<Dept> findAllDept();
-	Dept deptSave(Dept dept);
+public interface DeptRepository  {
+	
+	Long           deptTotalcount();
+	
+	List<Dept>     findAllDept();
+	List<DeptDto>  findPageDept(DeptDto deptDto);
+	Dept           deptSave(Dept dept);
+
+	
 }

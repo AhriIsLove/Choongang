@@ -2,7 +2,6 @@ package com.oracle.oBootBoard03.repository;
 
 import java.util.List;
 
-import com.oracle.oBootBoard03.domain.Dept;
 import com.oracle.oBootBoard03.domain.Emp;
 
 public class EmpRepositoryImpl implements EmpRepository {

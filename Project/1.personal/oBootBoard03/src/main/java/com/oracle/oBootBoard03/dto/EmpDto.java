@@ -10,12 +10,13 @@ import lombok.ToString;
 @Setter
 @ToString
 public class EmpDto {
-	private int emp_no;
-	private String emp_name;
-	private String email;
-	private String emp_tel;
-	private Long sal;
-	private int dept_code;
-	private LocalDate in_date;
-	private boolean del_status;
+	private int 		emp_no;
+	private String  	emp_password;
+	private String  	emp_name;
+	private String  	email;
+	private String  	emp_tel;
+	private Long    	sal;
+	private Boolean  	del_status;
+	private int         dept_code;
+	private LocalDate   in_date;
 }

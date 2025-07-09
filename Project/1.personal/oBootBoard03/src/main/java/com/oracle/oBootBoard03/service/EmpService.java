@@ -5,6 +5,7 @@ import java.util.List;
 import com.oracle.oBootBoard03.dto.EmpDto;
 
 public interface EmpService {
-	int totalEmp();
-	List<EmpDto> deptList(EmpDto empDto);
+	int 			totalEmp();
+	List<EmpDto>	empList(EmpDto empDto);
+	
 }

@@ -7,17 +7,18 @@ import org.springframework.stereotype.Service;
 import com.oracle.oBootBoard03.dao.BoardDao;
 import com.oracle.oBootBoard03.dto.BoardDto;
 
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 
 @Service
-@Transactional
+@Log4j2
 @RequiredArgsConstructor
 public class BoardServiceImpl implements BoardService {
+	
 	private final BoardDao boardDao;
 
 	@Override
-	public int totalBoard() {
+	public int totelBoard() {
 		// TODO Auto-generated method stub
 		return 0;
 	}

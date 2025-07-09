@@ -6,18 +6,20 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
+// 상속관계에서도 부모class 필드를 자식 Class Builder에서 설정 가능
+// 부모/자식 둘다 @SuperBuilder 지정 
 @Data
-//부모/자식 클래스 둘다 @SuperBuilder 설정시
-//부모클래스의 @Builder 포함
-//자식클래스에세 @Builder 포함
 @SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
 public class PageRequestDTO {
 	@Builder.Default
 	private int page = 1;
+
 	@Builder.Default
 	private int size = 10;
+	  
 	private int start;
 	private int end;
+
 }

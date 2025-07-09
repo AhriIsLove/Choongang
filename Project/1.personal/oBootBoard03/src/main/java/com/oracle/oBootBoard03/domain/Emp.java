@@ -19,45 +19,58 @@ import lombok.ToString;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@SequenceGenerator(name = "emp_seq_gen", sequenceName = "emp_seq_generator", allocationSize = 1, initialValue = 1000000)
+@SequenceGenerator(
+		name = "emp_seq_gen",    // seq 객체
+		sequenceName = "emp_seq_generator",
+		initialValue = 1000000,
+		allocationSize = 1
+		
+		)
 public class Emp {
 	@Id
-	@GeneratedValue(generator = "emp_seq_gen", strategy = GenerationType.SEQUENCE)
-	private int emp_no;
-	private String emp_name;
-	private String email;
-	private String emp_tel;
-	private Long sal;
-	private int dept_code;
-	private LocalDate in_date;
-	private boolean del_status;
-
-	public void changeEmp_no(int emp_no) {
+	@GeneratedValue(
+			strategy = GenerationType.SEQUENCE,
+			generator = "emp_seq_gen"
+			
+			)
+	private int 		emp_no;
+	private String      emp_password;
+	private String  	emp_name;
+	private String  	email;
+	private String  	emp_tel;
+	private Long    	sal;
+	private Boolean  	del_status;
+	private int         dept_code;
+	private LocalDate   in_date;
+	
+	public void changeEmpno(int emp_no) {
 		this.emp_no = emp_no;
 	}
-
 	public void changeEmp_name(String emp_name) {
 		this.emp_name = emp_name;
 	}
-
+	public void changeEmp_password(String emp_password) {
+		this.emp_password = emp_password;
+	}
 	public void changeEmail(String email) {
 		this.email = email;
 	}
-
 	public void changeEmp_tel(String emp_tel) {
 		this.emp_tel = emp_tel;
 	}
-
-	public void changeSal(Long sal) {
-		this.sal = sal;
+	public void changeDel_status(Boolean del_status) {
+		this.del_status = del_status;
 	}
-
 	public void changeDept_code(int dept_code) {
 		this.dept_code = dept_code;
 	}
 
-	public void changeDel_status(boolean del_status) {
-		this.del_status = del_status;
-	}
-
+	
+	
+	
+	
+	
+	
+	
+	
 }

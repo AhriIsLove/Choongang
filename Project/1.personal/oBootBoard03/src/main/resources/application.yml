@@ -2,36 +2,40 @@ server:
   port: 8388
 # Oracle Connect
 spring:
-  # Datasource Bean 생성
+# Datasource Bean 생성
   datasource:
-    driver-class-name: oracle.jdbc.driver.OracleDriver
-    url: jdbc:oracle:thin:@localhost:1521/xe
-    username: person01
-    password: tiger
+   driver-class-name: oracle.jdbc.driver.OracleDriver
+   url: jdbc:oracle:thin:@localhost:1521/xe
+   username: person01
+   password: tiger
     
+  
   #Jpa Setting
   jpa:
+    # database-platform: org.hibernate.dialect.OracleDialect  # Jpa사용시 11g에 대한 방언 설정 --> Paging 작업 
     show-sql: true
     hibernate:
       ddl-auto: update
  
-  # View Resolver
+  # View Resolver --> jsp
   mvc:
     view:
       prefix: /WEB-INF/views/
       suffix: .jsp
-      
-  # Gmail Transfer
+
+  # gmail Transfer 
   mail:
     host: smtp.gmail.com
     port: 587
     username: ahrilove1214@gmail.com
-    password: pduo xvpk hgbz ytul
+    password: 
     properties:
       mail:
         smtp:
           auth: true
-          starttls.enable: true
+          starttls.enable: true  
+          
+ 
       
 logging.level:
   org.hibernate.SQL: debug   # logger를 통해 하이버네이트 실행 SQL 
@@ -40,3 +44,21 @@ logging.level:
 mybatis:
   config-location: classpath:configuration.xml
   mapper-locations: classpath:mappers/*.xml 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+              

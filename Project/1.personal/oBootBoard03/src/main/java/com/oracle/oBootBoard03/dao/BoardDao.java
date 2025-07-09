@@ -6,5 +6,5 @@ import com.oracle.oBootBoard03.dto.BoardDto;
 
 public interface BoardDao {
 	List<BoardDto> boardListSel();
-	int insertBoard(BoardDto boardDto);
+	int            insertBoard(BoardDto boardDto);
 }

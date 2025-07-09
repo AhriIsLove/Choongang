@@ -5,6 +5,6 @@ import java.util.List;
 import com.oracle.oBootBoard03.dto.BoardDto;
 
 public interface BoardService {
-	int totalBoard();
-	List<BoardDto> boardList(BoardDto boardDto);
+	int 			totelBoard();
+	List<BoardDto>  boardList(BoardDto boardDto);
 }
