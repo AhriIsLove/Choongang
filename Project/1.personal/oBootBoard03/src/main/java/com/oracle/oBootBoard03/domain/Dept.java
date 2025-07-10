@@ -67,4 +67,7 @@ public class Dept {
 	public void changeDept_gubun(Boolean dept_gubun) {
 		this.dept_gubun = dept_gubun;
 	}
+	public void changeIn_date(LocalDateTime in_date) {
+		this.in_date = in_date;
+	}
 }

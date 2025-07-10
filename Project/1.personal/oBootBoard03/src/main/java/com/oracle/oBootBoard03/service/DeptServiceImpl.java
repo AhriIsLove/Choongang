@@ -1,6 +1,7 @@
 package com.oracle.oBootBoard03.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -9,8 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.oracle.oBootBoard03.domain.Dept;
 import com.oracle.oBootBoard03.dto.DeptDto;
 import com.oracle.oBootBoard03.repository.DeptRepository;
-
-
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
@@ -45,6 +44,41 @@ public class DeptServiceImpl implements DeptService {
 		if(dept.getDept_gubun()==null) dept.changeDept_gubun(false);
 		Dept saveDept = deptRepository.deptSave(dept);
 		return saveDept.getDept_code();
+	}
+
+	@Override
+	public DeptDto getSingleDept(int dept_code) {
+		// TODO Auto-generated method stub
+		Dept dept = deptRepository.findById(dept_code);
+		System.out.println("DeptServiceImpl getSingleDept dept->"+dept);
+		DeptDto deptDto = modelMapper.map(dept, DeptDto.class );
+		System.out.println("DeptServiceImpl getSingleDept deptDto->"+deptDto);
+		
+		return deptDto;
+	}
+
+	@Override
+	public DeptDto deptUpdate(DeptDto deptDto) {
+		Optional<Dept> maybeDept = deptRepository.findById2(deptDto.getDept_code());
+		Dept dept = maybeDept.orElseThrow();
+		dept.changeDept_name(deptDto.getDept_name());
+		dept.changeDept_loc(deptDto.getDept_loc());
+		dept.changeDept_tel(deptDto.getDept_tel());
+		dept.changeDept_captain(deptDto.getDept_captain());
+		dept.changeIn_date(deptDto.getIn_date());
+	    System.out.println("DeptServiceImpl modify dept->"+dept);
+
+	    Dept deptUpdateEntity = deptRepository.deptSave(dept);
+		DeptDto deptRtnDto = modelMapper.map(deptUpdateEntity, DeptDto.class );
+		return deptRtnDto;
+    
+	}
+
+	@Override
+	public void deleteDept(int dept_code) {
+	    System.out.println("DeptServiceImpl deleteDept dept_code->"+dept_code);
+		deptRepository.deleteById(dept_code);
+		
 	}
 
 }

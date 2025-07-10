@@ -45,12 +45,49 @@ public class DeptController {
 		return "dept/list";
 	}
 	
+	@GetMapping("/")
+	public String deptMain() {
+		System.out.println("dept/deptMain Strart...");
+
+		return "main";
+	}
 	@GetMapping("/deptInForm")
 	public String deptInForm() {
 		System.out.println("dept/deptInForm Strart...");
 
 		return "dept/deptInform";
 	}
+	
+	@GetMapping("/deptDetail")
+	public String deptDetail(DeptDto deptDto , Model model) {
+		System.out.println("DeptController dept/deptDetail Start...");
+		System.out.println("DeptController dept/deptDetail deptDto->"+deptDto);
+		DeptDto deptRtnDto = deptService.getSingleDept(deptDto.getDept_code());
+		model.addAttribute("deptDto", deptRtnDto);
+
+		return "dept/deptDetail";
+	}
+
+	@GetMapping("/modifyForm")
+	public String modifyForm(DeptDto deptDto , Model model) {
+		System.out.println("DeptController dept/modifyForm Start...");
+		System.out.println("DeptController dept/modifyForm deptDto->"+deptDto);
+		DeptDto deptRtnDto = deptService.getSingleDept(deptDto.getDept_code());
+		model.addAttribute("deptDto", deptRtnDto);
+
+		return "dept/modifyForm";
+	}
+	
+	@PostMapping("update")
+	public String deptUpdate(DeptDto deptDto) {
+		System.out.println("dept/deptUpdate Strart...");
+		System.out.println("dept/deptUpdate deptDto->"+deptDto);
+		// 여러분의 Logic 
+		DeptDto deptUpdateDto = deptService.deptUpdate(deptDto);
+		log.info("deptUpdate deptUpdateDto-->", deptUpdateDto);
+		return "redirect:list"; 
+		
+	}	
 	
 	@PostMapping("saveDept")
 	public String saveDept(DeptDto deptDto) {
@@ -59,7 +96,18 @@ public class DeptController {
 		// 여러분의 Logic 
 		int dept_code = deptService.deptSave(deptDto);
 		log.info("Save dept_code-->", dept_code);
-		return "dept/list";
+		return "redirect:list";
 		
 	}
+	
+	
+	@GetMapping("/deleteDept")
+	public String deleteDept(DeptDto deptDto , Model model) {
+		System.out.println("DeptController dept/deleteDept Start...");
+		System.out.println("DeptController dept/deleteDept deptDto->"+deptDto);
+		deptService.deleteDept(deptDto.getDept_code());
+
+		return "redirect:list";
+	}
+
 }

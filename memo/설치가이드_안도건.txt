@@ -747,8 +747,19 @@ greeting:
 - Application.java클래스에 추가
 -- @EnableDiscoveryClient
 
-
-
+43. Docker-Oracle
+○ 오라클 pull
+- oracle11g 검색
+- rohitbasu77/oracle11g pull
+○ 설정
+- 이름 입력
+- port 입력 : 0 -> 랜덤
+○ 실행
+- Containers에서 oracle ▷버튼 클릭
+- oracle선택
+-- Inspect에서 180번줄 쯤에 HostPort 확인
+○ 사용
+- port만 바꿔서 oracle에서 사용 가능
 
 
 

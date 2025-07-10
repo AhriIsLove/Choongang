@@ -4,12 +4,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import com.oracle.oBootBoard03.domain.Dept;
 import com.oracle.oBootBoard03.dto.DeptDto;
-
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
@@ -37,7 +34,8 @@ public class DeptRepositoryImpl implements DeptRepository {
 	@Override
 	public Long deptTotalcount() {
 		System.out.println("DeptRepositoryImpl dept/list Strart...");
-		TypedQuery<Long> query = em.createQuery("select count(d) from Dept d", Long.class); // Dept.class 대신 Long.class
+		TypedQuery<Long> query = 
+				em.createQuery("select count(d) from Dept d where dept_gubun = false", Long.class); // Dept.class 대신 Long.class
 		Long totalCountLong = query.getSingleResult();
 
 		return totalCountLong;
@@ -55,12 +53,13 @@ public class DeptRepositoryImpl implements DeptRepository {
 	                     + "    SELECT ROWNUM rn, a.* "
 	                     + "    FROM ( "
 	                     + "        SELECT dept_code, dept_captain, dept_gubun, dept_loc, dept_name, dept_tel, in_date " // 실제 컬럼명들을 나열
-	                     + "        FROM Dept " // 테이블명은 엔티티명이 아닌 실제 DB 테이블명
+	                     + "        FROM   Dept " // 테이블명은 엔티티명이 아닌 실제 DB 테이블명
+	                     + "        WHERE  dept_gubun = 0"
 	                     + "        ORDER BY dept_code "
 	                     + "    ) a "
 	                     + ") "
 	                     + "WHERE rn BETWEEN :start AND :end";
-	    
+
 	    // em.createNativeQuery()를 사용하고, 결과를 Dept.class로 매핑하도록 지정
 	    Query query = em.createNativeQuery(nativeSql, Dept.class); // 두 번째 인자로 엔티티 클래스를 주면 자동으로 매핑 시도
 
@@ -69,6 +68,7 @@ public class DeptRepositoryImpl implements DeptRepository {
 	    // :end 파라미터에 값 넣기
 	    query.setParameter("end", deptDto.getEnd());
 
+	    
 	    List<Dept> deptEntityList = query.getResultList();
 	    System.out.println("DeptRepositoryImplfindPageDept deptEntityList->"+deptEntityList);
 
@@ -85,6 +85,30 @@ public class DeptRepositoryImpl implements DeptRepository {
 	    
 	    // 쿼리 실행 및 결과 반환
 	    return deptDtoList;	
+	}
+
+	@Override
+	public Dept findById(int dept_code) {
+		Dept dept = em.find(Dept.class, dept_code);
+		return dept;
+	}
+
+	@Override
+	public Optional<Dept> findById2(int dept_code) {
+		// 1. 먼저 em.find()로 엔티티를 조회
+		Dept foundDept = em.find(Dept.class, dept_code);
+
+		// 2. 조회된 엔티티를 Optional.ofNullable()로 감싸기
+		Optional<Dept> deptOptional = Optional.ofNullable(foundDept);
+
+		return deptOptional;
+	}
+
+	@Override
+	public void deleteById(int dept_code) {
+		System.out.println("JpaMemberRepository deleteById before...");
+		Dept dept = em.find(Dept.class, dept_code);
+		dept.changeDept_gubun(true);
 	}
 
 

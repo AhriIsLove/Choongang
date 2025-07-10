@@ -15,7 +15,7 @@
 	</div>
 	<div id="contents">
 		<h3> main Page</h3>
-		<img src="img/image1_3.jpg">
+		<img src="<%=request.getContextPath()%>/img/image1_3.jpg">
 	</div>
 	<div id="footer">
 		<%@ include file="foot.jsp" %>
