@@ -761,6 +761,50 @@ greeting:
 ○ 사용
 - port만 바꿔서 oracle에서 사용 가능
 
+44. Docker로 프로젝트 배포
+○ Docker에서 Oracle Image 실행
+○ Java 환경 변수 설정
+- cmd
+- 프로젝트 경로로 이동
+- 'set Java_HOME=C:\Program Files\Java\jdk-17'
+○ gradle로 빌드하기
+- 'gradlew build'
+-- build 폴더 생성 확인
+○ 배포파일 복사
+- 'cd build\libs'
+- 'dir'
+-- 'project-snapshot.jar파일 복사'
+- 'copy oBootTodoApi01-version1.0.jar app.jar'
+-- app.jar 파일 생성 확인
+- Dockerfile 파일 붙혀넣기
+○ Dockerfile 생성
+- Dockerfile 파일 붙혀넣기
+- Dockerfile 파일을 편집
+-- 현재 환경과 동일한지 확인
+○ docker로 빌드하기
+- 'docker build -t spring-project-restapi .'
+- 이미지 확인
+-- 'docker images'
+○ 이미지 실행
+- 'docker run -p 8387:8387 spring-project-restapi'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
