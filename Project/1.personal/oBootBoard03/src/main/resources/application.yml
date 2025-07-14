@@ -1,7 +1,14 @@
 server:
   port: 8388
-# Oracle Connect
+
 spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 50MB
+      max-request-size: 50MB
+       
+# Oracle Connect
 # Datasource Bean 생성
   datasource:
    driver-class-name: oracle.jdbc.driver.OracleDriver
@@ -45,10 +52,11 @@ mybatis:
   config-location: classpath:configuration.xml
   mapper-locations: classpath:mappers/*.xml 
   
+#upload Folder
+com.oracle.oBootBoard03.upload.path: upload   
   
-  
-  
-  
+
+
   
   
   

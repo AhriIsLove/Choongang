@@ -7,5 +7,7 @@ import com.oracle.oBootBoard03.dto.EmpDto;
 public interface EmpService {
 	int 			totalEmp();
 	List<EmpDto>	empList(EmpDto empDto);
+	int             register(EmpDto empDto);
+	
 	
 }

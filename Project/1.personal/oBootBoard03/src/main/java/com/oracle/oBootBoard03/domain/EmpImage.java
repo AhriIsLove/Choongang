@@ -13,7 +13,6 @@ import lombok.ToString;
 //@Embeddable 장점 
 //간단한 구조: 복잡한 연관관계 없이 컬렉션 관리 가능
 //자동 영속성 전이: Emp가 저장/삭제되면 EmpImage도 함께 저장/삭제됨
-
 @Embeddable
 @Getter
 @ToString
