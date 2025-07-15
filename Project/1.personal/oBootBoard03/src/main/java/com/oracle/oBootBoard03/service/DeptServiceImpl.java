@@ -81,4 +81,11 @@ public class DeptServiceImpl implements DeptService {
 		
 	}
 
+	@Override
+	public List<DeptDto> deptAllList() {
+		List<DeptDto> listDeptAll  = deptRepository.findAllDept();
+		System.out.println("MemberService deptAllList listDeptAll.size()->"+listDeptAll.size());
+		return listDeptAll;
+	}
+
 }

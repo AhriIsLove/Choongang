@@ -63,7 +63,7 @@ public class CustomFileUtil {
 					Path  thumbnailPath = Paths.get(uploadPath, "s_"+savedName);
 					
 					Thumbnails.of(savePath.toFile())
-							  .size(400, 400)	
+							  .size(100, 100)	
 							  .toFile(thumbnailPath.toFile());
 				}
 				

@@ -10,12 +10,13 @@ public interface DeptRepository  {
 	
 	Long           deptTotalcount();
 	
-	List<Dept>     findAllDept();
+	List<DeptDto>     findAllDept();
 	List<DeptDto>  findPageDept(DeptDto deptDto);
 	Dept           deptSave(Dept dept);
 	Dept           findById(int dept_code);
 	Optional<Dept> findById2(int dept_code);
 	void           deleteById(int dept_code);
+
 
 	
 }

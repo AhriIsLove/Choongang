@@ -10,5 +10,6 @@ public interface DeptService {
 	int             deptSave(DeptDto deptDto);
 	DeptDto         getSingleDept(int dept_code);
 	DeptDto         deptUpdate(DeptDto deptDto);
-	void            deleteDept(int dept_code); 
+	void            deleteDept(int dept_code);
+	List<DeptDto>   deptAllList(); 
 }

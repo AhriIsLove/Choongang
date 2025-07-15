@@ -114,9 +114,8 @@
 		      </c:if>
 		    </ul>
 		 </nav>
-	</div>
 		
-	</div>
+
 	
 	<div id="footer">
 		<%@ include file="../foot.jsp" %>

@@ -19,9 +19,22 @@ public class DeptRepositoryImpl implements DeptRepository {
 	private final EntityManager em;
 
 	@Override
-	public List<Dept> findAllDept() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<DeptDto> findAllDept() {
+		List<Dept> deptEntityList = em.createQuery("select d from Dept d",Dept.class)
+                					  .getResultList()
+                				    ;
+		System.out.println("DeptRepositoryImpl findAllDept deptEntityList.size()->"+deptEntityList.size());
+	    List<DeptDto> deptDtoList = deptEntityList.stream()
+	                // 각 dept 엔티티를 deptDto 객체로 매핑 (변환)
+	                // deptDto::new는 deptDto(Dept dept) 생성자를 호출하는 것과 같아.
+	                //.map(DeptDto::new)
+	                .map(dept->new DeptDto(dept))
+	                // 매핑된 DTO 객체들을 List로 다시 수집
+                  .collect(Collectors.toList());
+
+	    System.out.println("DeptRepositoryImplfindPageDept deptDtoList->"+deptDtoList);
+
+		return deptDtoList;
 	}
 
 	@Override

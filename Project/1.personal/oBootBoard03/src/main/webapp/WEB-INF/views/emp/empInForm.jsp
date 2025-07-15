@@ -86,9 +86,9 @@
 	            <div class="row mb-3">
 	                <label for="deptCode" class="col-sm-3 col-form-label form-label-col">부서 코드</label>
 	                <div class="col-sm-9">
-	                    <input type="number" class="form-control" id="deptCode" name="dept_code" placeholder="부서 코드를 입력하세요 (숫자)" required>
+	                    <input type="number" class="form-control" id="deptCode" name="dept_code" placeholder="부서 코드를 입력하세요k (숫자)" required>
 	                </div>
-	            </div>
+	            </div> 
 	
 	            <!-- emp_level (int) - 콤보 박스로 변경 -->
 <!-- 	            <div class="row mb-3">

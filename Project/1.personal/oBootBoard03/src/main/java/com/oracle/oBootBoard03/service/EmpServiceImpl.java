@@ -2,10 +2,13 @@ package com.oracle.oBootBoard03.service;
 
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.oracle.oBootBoard03.domain.Dept;
 import com.oracle.oBootBoard03.domain.Emp;
+import com.oracle.oBootBoard03.dto.DeptDto;
 import com.oracle.oBootBoard03.dto.EmpDto;
 import com.oracle.oBootBoard03.repository.EmpRepository;
 
@@ -18,18 +21,22 @@ import lombok.extern.log4j.Log4j2;
 @Transactional
 public class EmpServiceImpl implements EmpService {
 	
+	//자동주입 대상은 final로 
+    private final  ModelMapper modelMapper;
 	private final  EmpRepository empRepository;
 
 	@Override
-	public int totalEmp() {
-		// TODO Auto-generated method stub
-		return 0;
+	public Long totalEmp() {
+		System.out.println("EmpServiceImpl dept/list Strart...");
+		Long totalCount =  empRepository.empTotalcount();
+		return totalCount;
 	}
 
 	@Override
 	public List<EmpDto> empList(EmpDto empDto) {
-		// TODO Auto-generated method stub
-		return null;
+	    List<EmpDto> empRtnList = empRepository.findPageEmp(empDto);
+	    System.out.println("EmpServiceImpl deptList empRtnList->"+empRtnList);	
+	    return empRtnList;
 	}
 
 	@Override
@@ -75,6 +82,14 @@ public class EmpServiceImpl implements EmpService {
 					   );	
 	
 		return emp;
+	}
+
+	@Override
+	public EmpDto getSingleEmp(int emp_no) {
+		EmpDto empDto = empRepository.findById(emp_no);
+		System.out.println("EmpServiceImpl getSingleEmp empDto->"+empDto);
+		
+		return empDto;
 	}
 
 }
