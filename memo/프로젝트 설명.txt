@@ -74,6 +74,7 @@
 - JDBC API, Lombok, Oracle Driver, Spring Data JPA, Spring Web, Validation, Java Mail Sender, Spring Security, +Mybatis
 ○ oBootTodoApi01 : API, MSA(React 연동), @Builder
 - JDBC API, Lombok, Oracle Driver, Spring Data JPA, Spring Web, Validation, +Mybatis
+○ oBootSeqcurity01 : JDBC API, Lombok, Oracle Driver, Spring Data JPA, Spring Web, Validation, Spring Boot DevTools, Spring Seqcurity
 
 ★★★★★★★★★React★★★★★★★★★
 ○ todo01 : tailwindcss, Suspense, Navigate, Outlet, API
