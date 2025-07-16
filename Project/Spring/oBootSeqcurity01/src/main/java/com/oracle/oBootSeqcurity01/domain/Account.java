@@ -2,6 +2,7 @@ package com.oracle.oBootSeqcurity01.domain;
 
 import java.io.Serializable;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -16,7 +17,8 @@ public class Account implements Serializable {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private String username;
+	@Column(unique = true)
+	private String username;//Unique
 	private String password;
 	private String roles;
 	private int age;
