@@ -26,7 +26,7 @@ public class SecurityConfig {
 						// 그외 나머지 차단
 						.anyRequest().authenticated())
 
-		// 인증 : 시스템에 대한 접근 유무
+				// 인증 : 시스템에 대한 접근 유무
 		;
 
 		return http.build();
