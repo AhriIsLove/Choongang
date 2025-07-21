@@ -20,8 +20,8 @@ public class FormWebAuthenticationDetails extends WebAuthenticationDetails {
 
 		// 개발자가 따로 설정한 로그인 페이지에서 전달된 암호키(암구호)
 		// <input type="hidden" value="secret" name="secret_key" />
-		secretKey = request.getParameter("secret_Key");
-		System.out.println("FormWebAuthenticationDetails secretKey : " + request.getParameter("secret_Key"));
+		secretKey = request.getParameter("secret_key");
+		System.out.println("FormWebAuthenticationDetails secretKey : " + request.getParameter("secret_key"));
 
 	}
 

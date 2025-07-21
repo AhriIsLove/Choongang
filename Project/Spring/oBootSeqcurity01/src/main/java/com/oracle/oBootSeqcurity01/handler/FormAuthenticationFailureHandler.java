@@ -10,6 +10,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.stereotype.Component;
 
+import com.oracle.oBootSeqcurity01.exception.SecretException;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -33,12 +35,13 @@ public class FormAuthenticationFailureHandler extends SimpleUrlAuthenticationFai
 		else if (exception instanceof CredentialsExpiredException) {
 			errorMessage = "Expired password";
 		}
+		// SecretException : 외부 사이트 접근 확인
+		else if (exception instanceof SecretException) {
+			errorMessage = "Invalid Secret";
+		}
 //		// AccountExpiredException : 계정 만료(구독 만료)
 //		else if (exception instanceof AccountExpiredException) {
 //			errorMessage = "Expired Acoount";
-//		}
-//		else if(exception instanceof ???) {
-//			errorMessage = "???";			
 //		}
 
 		// 이동 페이지를 에러 페이지로 설정

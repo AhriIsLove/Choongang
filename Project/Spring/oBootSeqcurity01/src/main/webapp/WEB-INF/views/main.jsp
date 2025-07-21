@@ -28,6 +28,18 @@
 	          <a class="nav-link active" aria-current="page" href="admin">admin</a>
 	        </li>
 	        <li class="nav-item">
+	          <a class="nav-link active" aria-current="page" href="admanager">admanager</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link active" aria-current="page" href="guest">guest</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link active" aria-current="page" href="guest3">guest3</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link active" aria-current="page" href="guest5">guest5</a>
+	        </li>
+	        <li class="nav-item">
 	          <a class="nav-link active" aria-current="page" href="login">login</a>
 	        </li>
 	        <li class="nav-item">

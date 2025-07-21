@@ -767,6 +767,9 @@ greeting:
 - cmd
 - 프로젝트 경로로 이동
 - 'set Java_HOME=C:\Program Files\Java\jdk-17'
+○ 프로젝트 환경 맞추기
+- application.yml에서 spring.datasource.url: 를 수정하기
+-- localhost -> PC의 ip
 ○ gradle로 빌드하기
 - 'gradlew build'
 -- build 폴더 생성 확인
@@ -786,8 +789,12 @@ greeting:
 - 이미지 확인
 -- 'docker images'
 ○ 이미지 실행
-- 'docker run -p 8387:8387 spring-project-restapi'
+- 'docker run -p 8481:8481 spring-project-restapi'
 
+45. AWS 이용방법
+45-1. 로그인
+○ 이메일 : ahrilove1214@gmail.com
+○ 비밀번호 : 대문자,소문자,숫자,특수문자
 
 
 

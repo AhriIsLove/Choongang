@@ -19,12 +19,15 @@
 	     <div class="login-form">
 	             <h2>Login</h2>
 	              
-                  <c:if test="${!empty param.error  }">
+	              <!-- 로그인 실패시 무조건 해당 메시지가 출력된다.
+	              로그인 실패 내역에 따라 메시지를 다르게 출력 해주는 루틴이 필요 -->
+                  <c:if test="${!empty param.error}">
    				      <span class="alert alert-danger">잘못된 아이디나 암호입니다</span>
 				  </c:if>
 		              
 	              <form action="login" method="post">
-	                  <input type="hidden" value="secret" name="secret_key" />
+					<!-- SeccretKey(암호키,암구호) 검증 : 외부 사이트 접근 확인 -->
+					<input type="hidden" value="secret" name="secret_key" />
 	                  <div class="form-group">
 	                      <label for="username">Username</label>
 	                      <input type="text" class="form-control" id="username" name="username" required>

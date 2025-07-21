@@ -18,8 +18,8 @@ public class Account implements Serializable {
 	@GeneratedValue
 	private Long id;
 	@Column(unique = true)
-	private String username;//Unique
-	private String password;
-	private String roles;
+	private String username;// Security 제공 매칭
+	private String password;// Security 제공
+	private String roles;// Security 제공 매칭
 	private int age;
 }

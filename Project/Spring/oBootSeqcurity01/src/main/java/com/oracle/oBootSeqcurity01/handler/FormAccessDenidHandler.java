@@ -12,7 +12,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@Component
+//@Component//삭제
 // 사용자가 로그인까지는 했는데, 특정 리소스(페이지나 기능)에 접근할 권한이 없을 때 어떻게 처리할지를 정의
 public class FormAccessDenidHandler implements AccessDeniedHandler {
 	// RedirectStrategy는 웹 애플리케이션에서 사용자를 다른 URL로 리다이렉트(재경로 지정)할 때 쓰는 객체

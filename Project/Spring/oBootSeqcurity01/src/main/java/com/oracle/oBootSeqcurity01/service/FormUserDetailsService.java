@@ -19,7 +19,6 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @Service("userDetailService")
-@Transactional
 @RequiredArgsConstructor
 //UserDetails: Spring Security에서 사용자의 정보를 담는 인터페이스
 //UserDetailsService: Spring Security에서 유저의 정보를 가져오는 인터페이스

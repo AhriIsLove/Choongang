@@ -24,6 +24,7 @@ public class UserController {
 		Account account = mapper.map(accountDto, Account.class);
 
 		// DTO의 password를 암호화 하여 Entity의 password에 설정
+		System.out.println("signup accountDto.getPassword() : " + accountDto.getPassword());
 		account.setPassword(passwordEncoder.encode(accountDto.getPassword()));
 
 		// DB 저장
