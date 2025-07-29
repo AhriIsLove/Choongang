@@ -82,7 +82,8 @@
 ★★★★★★★★★Project★★★★★★★★★
 ○ oBootBoard03 : 사내 게시판
 - JDBC API, Java Mail Sender, Lombok, Oracle Driver, Spring Data JPA, Spring Security, Spring Web, Validation
-
+○ AssemERP : 컴퓨터 조립 회사 ERP
+- JDBC API, Java Mail Sender, Lombok, Oracle Driver, Spring Data JPA, Spring Security, Spring Web, Validation, websocket, Spring Boot DevTools, +Mybatis, +
 
 
 

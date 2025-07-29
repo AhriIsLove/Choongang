@@ -825,10 +825,25 @@ greeting:
 -- 프라이빗 키 파일 업로드 - pem파일 선택 - 암호 해독 선택
 -- 암호 복사(LmWcUL=kt%RUt.lcjJwLT2tN(iA$*srs)
 - '원격 데스크탑 파일 다운로드' 한 파일 실행 - 암호 입력 - 접속
-○ 서버 운용
-- 필요한 파일 옮기기(tomcat, oracle)
-
-
+○ 배포
+- 필요한 환경 설치(JDK, tomcat, oracle)
+- DB 동기화
+- WAR 프로젝트 배포
+-- 프로젝트 - Export - WAR file - Next
+-- war 파일 생성
+- tomcat에 배포
+-- 'C:\Program Files\Apache Software Foundation\Tomcat 10.1\webapps' 에 war파일 복사
+- tomcat 재시작
+- 방화벽 설정
+-- 인바운드 규칙 생성
+--- port - TCP, 1521 - Allow the connection - Domain,private,public - Oralce 1521
+--- port - TCP, 8181 - Allow the connection - Domain,private,public - Tomcat 8181
+- awsIP:tomcatPORT/projectName/path 접근
+○ 추가설정
+- 오류 확인
+-- Tomcat 설치 폴더 - log - stderr파일 확인
+- 현장 확인 결과 
+-- AWS의 환경 window 2019와 빌드 환경 JDK/Oracle/OJDBC... 등의 버전이 호환되지 않음
 
 
 

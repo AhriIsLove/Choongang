@@ -1,0 +1,85 @@
+클라우드 개발환경 이해 및 구축
+
+
+문항 1 :	protected 접근 제어자의 경우 default 접근 제어와 비슷하지만,
+	default 접근 제어와는 다르게 상속된 클래스에서의 접근을 허용한다.
+
+
+
+문항 2 :	JDBC에서 Statement/PreparedStatement/CallableStatement 각각의  객체를 설명하고, 비교
+	 Statement :
+				- 사용 : 일반적인 sql문을 실행할때 사용
+				- 성능 :  반복 실행에 적합하지 않다
+				- 가독성 : java코드안에 sql쿼리가 포함되어있어서 가독성이 좋지 않다
+	 PreparedStatement :
+					- 사용 : 동적 또는 매개변수가 필요한 sql쿼리를 실행할때 사용
+					- 성능 :  매개변수를 사용하여 반복 실행에 효율적
+					- 가독성 : 매개변수를 사용하여 쿼리 가독성 향상
+                                        - 보안   : Insection시 유리
+	 CallableStatement : 
+					- 사용 : DB 저장 프로시저(Stored Procedure)의 호출을 실행하는데 사용
+					- 성능 : 성능면에서 저장 프로시저에 특히 효율적
+					- 가독성 : 매개변수를 사용하여 쿼리, 저장 프로시저 지원으로 가독성 향상
+
+문항 3 :	implements 와 extends 비교 설명.
+		extends
+			: 부모에서 선언 / 정의를 모두하며 자식은 메소드 / 변수를 그대로 사용할 수 있음
+		implements (interface 구현)
+			: 부모 객체는 선언만 하며 정의(내용)은 자식에서 오버라이딩 (재정의) 해서 사용해야함
+
+          extends는 하나의 클래스만 상속할 수 있는 단일 상속만 가능하지만, implements는 여러 인터페이스의 기능을 
+         동시에 가질 수 있는 다중 구현이 가능
+
+문항 4 :	Runnable
+	[풀이]
+	Thread : 클래스
+	Runnable : 인터페이스
+	스레드를 구현하기 위한 두 가지 방법에 있어서, 인터페이스를 구현하는 경우는 Runnable 인터페이스를 구현해야 한다.
+
+문항 5 :	캡슐화 =	객체의 속성과 메소드 등을 하나로 묶어 외부에서의 접근을 제한하는 것을 말한다.
+		이를 통해 내부 정보를 숨기는 은닉성을 지닌다.
+	다형성 = override 와 overload로 대표되는 성질로, 같은 이름을 가진 메소드 혹은 필드 등을 재정의 함으로써 여러가지
+		다양한 구현체를 만들 수 있다.
+		메소드를 오버로드 하는 경우 파라미터는 각 메소드 별로 달라야하고, 오버라이드 하는 경우는 파라미터 또한 동일해야한다.
+	상속 =	상위 클래스의 필드와 메소드 등을 그대로 이어받아 새로운 클래스(하위 클래스)를 만드는 것을 말한다.
+		이 경우, 불필요한 중복 작성을 줄여 코드의 재사용성을 높일 수 있다.
+                 extends & implement
+	추상화 =	특정 개체의 속성과 행위 등을 추출하여 모델링하는 것
+       추상화는 객체의 여러 속성 중에서 프로그램에 필요한 핵심적인 공통 특징만을 추출하고, 불필요한 세부 사항을 숨기는 과정입니다. 
+       이를 통해 사용자는 복잡한 내부 구현을 몰라도 쉽게 객체를 사용할 수 있습니다.
+
+
+문항 6 :	
+①: boolean
+
+②: boolean
+
+문항 7 :	List<Movie> movieList = new ArrayList<Movie>();
+	[풀이]
+	ArrayList 제네릭 타입 생성자를 통해 Movie 클래스를 요소로 갖는 ArrayList 객체를 생성한다.
+	ArrayList 는 List 인터페이스의 구현체이므로, List<Movie> 타입의 변수에 할당해도 좋고,
+	더 엄격하게 ArrayList<Movie> 타입 변수에 할당해도 좋다.
+	또한, 변수의 타입에서 제네릭 타입을 선언했으므로, 우변을 new ArrayList<>(); 로 간략하게 써주어도 좋다(자바 7 버전부터).
+
+문항 8 :	 
+
+1. 우리가 개발한 oBootTodoApi01파일을 jar파일로 빌드하고
+   - oBootTodoApi01를 jar파일로 배포합니다. (gradlew build)
+
+2. dockerfile을 작성하고
+(예시)
+	FROM openjdk:17
+	ARG JAR_FILE=./app.jar
+	COPY ${JAR_FILE} ./apprestapi.jar
+	ENV TZ=Asia/Seoul
+	EXPOSE 8388 1521
+	ENTRYPOINT ["java", "-jar", "./apprestapi.jar"]
+
+   - jar 파일이 생성된 build/libs 폴더에 Dockerfile을 생성
+
+3. 터미널에서 build 명령어를 통해 이미지빌드
+   - Dockerfile이 있는 위치에서 도커 이미지를 생성합니다. (docker build -t spring-project-restapi .)
+
+4. docker run 명령어를 통해 docker 컨테이너 실행
+ - 생성된 이미지를 확인 (docker images)
+ - 이미지를 컨테이너로 생성 및 실행합니다 (docker run -p 8388:8388 spring-project-restapi)
