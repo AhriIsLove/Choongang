@@ -844,8 +844,29 @@ greeting:
 -- Tomcat 설치 폴더 - log - stderr파일 확인
 - 현장 확인 결과 
 -- AWS의 환경 window 2019와 빌드 환경 JDK/Oracle/OJDBC... 등의 버전이 호환되지 않음
+○ HTTPS 적용 방법(SSH 설정) : 서버를 API로 사용하기 위해 HTTPS 허락
+- Let’s Encrypt 인증서 발급
+-- win-acme 다운로드
+--- https://www.win-acme.com/
+-- wacs.exe 실행
+--- M
+--- 2
+--- AhriIsLove_Blog.com
 
-
+46. React 깃허브 배포 방법
+○ 빌드
+- npm run build
+○ 깃허브 페이지 설치
+- npm install --save gh-pages
+○ package.json 설정
+- "homepage": "https://AhriIsLove.github.io/blog.io" 추가
+- "scripts": { 
+	"predeploy": "npm run build",
+	"deploy": "gh-pages -d build"
+	},
+추가
+○ 브런치 생성 및 배포
+- npm run deploy
 
 
 

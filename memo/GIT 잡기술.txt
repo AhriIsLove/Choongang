@@ -1,0 +1,168 @@
+GIT 잡기술
+
+
+
+
+Microsoft Windows [Version 10.0.26100.4946]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\msn12>cd ../../
+
+C:\>dir
+ C 드라이브의 볼륨에는 이름이 없습니다.
+ 볼륨 일련 번호: F495-E835
+
+ C:\ 디렉터리
+
+2025-07-07  오후 05:54    <DIR>          02.SW TOOL
+2025-09-04  오후 04:26    <DIR>          704-A-Team-Sundo
+2025-09-01  오전 09:52    <DIR>          eGovFrameDev-4.3.0-64bit
+2025-09-01  오전 09:33     1,521,097,386 eGovFrameDev-4.3.0-64bit.zip
+2025-09-04  오후 02:09    <DIR>          eXERD
+2025-07-07  오전 12:46    <DIR>          inetpub
+2025-07-15  오후 08:50                90 logUploaderSettings.ini
+2025-07-15  오후 08:50                90 logUploaderSettings_temp.ini
+2006-12-01  오후 11:37           904,704 msdia80.dll
+2025-07-07  오후 05:51    <DIR>          oraclexe
+2025-09-01  오전 11:48    <DIR>          Program Files
+2025-09-01  오전 11:23    <DIR>          Program Files (x86)
+2025-08-01  오전 10:05    <DIR>          Project
+2025-09-04  오후 04:24    <DIR>          SIPDamage
+2025-07-11  오전 09:18    <DIR>          Spring
+2025-08-29  오전 10:06    <DIR>          Team_OB
+2025-09-01  오전 09:12    <DIR>          Temp
+2025-07-07  오전 02:22    <DIR>          Users
+2025-09-04  오후 01:52    <DIR>          Windows
+2025-09-01  오전 09:08    <DIR>          한글2020
+               4개 파일       1,522,002,270 바이트
+              16개 디렉터리  11,471,212,544 바이트 남음
+
+C:\>cd SIPDamage
+
+C:\SIPDamage>dir
+ C 드라이브의 볼륨에는 이름이 없습니다.
+ 볼륨 일련 번호: F495-E835
+
+ C:\SIPDamage 디렉터리
+
+2025-09-04  오후 04:24    <DIR>          .
+2025-09-04  오후 03:15             2,370 .classpath
+2025-09-04  오후 03:15            16,823 .factorypath
+2025-09-04  오후 04:11               410 .gitignore
+2025-09-03  오후 05:50             1,308 .project
+2025-09-03  오후 05:50    <DIR>          .settings
+2025-09-03  오후 05:50             7,189 pom.xml
+2025-09-03  오후 05:50    <DIR>          src
+2025-09-04  오후 03:15    <DIR>          target
+               5개 파일              28,100 바이트
+               4개 디렉터리  11,471,212,544 바이트 남음
+
+C:\SIPDamage>git init
+Initialized empty Git repository in C:/SIPDamage/.git/
+
+C:\SIPDamage>git remote add origin https://github.com/Sundo704ATeam/704aTeamSIPDamage.git
+
+C:\SIPDamage>git branch -M main
+
+C:\SIPDamage>git status
+On branch main
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .factorypath
+        .gitignore
+        pom.xml
+        src/
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+C:\SIPDamage>git add .
+warning: in the working copy of '.factorypath', LF will be replaced by CRLF the next time Git touches it
+
+C:\SIPDamage>git status
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   .factorypath
+        new file:   .gitignore
+        new file:   pom.xml
+        new file:   src/main/java/egovframework/example/EgovBootApplication.java
+        new file:   src/main/java/egovframework/example/MainController.java
+        new file:   src/main/resources/db/sampledb.sql
+        new file:   src/main/resources/log4j2.xml
+        new file:   src/main/webapp/META-INF/MANIFEST.MF
+        new file:   src/main/webapp/WEB-INF/config/dispatcher-servlet.xml
+        new file:   src/main/webapp/WEB-INF/config/spring/context-datasource.xml
+        new file:   src/main/webapp/WEB-INF/config/spring/context-mapper.xml
+        new file:   src/main/webapp/WEB-INF/views/header.jsp
+        new file:   src/main/webapp/WEB-INF/views/initmap.jsp
+        new file:   src/main/webapp/WEB-INF/views/main.jsp
+        new file:   src/main/webapp/WEB-INF/views/sidebar.jsp
+        new file:   src/main/webapp/WEB-INF/views/test.jsp
+        new file:   src/main/webapp/WEB-INF/web.xml
+
+
+C:\SIPDamage>git commit -m "first commit"
+[main (root-commit) 3e772ea] first commit
+ 17 files changed, 790 insertions(+)
+ create mode 100644 .factorypath
+ create mode 100644 .gitignore
+ create mode 100644 pom.xml
+ create mode 100644 src/main/java/egovframework/example/EgovBootApplication.java
+ create mode 100644 src/main/java/egovframework/example/MainController.java
+ create mode 100644 src/main/resources/db/sampledb.sql
+ create mode 100644 src/main/resources/log4j2.xml
+ create mode 100644 src/main/webapp/META-INF/MANIFEST.MF
+ create mode 100644 src/main/webapp/WEB-INF/config/dispatcher-servlet.xml
+ create mode 100644 src/main/webapp/WEB-INF/config/spring/context-datasource.xml
+ create mode 100644 src/main/webapp/WEB-INF/config/spring/context-mapper.xml
+ create mode 100644 src/main/webapp/WEB-INF/views/header.jsp
+ create mode 100644 src/main/webapp/WEB-INF/views/initmap.jsp
+ create mode 100644 src/main/webapp/WEB-INF/views/main.jsp
+ create mode 100644 src/main/webapp/WEB-INF/views/sidebar.jsp
+ create mode 100644 src/main/webapp/WEB-INF/views/test.jsp
+ create mode 100644 src/main/webapp/WEB-INF/web.xml
+
+C:\SIPDamage>git push origin main
+info: please complete authentication in your browser...
+Enumerating objects: 31, done.
+Counting objects: 100% (31/31), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (25/25), done.
+Writing objects: 100% (31/31), 9.59 KiB | 613.00 KiB/s, done.
+Total 31 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), done.
+To https://github.com/Sundo704ATeam/704aTeamSIPDamage.git
+ * [new branch]      main -> main
+
+C:\SIPDamage>git switch LSH
+fatal: invalid reference: LSH
+
+C:\SIPDamage>git branch
+* main
+
+C:\SIPDamage>git check out
+git: 'check' is not a git command. See 'git --help'.
+
+The most similar command is
+        checkout
+
+C:\SIPDamage>git checkout
+
+C:\SIPDamage>git checkout LSH
+error: pathspec 'LSH' did not match any file(s) known to git
+
+C:\SIPDamage>git checkout -b LSH
+Switched to a new branch 'LSH'
+
+C:\SIPDamage>git branch
+* LSH
+  main
+
+
+
